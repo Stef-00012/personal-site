@@ -6,6 +6,9 @@ export default function handleTyping(
 	setLoadingVisible: Dispatch<SetStateAction<boolean>>,
 ) {
 	instance
+		.options({
+			lifeLike: true,
+		})
 		.type(
 			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
 			{ instant: true, delay: 500 },
@@ -46,11 +49,11 @@ export default function handleTyping(
 		.type("ssh website@stefdp.lol")
 		.break({ instant: true })
 		.type(
-			"The authenticity of host 'stefdp.lol (217.174.245.249)' can't be established.",
+			"The authenticity of host 'stefdp.lol (173.208.244.6)' can't be established.",
 			{ instant: true },
 		)
 		.type(
-			"ECDSA key fingerprint is SHA256:Bhvy0+Nafdu90JBR2OzKcPye7vmFcgqPPnBo4ywMDV9.",
+			"ECDSA key fingerprint is SHA256:Bhvy0+Nafdu90JBR2OzKySye7vmFcgqPPnDo4ywMDV9.",
 			{ instant: true },
 		)
 		.break({ instant: true })
@@ -61,7 +64,7 @@ export default function handleTyping(
 		.type("yes", { delay: 200 })
 		.break({ instant: true })
 		.type(
-			"Warning: Permanently added 'stefdp.lol,217.174.245.249' (ECDSA) to the list of known hosts.",
+			"Warning: Permanently added 'stefdp.lol,173.208.244.6' (ECDSA) to the list of known hosts.",
 			{ instant: true },
 		)
 		.break({ instant: true })
@@ -106,7 +109,7 @@ export default function handleTyping(
 		.type("The following NEW packages will be installed:", { instant: true })
 		.break({ instant: true, delay: 120 })
 		.type(
-			"googletagmanager font-inter highlightjs highlightjs-atom-one-theme jbox jquery analytics typeit bootstrap-5.3.2",
+			"nextjs reactjs tailwindcss googletagmanager highlightjs highlightjs-atom-one-theme analytics octokit typeit react-tooltip react-carousel",
 			{ instant: true },
 		)
 		.break({ instant: true, delay: 140 })
