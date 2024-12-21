@@ -1,4 +1,5 @@
 import type { Social } from "@/types/socials";
+import { mail } from "./constants.tsx";
 
 export const socials: Array<Social> = [
 	{
@@ -245,7 +246,7 @@ export const socials: Array<Social> = [
 		name: "Mail",
 		id: "mail",
 		image: "mail.webp",
-		tooltip: "admin@stefdp.lol",
+		tooltip: mail,
 		type: "mail",
 		tooltipStyle: {
 			padding: "3px",
@@ -253,8 +254,8 @@ export const socials: Array<Social> = [
 			borderRadius: "5px",
 			backgroundColor: "#c5221f",
 		},
-		url: "mailto:admin@stefdp.lol",
+		url: `mailto:${mail}`,
 		tooltipBorder: "3px solid #8a1614",
-		username: "admin"
+		username: "me"
 	},
 ];

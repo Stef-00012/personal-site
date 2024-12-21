@@ -1,5 +1,5 @@
 import type { AlternativeLink } from "@/types/links";
-import { baseUrl } from "./constants";
+import { baseUrl, mail } from "./constants";
 
 export const alterativeLinks: Array<AlternativeLink> = [
 	{
@@ -194,7 +194,7 @@ export const alterativeLinks: Array<AlternativeLink> = [
 	{
 		name: "Mail",
 		image: "/images/socialLogos/mail.webp",
-		url: "admin@stefdp.lol",
+		url: mail,
 		type: "mail",
 		style: {
 			color: "#c5221f",
