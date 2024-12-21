@@ -3,7 +3,7 @@ import ExternalLinkSVG from "@/components/images/external-link";
 import GitHubIssueSVG from "@/components/images/github-issue";
 import GitHubForkSVG from "@/components/images/github-fork";
 import GitHubStarSVG from "@/components/images/github-star";
-import GlobeSVG from "./images/globe";
+import GlobeSVG from "@/components/images/globe";
 import Link from "next/link";
 
 import type { ScoredFormattedRepo } from "@/types/github";

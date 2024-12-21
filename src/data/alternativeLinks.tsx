@@ -1,5 +1,5 @@
 import type { AlternativeLink } from "@/types/links";
-import { baseUrl, mail } from "./constants";
+import { baseUrl, mail } from "@/data/constants";
 
 export const alterativeLinks: Array<AlternativeLink> = [
 	{
