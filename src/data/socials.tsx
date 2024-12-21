@@ -1,5 +1,5 @@
 import type { Social } from "@/types/socials";
-import { mail } from "./constants.tsx";
+import { mail } from "./constants";
 
 export const socials: Array<Social> = [
 	{
