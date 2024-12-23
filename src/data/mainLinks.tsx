@@ -3,7 +3,7 @@ import type { MainLink } from "@/types/links";
 export const mainLinks: Array<MainLink> = [
 	{
 		name: "Receiptify",
-		url: "https://receiptify.is-a.dev",
+		url: "https://receiptify.stefdp.com",
 	},
 	{
 		name: "Zipline Webstore Extension",
@@ -15,11 +15,11 @@ export const mainLinks: Array<MainLink> = [
 	},
 	{
 		name: "Homepage Dashboard",
-		url: "https://dash.stefdp.lol",
+		url: "https://dash.stefdp.com",
 	},
 	{
 		name: "My API",
-		url: "https://docs.stefdp.lol",
+		url: "https://docs.stefdp.com",
 	},
 	{
 		name: "My Discord Bot - GattinhosBot",

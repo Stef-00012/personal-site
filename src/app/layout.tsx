@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "My own bio :) - Stefano Del Prete | Home Page",
 		type: "website",
-		url: "https://stefdp.lol",
+		url: "https://stefdp.com",
 		description: "Here are listed most of my socials (if not all) :)",
 		images: "/images/pfp.webp",
 	},
@@ -64,7 +64,7 @@ export default function RootLayout({
 				<script
 					async
 					defer
-					src="https://tianji.stefdp.lol/getData.js"
+					src="https://tianji.stefdp.com/getData.js"
 					data-website-id="cly76hq16005bzdelvyk76wp1"
 				/>
 

@@ -46,10 +46,10 @@ export default function handleTyping(
 			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
 			{ instant: true, delay: 500 },
 		)
-		.type("ssh website@stefdp.lol")
+		.type("ssh website@stefdp.com")
 		.break({ instant: true })
 		.type(
-			"The authenticity of host 'stefdp.lol (173.208.244.6)' can't be established.",
+			"The authenticity of host 'stefdp.com (173.208.244.6)' can't be established.",
 			{ instant: true },
 		)
 		.type(
@@ -64,18 +64,18 @@ export default function handleTyping(
 		.type("yes", { delay: 200 })
 		.break({ instant: true })
 		.type(
-			"Warning: Permanently added 'stefdp.lol,173.208.244.6' (ECDSA) to the list of known hosts.",
+			"Warning: Permanently added 'stefdp.com,173.208.244.6' (ECDSA) to the list of known hosts.",
 			{ instant: true },
 		)
 		.break({ instant: true })
-		.type("website@stefdp.lol's password: ", { instant: true, delay: 500 })
+		.type("website@stefdp.com's password: ", { instant: true, delay: 500 })
 		.type("****", { delay: 150 })
 		.type("***", { delay: 500 })
 		.delete(2)
 		.type("***", { delay: 400 })
 		.type("*****")
 		.break({ instant: true })
-		.type("website@stefdp.lol: ~/ $ ", { instant: true, delay: 500 })
+		.type("website@stefdp.com: ~/ $ ", { instant: true, delay: 500 })
 		.type("sudo atp install stfe", { delay: 300 })
 		.type("-website -y")
 		.options({ speed: 25 })
@@ -135,7 +135,7 @@ export default function handleTyping(
 		})
 		.delete(24, { instant: true, delay: 100 })
 		.type(
-			"Get:1 https://stefdp.lol/download googletagmanager font-inter stef-website highlightjs highlightjs-atom-one-theme jbox jquery analytics typeit [548 kB]",
+			"Get:1 https://stefdp.com/download googletagmanager font-inter stef-website highlightjs highlightjs-atom-one-theme jbox jquery analytics typeit [548 kB]",
 			{ instant: true },
 		)
 		.break({ instant: true, delay: 560 })
@@ -164,7 +164,7 @@ export default function handleTyping(
 		.break({ instant: true, delay: 300 })
 		.type("Processing triggers for man-db (2.9.1-1) ...", { instant: true })
 		.break({ instant: true, delay: 80 })
-		.type("website@stefdp.lol: ~/ $ ", { instant: true })
+		.type("website@stefdp.com: ~/ $ ", { instant: true })
 		.type("stef-website dlpeoy --pr")
 		.options({ speed: 25 })
 		.move(-7)

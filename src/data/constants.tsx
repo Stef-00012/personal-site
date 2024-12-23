@@ -1,2 +1,2 @@
-export const baseUrl = "https://stefdp.lol";
-export const mail = "me@stefdp.lol";
+export const baseUrl = "https://stefdp.com";
+export const mail = "me@stefdp.com";

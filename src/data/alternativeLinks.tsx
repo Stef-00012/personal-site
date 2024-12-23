@@ -176,7 +176,7 @@ export const alterativeLinks: Array<AlternativeLink> = [
 	{
 		name: "Receiptify",
 		image: "/images/receiptifyLogo.webp",
-		url: "https://receiptify.stefdp.lol",
+		url: "https://receiptify.stefdp.com",
 		type: "link",
 		style: {
 			color: "#b4bbb8",
@@ -185,7 +185,7 @@ export const alterativeLinks: Array<AlternativeLink> = [
 	{
 		name: "Homepage Dashboard",
 		image: "/images/homepageLogo.webp",
-		url: "https://dash.stefdp.lol",
+		url: "https://dash.stefdp.com",
 		type: "link",
 		style: {
 			color: "#dbdada",

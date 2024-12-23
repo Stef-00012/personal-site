@@ -113,12 +113,12 @@ const myApps: Array<MyApp> = [
     {
         name: "Receiptify",
         description: "Converts your top tracks to a receipt (supports last.fm and spotify)",
-        url: "[[aStart_receiptify]]https://receiptify,stefdp.lol[[aEnd]]"
+        url: "[[aStart_receiptify]]https://receiptify.stefdp.com[[aEnd]]"
     },
     {
         name: "API",
-        url: "[[aStart_api]]https://api.stefdp.lol[[aEnd]]",
-        docs: "[[aStart_apiDocs]]https://docs.stefdp.lol[[aEnd]]",
+        url: "[[aStart_api]]https://api.stefdp.com[[aEnd]]",
+        docs: "[[aStart_apiDocs]]https://docs.stefdp.com[[aEnd]]",
         endpoints: [ // see docs for more info on each endpoint
             "/gattinhosBot/guilds/:GUILD_ID/features/:FEATURE?/:ID?",
             "/gattinhosBot/guilds/:GUILD_ID/users/:FEATURE?/:ID?",

@@ -21,5 +21,5 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Socials() {
-	redirect("https://docs.stefdp.lol");
+	redirect("https://docs.stefdp.com");
 }
