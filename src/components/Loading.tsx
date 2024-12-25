@@ -1,10 +1,28 @@
 import TypeIt from "typeit-react";
 
 import handleTyping from "@/scripts/Loading";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Loading() {
 	const [loadingVisible, setLoadingVisible] = useState<boolean>(true);
+
+	function handleKeyPress(event: KeyboardEvent) {
+		if (event.key === "Shift") hideLoading();
+	}
+
+	function hideLoading() {
+		setLoadingVisible(false);
+
+		document.removeEventListener("keydown", handleKeyPress);
+	}
+
+	useEffect(() => {
+		document.addEventListener("keydown", handleKeyPress);
+
+		return () => {
+			document.removeEventListener("keydown", handleKeyPress);
+		};
+	}, []);
 
 	return (
 		<div>
@@ -21,7 +39,7 @@ export default function Loading() {
 				/>
 				<button
 					type="button"
-					onClick={() => setLoadingVisible(false)}
+					onClick={hideLoading}
 					className={`${loadingVisible ? "" : "hidden"} text-[large] absolute bottom-[50px] left-[50%] translate-x-[-50%] bg-transparent text-[#0F0] border-none cursor-pointer font-mono`}
 				>
 					Skip Animation

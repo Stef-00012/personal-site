@@ -8,7 +8,26 @@ export default function handleTyping(
 	instance
 		.options({
 			lifeLike: true,
+			speed: 10
 		})
+		.type(
+			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			{ instant: true, delay: 500 },
+		)
+		.type("echo \"Press Shift or the 'Skip Animation' button to skip this animation\"", { delay: 200 })
+		.options({
+			speed: 100
+		})
+		.break({ instant: true })
+		.type("Press Shift or the 'Skip Animation' button to skip this animation", { instant: true })
+		.break({ instant: true })
+		.type(
+			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			{ instant: true, delay: 2000 },
+		)
+		.type("clear", { delay: 100 })
+		.break({ instant: true })
+		.delete(() => null, { instant: true })
 		.type(
 			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
 			{ instant: true, delay: 500 },
