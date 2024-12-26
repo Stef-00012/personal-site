@@ -25,8 +25,4 @@ export const mainLinks: Array<MainLink> = [
 		name: "My Discord Bot - GattinhosBot",
 		url: "https://gattinhosbot.is-a.dev",
 	},
-	{
-		name: "tmp",
-		url: "https://google.com"
-	}
 ];
