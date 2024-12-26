@@ -4,6 +4,7 @@ import GitHubRepoDisplay from "@/components/GitHubRepoDisplay";
 import MainLinkButton from "@/components/MainLinkButton";
 import { Carousel } from "react-responsive-carousel";
 import Collapsible from "@/components/Collapsible";
+import CustomSelect from "@/components/Select";
 import Loading from "@/components/Loading";
 import { Tooltip } from "react-tooltip";
 import TypeIt from "typeit-react";
@@ -17,6 +18,7 @@ import { getRankedRepos } from "@/scripts/githubRepos";
 import { rabbitImages } from "@/data/rabbitImages";
 import { mainLinks } from "@/data/mainLinks";
 import { useEffect, useState } from "react";
+import { catVariants } from "@/data/oneko";
 import { socials } from "@/data/socials";
 import { musics } from "@/data/music";
 import {
@@ -27,6 +29,7 @@ import {
 } from "@/scripts/Music";
 
 import type { ScoredFormattedRepo } from "@/types/github";
+import type { Option } from "@/types/select";
 import type { Music } from "@/types/music";
 import type TypeItInstance from "typeit";
 
@@ -45,6 +48,8 @@ export default function Home() {
 		TypeItInstance | undefined
 	>(undefined);
 
+	let currentVariant: string | null;
+
 	useEffect(() => {
 		const randomSongIndex = selectRandomSong();
 
@@ -55,6 +60,9 @@ export default function Home() {
 
 			setRankedRepos(repos);
 		})();
+
+		currentVariant = localStorage.getItem("oneko:variant");
+		currentVariant = currentVariant ? JSON.parse(currentVariant) : currentVariant;
 	}, []);
 
 	useEffect(() => {
@@ -64,6 +72,22 @@ export default function Home() {
 	return (
 		<div>
 			<Loading />
+
+			<CustomSelect
+				options={catVariants.map((variant) => ({
+					label: variant.charAt(0).toUpperCase() + variant.slice(1),
+					value: variant,
+					default: currentVariant
+						? variant === currentVariant
+						: variant === "maia",
+					icon: `/images/oneko/heads/${variant}.png`,
+				}))}
+				onChange={(option: Option) => {
+					localStorage.setItem("oneko:variant", `"${option.value}"`);
+				}}
+				className="absolute top-2 left-2"
+				placeholder="Cat Variant"
+			/>
 
 			<div className="flex flex-col items-center justify-center">
 				<Image
