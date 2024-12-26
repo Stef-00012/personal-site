@@ -1,4 +1,4 @@
-import React, { type MouseEvent, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SelectIcon from "@/components/images/selectIcon";
 import type { Option } from "@/types/select";
 import Image from "next/image";
@@ -39,7 +39,7 @@ export default function Select({
 		};
 	}, []);
 
-	function handleInputClick(event: MouseEvent<HTMLDivElement>) {
+	function handleInputClick() {
 		setShowMenu(!showMenu);
 	}
 
