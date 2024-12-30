@@ -61,11 +61,9 @@ export default function RootLayout({
 			<head>
 				<link rel="me" href="https://mastodon.social/@Stef_DP" />
 				
-				<script
-					async
+				<script 
 					defer
-					src="https://tianji.stefdp.com/getData.js"
-					data-website-id="cly76hq16005bzdelvyk76wp1"
+					src="https://umami.stefdp.com/data.js" data-website-id="b6b98e07-7281-4a22-b639-926024968a05"
 				/>
 
 				<Script async src="https://www.googletagmanager.com/gtag/__js?id=G-002L9WP8JT" />
