@@ -59,7 +59,7 @@ const knownLanguages: Array<KnownLanguage> = [
 
 const knownProgramming: Array<KnownProgrammingLanguage> = [
     {
-        name: "Javascript", // for the comment on the status value, the question goes also for "fs.unlink('C:\Life.exe')"
+        name: "Javascript", // for the comment on the status value, the question goes also for "fs.unlink('C:\\Life.exe')"
         level: 90 // 0-100
     },
     {
