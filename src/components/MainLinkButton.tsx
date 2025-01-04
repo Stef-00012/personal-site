@@ -1,5 +1,5 @@
-import Link from "next/link";
 import ExternalLinkSVG from "@/components/images/external-link";
+import Link from "next/link";
 
 interface Data {
 	href: string;

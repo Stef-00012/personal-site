@@ -22,6 +22,7 @@ export default function RabbitCollapsible({
                     {rabbitImages.map((image) => (
                         <div key={image}>
                             <img
+                                loading="lazy"
                                 src={`/images/rabbit/${image}`}
                                 alt="My Rabbit Pictures"
                                 className="object-contain w-[100%] h-[100%] max-h-[60vh] m-auto"

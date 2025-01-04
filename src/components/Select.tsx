@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import SelectIcon from "@/components/images/selectIcon";
 import Image from "next/image";
@@ -12,7 +12,7 @@ interface Data {
 	onChange?: (option: Option) => void | Promise<void>;
 	options: Array<Option>;
 	placeholder: string;
-    className?: string;
+	className?: string;
 	align?: string;
 	type?: "link" | "button";
 	query?: string;
@@ -21,16 +21,18 @@ interface Data {
 export default function Select({
 	placeholder,
 	onChange = () => {},
-    className,
+	className,
 	options,
 	align,
 	type = "button",
-	query
+	query,
 }: Data) {
 	const [showMenu, setShowMenu] = useState<boolean>(false);
-	const [selectedValue, setSelectedValue] = useState<Option | undefined>(options.find((opt: Option) => opt.default));
+	const [selectedValue, setSelectedValue] = useState<Option | undefined>(
+		options.find((opt: Option) => opt.default),
+	);
 	const inputRef = useRef<HTMLDivElement>(null);
-	const router = useRouter()
+	const router = useRouter();
 
 	useEffect(() => {
 		function clickHandler(event: globalThis.MouseEvent) {
@@ -63,38 +65,47 @@ export default function Select({
 
 	function onItemClick(option: Option) {
 		setSelectedValue(option);
-		if (type === "button") onChange(option)
+		if (type === "button") onChange(option);
 		else router.push(`?${query}=${option.value}`);
 	}
 
 	return (
 		<div className={className}>
-            <div className="text-left relative cursor-pointer w-[-webkit-max-content] rounded-md border-solid border-[#818181] border-2 bg-black/50">
-                <div ref={inputRef} onClick={handleInputClick} className="[display:-webkit-box] [-webkit-box-align:center] [-ms-flex-align:center] items-center [-webkit-box-pack:justify] [-ms-flex-pack:justify] justify-between [-webkit-user-select:none] [-moz-user-select:none] [-ms-user-select:none] select-none gap-[7px] px-[11px] py-[7px]">
-                    {selectedValue?.icon && (
+			<div className="text-left relative cursor-pointer w-[-webkit-max-content] rounded-md border-solid border-[#818181] border-2 bg-black/50">
+				<div
+					ref={inputRef}
+					onClick={handleInputClick}
+					className="[display:-webkit-box] [-webkit-box-align:center] [-ms-flex-align:center] items-center [-webkit-box-pack:justify] [-ms-flex-pack:justify] justify-between [-webkit-user-select:none] [-moz-user-select:none] [-ms-user-select:none] select-none gap-[7px] px-[11px] py-[7px]"
+				>
+					{selectedValue?.icon && (
 						<Image
 							width={20}
 							height={20}
 							alt={"Cat Icon"}
 							src={selectedValue.icon}
 							className="align-middle"
+							loading={selectedValue?.lazy ? "lazy" : undefined}
 						/>
 					)}
-					<div
-                        className={!selectedValue ? "text-[#82868b]" : ""}
-                    >
-                        {getDisplay()}
-                    </div>
-                    <div>
-                        <div>
-                            <SelectIcon color="#ffffffb3" isOpen={showMenu} alt="Select Icon" />
-                        </div>
-                    </div>
-                </div>
+					<div className={!selectedValue ? "text-[#82868b]" : ""}>
+						{getDisplay()}
+					</div>
+					<div>
+						<div>
+							<SelectIcon
+								color="#ffffffb3"
+								isOpen={showMenu}
+								alt="Select Icon"
+							/>
+						</div>
+					</div>
+				</div>
 
-                {showMenu && (
-                    <div className={`w-max absolute [-webkit-transform:translateY(6px)] [-ms-transform:translateY(6px)] translate-y-1.5 border-2 overflow-auto bg-black/50 z-[99] max-h-[312px] min-h-[50px] p-[5px] rounded-md border-solid border-[#818181] align-[${align || null}]`}>
-                        {options.map((option) => (
+				{showMenu && (
+					<div
+						className={`w-max absolute [-webkit-transform:translateY(6px)] [-ms-transform:translateY(6px)] translate-y-1.5 border-2 overflow-auto bg-black/50 z-[99] max-h-[312px] min-h-[50px] p-[5px] rounded-md border-solid border-[#818181] align-[${align || null}]`}
+					>
+						{options.map((option) => (
 							<div
 								key={option.value}
 								onClick={() => onItemClick(option)}
@@ -111,10 +122,10 @@ export default function Select({
 								)}
 								{option.label}
 							</div>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </div>
+						))}
+					</div>
+				)}
+			</div>
+		</div>
 	);
 }
