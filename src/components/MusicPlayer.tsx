@@ -44,7 +44,6 @@ export default function MusicPlayer() {
 						width={40}
 						height={40}
 						className="pointer-events-none invert-[70%]"
-						loading="lazy"
 					/>
 				</button>
 
@@ -61,7 +60,6 @@ export default function MusicPlayer() {
 						width={40}
 						height={40}
 						className="pointer-events-none invert-[70%]"
-						loading="lazy"
 					/>
 				</button>
 
@@ -78,7 +76,6 @@ export default function MusicPlayer() {
 						width={40}
 						height={40}
 						className="pointer-events-none invert-[70%]"
-						loading="lazy"
 					/>
 				</button>
 			</div>
