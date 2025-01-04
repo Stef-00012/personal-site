@@ -13,7 +13,7 @@
 	let grabStop = true;
 	let nudge = false;
 	let kuroNeko = true;
-	let variant = "classic";
+	let variant = "maia";
 
 	function parseLocalStorage(key, fallback) {
 		try {
@@ -105,10 +105,10 @@
 	};
 
 	function create() {
-		variant = parseLocalStorage("variant", "maia");
+		variant = new URLSearchParams(window.location.search).get("neko") || "maia";
 		kuroNeko = parseLocalStorage("kuroneko", false);
 
-		if (!variants.some((v) => v === variant)) {
+		if (!variants.includes(variant)) {
 			variant = "maia";
 		}
 
@@ -230,7 +230,7 @@
 		});
 
 		window.onekoInterval = setInterval(() => {
-			const newVariant = parseLocalStorage("variant", "maia");
+			const newVariant = new URLSearchParams(window.location.search).get("neko") || "maia";;
 
 			if (variant !== newVariant) {
 				setVariant(newVariant)
@@ -391,9 +391,15 @@
 	create();
 
 	function setVariant(newVariant) {
-		console.log(`Sucessfully loaded Oneko Variant: "${newVariant}"`);
+		let variantToSet = newVariant
+		
+		if (!variants.includes(variantToSet)) {
+			variantToSet = "maia";
+		}
 
-		localStorage.setItem("oneko:variant", `"${newVariant}"`);
-		nekoEl.style.backgroundImage = `url('/images/oneko/${newVariant}.gif')`;
+		console.log(`Sucessfully loaded Oneko Variant: "${variantToSet}"`);
+
+		// localStorage.setItem("oneko:variant", `"${variantToSet}"`);
+		nekoEl.style.backgroundImage = `url('/images/oneko/${variantToSet}.gif')`;
 	}
 })();

@@ -1,3 +1,5 @@
+"use client"
+
 import TypeIt from "typeit-react";
 
 import handleTyping from "@/scripts/Loading";

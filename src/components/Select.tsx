@@ -1,26 +1,36 @@
-import React, { useEffect, useRef, useState } from "react";
+"use client"
+
 import SelectIcon from "@/components/images/selectIcon";
-import type { Option } from "@/types/select";
 import Image from "next/image";
 
+import React, { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+
+import type { Option } from "@/types/select";
+
 interface Data {
-	onChange: (option: Option) => void | Promise<void>;
+	onChange?: (option: Option) => void | Promise<void>;
 	options: Array<Option>;
 	placeholder: string;
     className?: string;
 	align?: string;
+	type?: "link" | "button";
+	query?: string;
 }
 
 export default function Select({
 	placeholder,
-	onChange,
+	onChange = () => {},
     className,
 	options,
 	align,
+	type = "button",
+	query
 }: Data) {
 	const [showMenu, setShowMenu] = useState<boolean>(false);
 	const [selectedValue, setSelectedValue] = useState<Option | undefined>(options.find((opt: Option) => opt.default));
 	const inputRef = useRef<HTMLDivElement>(null);
+	const router = useRouter()
 
 	useEffect(() => {
 		function clickHandler(event: globalThis.MouseEvent) {
@@ -53,7 +63,8 @@ export default function Select({
 
 	function onItemClick(option: Option) {
 		setSelectedValue(option);
-		onChange(option);
+		if (type === "button") onChange(option)
+		else router.push(`?${query}=${option.value}`);
 	}
 
 	return (
