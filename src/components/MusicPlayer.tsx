@@ -60,6 +60,7 @@ export default function MusicPlayer() {
 						width={40}
 						height={40}
 						className="pointer-events-none invert-[70%]"
+						priority
 					/>
 				</button>
 
