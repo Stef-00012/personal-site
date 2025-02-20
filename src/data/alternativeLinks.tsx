@@ -156,6 +156,15 @@ export const alterativeLinks: Array<AlternativeLink> = [
 		},
 	},
 	{
+		name: "Zipline Android App",
+		image: "/images/ziplineApp.webp",
+		url: "https://github.com/stef-00012/zipline-android-app/releases/latest",
+		type: "link",
+		style: {
+			color: "#1d242e",
+		},
+	},
+	{
 		name: "My Discord Bot - userApps",
 		image: "/images/userApps.webp",
 		url: "https://discord.com/oauth2/authorize?client_id=1223221223685886032",

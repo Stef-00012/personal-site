@@ -10,6 +10,10 @@ export const mainLinks: Array<MainLink> = [
 		url: "https://chromewebstore.google.com/detail/zipline-upload/nckdinonilcnlmjipgggnejkpdldjmjn",
 	},
 	{
+		name: "Zipline Android App",
+		url: "https://github.com/stef-00012/zipline-android-app/releases/latest"
+	},
+	{
 		name: "My Discord Bot - UserApps",
 		url: "https://discord.com/oauth2/authorize?client_id=1223221223685886032",
 	},

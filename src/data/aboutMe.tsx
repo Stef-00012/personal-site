@@ -91,6 +91,11 @@ const myApps: Array<MyApp> = [
         url: "[[aStart_ziplineUpload]]https://github.com/Stef-00012/Zipline-Upload-Extension[[aEnd]]"
     },
     {
+    	name: "Zipline Android App",
+    	description: "An android app that lets users manage their [[aStart_zipline]]Zipline[[aEnd]] instance",
+    	url: "[[aStart_ziplineApp]]https://github.com/stef-00012/zipline-android-app[[aEnd]]"
+    },
+    {
         name: "User Apps",
         description: "A user-installed Discord bot for some utility commands such as tags (message presets), reminders, ai and more",
         url: "[[aStart_userApps]]https://discord.com/oauth2/authorize?client_id=1223221223685886032[[aEnd]]"
