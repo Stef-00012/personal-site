@@ -30,7 +30,7 @@ const personalInfo: PersonalInfo = {
     pets: [{
         type: "rabbit",
         name: "Pallino",
-        age: 10 // 75 in rabbit years
+        age: 11 // 81 in rabbit years
     }]
 };
 
