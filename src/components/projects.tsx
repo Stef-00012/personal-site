@@ -4,19 +4,19 @@ export default function ProjectsList() {
 			<ul className="list-inside text-lg">
 				<li>
 					// <p className="link">project one</p>{" "}
-					<span className="-mb-1 icon-[tabler--link] size-5"></span>
+					<span className="-mb-1 icon-[tabler--link] size-5" />
 				</li>
 				<li>
 					// <p className="link">project three</p>{" "}
-					<span className="-mb-1 icon-[tabler--link] size-5"></span>
+					<span className="-mb-1 icon-[tabler--link] size-5" />
 				</li>
 				<li>
 					// <p className="link">project four</p>{" "}
-					<span className="-mb-1 icon-[tabler--link] size-5"></span>
+					<span className="-mb-1 icon-[tabler--link] size-5" />
 				</li>
 				<li>
 					// <p className="link">project five</p>{" "}
-					<span className="-mb-1 icon-[tabler--link] size-5"></span>
+					<span className="-mb-1 icon-[tabler--link] size-5" />
 				</li>
 			</ul>
 		</div>
