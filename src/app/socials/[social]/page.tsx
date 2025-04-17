@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { socials } from "@/data/socials";
 
 import type { Metadata } from "next";
+import { use } from "react";
 
 interface Data {
 	params: Promise<{
@@ -13,8 +14,6 @@ interface Data {
 type Props = {
 	params: Promise<{ social: string }>;
 };
-
-import React from "react";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const socialName = (await params).social;
@@ -38,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function Socials({ params }: Data) {
-	const { social: socialName } = React.use(params);
+	const { social: socialName } = use(params);
 
 	const selectedSocial = socials.find((social) => social.id === socialName);
 
