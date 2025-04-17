@@ -1,10 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
 @plugin "daisyui/theme" {
   name: "catppuccin-macchiato";
   default: true;
-  prefersdark: true;
   color-scheme: "catppuccin-macchiato";
 
   --color-base-100: #24273a;
@@ -36,4 +34,9 @@
   --border: 1px;
   --depth: 1;
   --noise: 1;
+}
+@import url(https://fonts.bunny.net/css?family=atkinson-hyperlegible:400|ubuntu-mono:400);
+@theme {
+  --font-sans: "Atkinson Hyperlegible", sans-serif;
+  --font-mono: "Ubuntu Mono", monospace;
 }
