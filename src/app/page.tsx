@@ -17,10 +17,8 @@ export default function Home() {
 		online: "status-success",
 		idle: "status-warning",
 		dnd: "status-error",
-		offline: "status-error",
+		offline: " status-base-content/70",
 	};
-
-	console.log(loading, status);
 
 	return (
 		<div className="min-h-screen flex flex-col justify-center items-center p-4">
