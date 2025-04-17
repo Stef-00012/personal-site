@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="catppuccin-macchiato">
+    <html lang="en" data-theme="catppuccin-macchiato" className="bg-base-300">
       <body
         className={`antialiased`}
       >
