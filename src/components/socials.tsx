@@ -1,6 +1,6 @@
 export default function SocialsList() {
     return (
-        <div className="flex flex-wrap my-4 gap-2">
+        <div className="flex flex-wrap my-4 gap-2 justify-center">
             <a href=""><span className="icon-[tabler--mail-filled] size-8 hover:text-accent"></span></a>
             <a href=""><span className="icon-[fa6-brands--discord] size-8 hover:text-accent"></span></a>
             <a href=""><span className="icon-[fa6-brands--github] size-8 hover:text-accent"></span></a>
