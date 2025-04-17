@@ -1,147 +1,103 @@
-import TopReposCollapsible from "@/components/collapsibles/TopReposCollapsible";
-import AboutMeCollapsible from "@/components/collapsibles/AboutMeCollapsible";
-import RabbitCollapsible from "@/components/collapsibles/RabbitCollapsible";
-import MainLinkButton from "@/components/MainLinkButton";
-import DiscordStatus from "@/components/DiscordStatus";
-import Collapsible from "@/components/Collapsible";
-import MusicPlayer from "@/components/MusicPlayer";
-import CustomSelect from "@/components/Select";
-import Loading from "@/components/Loading";
-import Socials from "@/components/Socials";
-import NamePic from "@/components/NamePic";
-import Footer from "@/components/Footer";
-
-import Script from "next/script";
 import Image from "next/image";
-import Link from "next/link";
 
-import { alterativeLinks } from "@/data/alternativeLinks";
+export default function Home() {
+  return (
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        <Image
+          className="dark:invert"
+          src="/next.svg"
+          alt="Next.js logo"
+          width={180}
+          height={38}
+          priority
+        />
+        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+          <li className="mb-2 tracking-[-.01em]">
+            Get started by editing{" "}
+            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+              src/app/page.tsx
+            </code>
+            .
+          </li>
+          <li className="tracking-[-.01em]">
+            Save and see your changes instantly.
+          </li>
+        </ol>
 
-import { getCodeBlock } from "@/scripts/aboutMeHighlight";
-import { rabbitImages } from "@/data/rabbitImages";
-import { mainContentId } from "@/data/constants";
-import { mainLinks } from "@/data/mainLinks";
-import { catVariants } from "@/data/oneko";
-
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "@/styles/home.css";
-
-interface Data {
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-export default async function Home({ searchParams }: Data) {
-	let currentVariant = ((await searchParams).neko || "maia") as string;
-
-	if (!catVariants.includes(currentVariant)) currentVariant = "maia";
-
-	return (
-		<div>
-			<Loading />
-
-			<div
-				id={mainContentId}
-				style={{
-					display: "none",
-				}}
-			>
-				<CustomSelect
-					options={catVariants.map((variant) => ({
-						label: variant.charAt(0).toUpperCase() + variant.slice(1),
-						value: variant,
-						default: currentVariant
-							? variant === currentVariant
-							: variant === "maia",
-						icon: `/images/oneko/heads/${variant}.png`,
-						lazy: true,
-					}))}
-					type="link"
-					query="neko"
-					className="absolute top-2 left-2"
-					placeholder="Cat Variant"
-				/>
-
-				<NamePic />
-
-				<Socials />
-
-				<MusicPlayer />
-
-				<DiscordStatus />
-
-				<AboutMeCollapsible codeBlock={getCodeBlock()} />
-
-				<RabbitCollapsible rabbitImages={rabbitImages} />
-
-				<Collapsible title="Alternative Links">
-					<div>
-						{alterativeLinks.map((link) => (
-							<div key={link.name} className="flex">
-								<Image
-									src={link.image}
-									alt={`${link.name} Logo`}
-									width={15}
-									height={15}
-									className="rounded-[4px] mr-[5px] object-contain"
-								/>
-								<p>
-									<span className="font-bold">{link.name}</span>:{" "}
-									<Link
-										href={
-											link.type === "mail" ? `mailto:${link.url}` : link.url
-										}
-										target="_parent"
-										rel="noopener"
-										className="font-bold hover:brightness-[0.8]"
-										style={link.style}
-									>
-										{link.url}
-									</Link>
-								</p>
-							</div>
-						))}
-					</div>
-				</Collapsible>
-
-				<Collapsible title="GitHub Stats">
-					<div className="flex flex-wrap items-center justify-center">
-						<embed
-							className="p-[5px] w-auto align-top rounded-xl max-md:w-[100%]"
-							type="text/html"
-							src="https://github-stats-stef-00012.vercel.app/api?username=Stef-00012&show_icons=true&theme=tokyonight"
-						/>
-						<embed
-							className="p-[5px] w-auto align-top rounded-xl max-md:w-[100%]"
-							type="text/html"
-							src="https://github-stats-stef-00012.vercel.app/api/top-langs/?username=Stef-00012&theme=tokyonight"
-						/>
-						<embed
-							className="p-[5px] w-auto align-top rounded-xl max-md:w-[100%]"
-							src="https://github-readme-streak-stats-stef-00012.vercel.app/?user=Stef-00012&theme=radical"
-						/>
-					</div>
-				</Collapsible>
-
-				<TopReposCollapsible />
-
-				{mainLinks.map((link) => (
-					<MainLinkButton
-						key={link.url}
-						title={link.name}
-						href={link.url}
-						alt={link.name}
-					/>
-				))}
-
-				<Footer />
-			</div>
-
-			<link
-				rel="stylesheet"
-				href="https://unpkg.com/highlightjs@9.16.2/styles/atom-one-dark.css"
-			/>
-
-			<Script src="/js/oneko.js" />
-		</div>
-	);
+        <div className="flex gap-4 items-center flex-col sm:flex-row">
+          <a
+            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image
+              className="dark:invert"
+              src="/vercel.svg"
+              alt="Vercel logomark"
+              width={20}
+              height={20}
+            />
+            Deploy now
+          </a>
+          <a
+            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
+            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Read our docs
+          </a>
+        </div>
+      </main>
+      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/file.svg"
+            alt="File icon"
+            width={16}
+            height={16}
+          />
+          Learn
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/window.svg"
+            alt="Window icon"
+            width={16}
+            height={16}
+          />
+          Examples
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            aria-hidden
+            src="/globe.svg"
+            alt="Globe icon"
+            width={16}
+            height={16}
+          />
+          Go to nextjs.org →
+        </a>
+      </footer>
+    </div>
+  );
 }
