@@ -12,7 +12,8 @@
     "daisyui": "^5.0.23",
     "next": "15.3.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-use-lanyard": "^0.3.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
