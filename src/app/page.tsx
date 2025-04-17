@@ -2,10 +2,15 @@
 
 import PallinoCarousel from "../components/pallino";
 import ProjectsList from "../components/projects";
-import SocialsList from "../components/socials";
 import GitHubStats from "../components/github";
 
-import { useLanyard } from "react-use-lanyard";
+import { set, useLanyard } from "react-use-lanyard";
+import { useEffect, useState } from "react";
+
+import type TypeItInstance from "typeit";
+import Loading from "@/components/loading";
+import Image from "next/image";
+import { socials } from "@/data/socials";
 
 export default function Home() {
 	const { loading, status } = useLanyard({
@@ -13,38 +18,101 @@ export default function Home() {
 		socket: true,
 	});
 
+	const [hideLoading, setHideLoading] = useState<boolean>(false);
+	const [showHideLoadingButton, setShowHideLoadingButton] =
+		useState<boolean>(false);
+
+	const [customStatus, setCustomStatus] = useState<string | null>("");
+	const [avatar, setAvatar] = useState<string | null>(null);
+	const [avatarDecoration, setAvatarDecoration] = useState<string | null>(null);
+	const [discordStatus, setDiscordStatus] = useState<
+		"online" | "idle" | "dnd" | "offline"
+	>("offline");
+
 	const statuses = {
 		online: "status-success",
 		idle: "status-warning",
 		dnd: "status-error",
-		offline: " status-base-content/70",
+		offline: "status-base-content/70",
 	};
 
+	useEffect(() => {
+		if (loading) return;
+
+		const discordActivites = status?.activities;
+		const discordUser = status?.discord_user;
+		const discordStatus = status?.discord_status || "offline";
+
+		const customStatusData = discordActivites?.find(
+			(activity) => activity.id === "custom",
+		);
+
+		const avatar = `https://cdn.discordapp.com/avatars/${discordUser?.id}/${discordUser?.avatar}.${discordUser?.avatar.startsWith("a_") ? "gif" : "png"}`;
+		const avatarDecoration = discordUser?.avatar_decoration_data
+			? `https://cdn.discordapp.com/avatar-decoration-presets/${discordUser.avatar_decoration_data.asset}.png`
+			: null;
+
+		setCustomStatus(customStatusData?.state || null);
+		setAvatarDecoration(avatarDecoration);
+		setDiscordStatus(discordStatus);
+		setAvatar(avatar);
+	}, [status, loading]);
+
+	useEffect(() => {
+		if (!loading && status) setShowHideLoadingButton(true);
+	}, [loading, status]);
+
+	function handleHideLoading() {
+		setHideLoading(true);
+	}
+
 	return (
-		<div className="min-h-screen flex flex-col justify-center items-center p-4">
-			<div className="bgeffect" />
-			<div className="flex flex-col items-center">
-				{/* for the avatar decoration it'll be `https://cdn.discordapp.com/avatar-decoration-presets/${status?.discord_user.avatar_decoration_data?.asset}.png` */}
-				<img
-					src={`https://cdn.discordapp.com/avatars/${status?.discord_user.id}/${status?.discord_user.avatar}.${status?.discord_user.avatar.startsWith("a_") ? "gif" : "png"}`}
-					// biome-ignore lint/a11y/noRedundantAlt: <explanation>
-					alt="my profile picture"
-					className="rounded-full size-24 mb-4"
-				/>
-				<div className="flex items-center">
-					<h1 className="text-5xl text-primary mb-4 me-2">Stef</h1>
-					<span
-						className={`${statuses[status?.discord_status || "online"]} status size-4 mb-3`}
-					/>
-				</div>
+		<>
+			<Loading
+				showSkipButton={showHideLoadingButton}
+				hideLoading={handleHideLoading}
+				hide={hideLoading}
+			/>
 
-				<SocialsList />
+			<div className="min-h-screen flex flex-col justify-center items-center p-4">
+				<div className="bgeffect" />
+				<div className="flex flex-col items-center">
+					{/* for the avatar decoration it'll be "avatarDecoration" variable */}
+					{avatar && (
+						<Image
+							src={avatar}
+							alt="my profile picture"
+							className="rounded-full mb-4"
+							width={96}
+							height={96}
+						/>
+					)}
+					<div className="flex items-center">
+						<h1 className="text-5xl text-primary mb-4 me-2">Stef</h1>
+						<span className={`${statuses[discordStatus]} status size-4 mb-3`} />
+					</div>
 
-				<div className="mt-10 font-mono">
-					{/* insert discord status and activity */}
-					{status?.activities[0]?.state}
+					<div className="flex flex-wrap my-4 gap-2 justify-center">
+						{socials.map((social) => (
+							<a
+								href={
+									social.type === "mail" ? social.url : `/socials/${social.id}`
+								}
+								key={social.id}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<span className={`${social.icon} size-8 ${social.color}`} />
+							</a>
+						))}
+					</div>
+
+					<div className="mt-10 font-mono">
+						{/* insert discord status and activity */}
+						{customStatus}
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }

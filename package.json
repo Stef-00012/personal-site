@@ -13,7 +13,8 @@
     "next": "15.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-use-lanyard": "^0.3.2"
+    "react-use-lanyard": "^0.3.2",
+    "typeit-react": "^2.7.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

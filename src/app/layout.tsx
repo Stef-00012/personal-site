@@ -1,9 +1,44 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { baseUrl } from "@/data/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Stefano del Prete",
-	description: "Stef's personal homepage.",
+	metadataBase: new URL(baseUrl),
+	authors: [
+		{
+			name: "Stefano Del Prete",
+			url: "https://stefdp.com",
+		},
+		{
+			name: "orangc",
+			url: "https://orangc.net",
+		},
+	],
+	title: "My own bio :) - Stefano Del Prete | Home Page",
+	description: "Here are listed most of my socials (if not all) :)",
+	openGraph: {
+		title: "My own bio :) - Stefano Del Prete | Home Page",
+		type: "website",
+		url: "https://stefdp.com",
+		description: "Here are listed most of my socials (if not all) :)",
+		images: "/images/pfp.webp",
+	},
+	verification: {
+		me: "https://mastodon.social/@Stef_DP",
+	},
+	keywords: ["Stef", "Stef_DP", "Stefano Del Prete", "Del Prete", "Stefano"],
+	twitter: {
+		title: "My own bio :) - Stefano Del Prete | Home Page",
+		description: "Here are listed most of my socials (if not all) :)",
+	},
+	icons: null,
+};
+
+export const viewport: Viewport = {
+	colorScheme: "dark",
+	themeColor: "#629D6D",
+	width: "device-width",
+	initialScale: 1,
 };
 
 export default function RootLayout({
