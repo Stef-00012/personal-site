@@ -24,8 +24,9 @@ export default function Home() {
 		<div className="min-h-screen flex flex-col justify-center items-center p-4">
 			<div className="bgeffect" />
 			<div className="flex flex-col items-center">
+				{/* for the avatar decoration it'll be `https://cdn.discordapp.com/avatar-decoration-presets/${status?.discord_user.avatar_decoration_data?.asset}.png` */}
 				<img
-					src="https://unavatar.io/stef-00012"
+					src={`https://cdn.discordapp.com/avatars/${status?.discord_user.id}/${status?.discord_user.avatar}.${status?.discord_user.avatar.startsWith("a_") ? "gif" : "png"}`}
 					// biome-ignore lint/a11y/noRedundantAlt: <explanation>
 					alt="my profile picture"
 					className="rounded-full size-24 mb-4"
