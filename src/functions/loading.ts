@@ -1,4 +1,3 @@
-import type { Dispatch, SetStateAction } from "react";
 import type TypeItInstance from "typeit";
 
 export default function handleTyping(
