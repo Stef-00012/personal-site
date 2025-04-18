@@ -1,0 +1,133 @@
+import type {
+	APILicense,
+	APIRepo,
+	FormattedLinkHeader,
+	FormattedRepo,
+	ScoredFormattedRepo,
+} from "@/types/github";
+
+import axios from "axios";
+
+function parseLinkHeader(linkHeader: string): FormattedLinkHeader {
+	const links: FormattedLinkHeader = {};
+
+	const parts = linkHeader.split(",");
+
+	for (const part of parts) {
+		const match = part.trim().match(/<(?<link>[^>]+)>;\s*rel="(?<rel>[^"]+)"/);
+
+		if (match) {
+			const { link, rel } = match.groups || {};
+
+			links[rel as "first" | "prev" | "next" | "last"] = link;
+		}
+	}
+
+	return links;
+}
+
+async function fetchRepos(
+	next?: string,
+	skipLoop = false,
+): Promise<{
+	next?: string;
+	repos: APIRepo[];
+}> {
+	const url =
+		next || "https://api.github.com/users/Stef-00012/repos?per_page=100";
+
+	let repos: APIRepo[] = [];
+
+	try {
+		const res = await axios.get(url);
+
+		const data = res.data as APIRepo[];
+
+		const linkHeader = res.headers.link;
+
+		let next = linkHeader ? parseLinkHeader(linkHeader).next : undefined;
+
+		repos = [...repos, ...data];
+
+		if (skipLoop) return { next, repos };
+
+		while (next) {
+			const newRepos = await fetchRepos(next, true);
+
+			repos = [...repos, ...newRepos.repos];
+
+			next = newRepos.next;
+		}
+	} catch (e) {
+		console.error(e);
+
+		return {
+			repos: [],
+		};
+	}
+
+	return {
+		repos,
+	};
+}
+
+function rankRepositories(
+	repos: Array<FormattedRepo>,
+): Array<ScoredFormattedRepo> {
+	const reposWithScores = repos.map((repo) => ({
+		...repo,
+		score: calculateScore(repo),
+	}));
+
+	return reposWithScores.sort((a, b) => b.score - a.score);
+}
+
+function calculateScore(repo: FormattedRepo): number {
+	const stars = repo.stars || 0;
+	const forks = repo.forks || 0;
+	const watchers = repo.watchers || 0;
+	const openIssues = repo.openIssues || 0;
+
+	return stars * 2 + forks * 1.5 + watchers * 1 - openIssues * 0.5;
+}
+
+export async function getRankedRepos(): Promise<Array<ScoredFormattedRepo>> {
+	const data = await fetchRepos();
+
+	const repos: Array<FormattedRepo> = data.repos
+		.filter((repo) => !repo.archived && !repo.fork)
+		.map((repo) => {
+			return {
+				id: repo.id,
+				stars: repo.stargazers_count || 0,
+				forks: repo.forks_count || 0,
+				watchers: repo.watchers_count || 0,
+				openIssues: repo.open_issues_count || 0,
+				fullName: repo.full_name,
+				url: repo.html_url,
+				homepage: repo.homepage || null,
+				description: repo.description,
+				license: {
+					key: repo.license?.key || null,
+					name: repo.license?.name || null,
+					url: repo.license?.url || null,
+				},
+			};
+		});
+
+	const top5Repos = rankRepositories(repos).splice(0, 5);
+
+	for (const repo of top5Repos) {
+		if (repo.license?.key) {
+			const res = await axios.get(
+				`https://api.github.com/licenses/${repo.license.key}`,
+			);
+
+			const data = res.data as APILicense;
+
+			repo.license.url = data.html_url;
+		}
+	}
+
+	return top5Repos;
+}
