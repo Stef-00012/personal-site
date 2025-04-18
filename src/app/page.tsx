@@ -78,15 +78,26 @@ export default function Home() {
 				<div className="bgeffect" />
 				<div className="flex flex-col items-center">
 					{/* for the avatar decoration it'll be "avatarDecoration" variable */}
-					{avatar && (
-						<Image
-							src={avatar}
-							alt="my profile picture"
-							className="rounded-full mb-4"
-							width={96}
-							height={96}
-						/>
-					)}
+					<div className="relative">
+						{avatar && (
+							<Image
+								src={avatar}
+								alt="my profile picture"
+								className="rounded-full mb-4 object-cover"
+								width={96}
+								height={96}
+							/>
+						)}
+						{avatarDecoration && (
+							<Image
+								src={avatarDecoration}
+								alt="my profile picture decoration"
+								className="absolute inset-0 scale-121 object-cover"
+								width={96}
+								height={96}
+							/>
+						)}
+					</div>
 					<div className="flex items-center">
 						<h1 className="text-5xl text-primary mb-4 me-2">Stef</h1>
 						<span className={`${statuses[discordStatus]} status size-4 mb-3`} />
