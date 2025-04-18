@@ -15,12 +15,12 @@ export const metadata: Metadata = {
 		},
 	],
 	title: "My own bio :) - Stefano Del Prete | Home Page",
-	description: "Here are listed most of my socials (if not all) :)",
+	description: "Most if not all of my socials are listed here :)",
 	openGraph: {
 		title: "My own bio :) - Stefano Del Prete | Home Page",
 		type: "website",
 		url: "https://stefdp.com",
-		description: "Here are listed most of my socials (if not all) :)",
+		description: "Most if not all of my socials are listed here :)",
 		images: "/images/pfp.webp",
 	},
 	verification: {
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 	keywords: ["Stef", "Stef_DP", "Stefano Del Prete", "Del Prete", "Stefano"],
 	twitter: {
 		title: "My own bio :) - Stefano Del Prete | Home Page",
-		description: "Here are listed most of my socials (if not all) :)",
+		description: "Most if not all of my socials are listed here :)",
 	},
 	icons: null,
 };
