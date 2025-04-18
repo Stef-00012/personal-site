@@ -93,7 +93,7 @@ export default function Home() {
 								unoptimized
 								src={avatarDecoration}
 								alt="my profile picture decoration"
-								className="absolute inset-0 scale-121 object-cover"
+								className="absolute inset-0 scale-120 object-cover"
 								width={96}
 								height={96}
 							/>
