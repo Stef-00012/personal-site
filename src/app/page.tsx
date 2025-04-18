@@ -77,10 +77,10 @@ export default function Home() {
 			<div className="min-h-screen flex flex-col justify-center items-center p-4">
 				<div className="bgeffect" />
 				<div className="flex flex-col items-center">
-					{/* for the avatar decoration it'll be "avatarDecoration" variable */}
 					<div className="relative">
 						{avatar && (
 							<Image
+								priority
 								src={avatar}
 								alt="my profile picture"
 								className="rounded-full mb-4 object-cover"
@@ -90,6 +90,7 @@ export default function Home() {
 						)}
 						{avatarDecoration && (
 							<Image
+								priority
 								unoptimized
 								src={avatarDecoration}
 								alt="my profile picture decoration"
