@@ -10,7 +10,7 @@ export default function handleTyping(
 			speed: 10,
 		})
 		.type(
-			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ',
 			{ instant: true, delay: 500 },
 		)
 		.type(
@@ -26,14 +26,14 @@ export default function handleTyping(
 		})
 		.break({ instant: true })
 		.type(
-			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ',
 			{ instant: true, delay: 2000 },
 		)
 		.type("clear", { delay: 100 })
 		.break({ instant: true })
 		.delete(() => null, { instant: true })
 		.type(
-			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ',
 			{ instant: true, delay: 500 },
 		)
 		.type("whereis love")
@@ -41,7 +41,7 @@ export default function handleTyping(
 		.type("love:", { instant: true })
 		.break({ instant: true })
 		.type(
-			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ',
 			{ instant: true, delay: 2000 },
 		)
 		.type("cat love")
@@ -49,7 +49,7 @@ export default function handleTyping(
 		.type("cat: love: No such file or directory", { instant: true })
 		.break({ instant: true })
 		.type(
-			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ',
 			{ instant: true, delay: 4000 },
 		)
 		.type(":(", { delay: 1000 })
@@ -61,12 +61,12 @@ export default function handleTyping(
 		.type("[sudo] password for stef: ", { instant: true, delay: 800 })
 		.break({ instant: true })
 		.type(
-			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ^C',
+			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ^C',
 			{ instant: true, delay: 300 },
 		)
 		.break({ instant: true })
 		.type(
-			'<span style="color: #118c0a;">stef@Life</span>: <span style="color: #2c5bc7;">/</span> $ ',
+			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ',
 			{ instant: true, delay: 500 },
 		)
 		.type("ssh website@stefdp.com")
@@ -219,7 +219,7 @@ export default function handleTyping(
 		.type("Deploying...", { instant: true })
 		.break({ instant: true, delay: 600 })
 		.type(
-			'<span style="cursor: pointer;" onclick="hideLoading()">Successfully deployed the website, avaible at <u>http://localhost:3000</u>.',
+			'<span style="cursor: pointer;" onclick="hideLoading()">Successfully deployed the website, available at <u>http://localhost:3000</u>.',
 			{ instant: true },
 		)
 		.exec(() => {
