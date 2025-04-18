@@ -90,6 +90,7 @@ export default function Home() {
 						)}
 						{avatarDecoration && (
 							<Image
+								unoptimized
 								src={avatarDecoration}
 								alt="my profile picture decoration"
 								className="absolute inset-0 scale-121 object-cover"
