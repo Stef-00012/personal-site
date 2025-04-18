@@ -31,10 +31,10 @@ export default function Loading({ showSkipButton, hideLoading, hide }: Props) {
 	return (
 		<>
 			<div
-				className={`${hide ? "hidden overflow-hidden" : ""} flex bg-[#1a1a1a] w-screen h-screen fixed break-all left-0 top-0 z-10`}
+				className={`${hide ? "hidden overflow-hidden" : ""} flex bg-base-300 w-screen h-screen fixed break-all left-0 top-0 z-10`}
 			>
 				<TypeIt
-					className="font-mono text-white text-base whitespace-pre-wrap mt-[5px] pl-[5px]"
+					className="font-mono text-base-content text-base whitespace-pre-wrap mt-[5px] pl-[5px]"
 					getBeforeInit={(instance) => {
 						handleTyping(instance, handleHideLoading);
 
@@ -46,7 +46,7 @@ export default function Loading({ showSkipButton, hideLoading, hide }: Props) {
 					<button
 						type="button"
 						onClick={handleHideLoading}
-						className="text-[large] absolute bottom-[50px] left-[50%] translate-x-[-50%] bg-transparent text-[#0F0] border-none cursor-pointer font-mono"
+						className="text-[large] absolute bottom-[50px] left-[50%] translate-x-[-50%] bg-transparent text-success border-none cursor-pointer font-mono"
 					>
 						Skip Loading
 					</button>
@@ -54,7 +54,7 @@ export default function Loading({ showSkipButton, hideLoading, hide }: Props) {
 			</div>
 
 			<div
-				className={`${hide ? "hidden" : ""} z-[-9998] bg-[#0000008e] w-full h-full fixed overflow-scroll break-all backdrop-blur-[3px] m-0 p-0 left-0 top-0`}
+				className={`${hide ? "hidden" : ""} z-[-9998] bg-base-200 w-full h-full fixed overflow-scroll break-all backdrop-blur-[3px] m-0 p-0 left-0 top-0`}
 			>
 				&nbsp;
 			</div>
