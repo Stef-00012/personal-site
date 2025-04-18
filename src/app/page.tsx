@@ -114,7 +114,7 @@ export default function Home() {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<span className={`${social.icon} size-8 ${social.color}`} />
+								<span className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`} />
 							</a>
 						))}
 					</div>
