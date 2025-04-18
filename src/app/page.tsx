@@ -94,7 +94,7 @@ export default function Home() {
 								unoptimized
 								src={avatarDecoration}
 								alt="my profile picture decoration"
-								className="absolute inset-0 scale-121 object-cover"
+								className="absolute inset-0 scale-120 object-cover"
 								width={96}
 								height={96}
 							/>
@@ -115,7 +115,7 @@ export default function Home() {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<span className={`${social.icon} size-8 ${social.color}`} />
+								<span className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`} />
 							</a>
 						))}
 					</div>
