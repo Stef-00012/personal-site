@@ -6,7 +6,15 @@ import type {
 	ScoredFormattedRepo,
 } from "@/types/github";
 
-import axios from "axios";
+import axios, {
+	type AxiosRequestConfig,
+	type AxiosResponse,
+	type AxiosError,
+} from "axios";
+
+import { promisify } from "node:util";
+
+const sleep = promisify(setTimeout);
 
 function parseLinkHeader(linkHeader: string): FormattedLinkHeader {
 	const links: FormattedLinkHeader = {};
@@ -26,6 +34,44 @@ function parseLinkHeader(linkHeader: string): FormattedLinkHeader {
 	return links;
 }
 
+async function ratelimitFetch(
+	url: string,
+	config?: AxiosRequestConfig | undefined,
+): Promise<AxiosResponse> {
+	try {
+		const res = await axios.get(url, config);
+
+		return res;
+	} catch (e) {
+		const error = e as AxiosError;
+
+		if (error?.response?.status === 429 || error?.response?.status === 403) {
+			const ratelimitResetHeader = error.response.headers["x-ratelimit-reset"];
+			const retryAfterHeader = error.response.headers["retry-after"];
+
+			const retryAfter =
+				(Number.parseInt(retryAfterHeader) ||
+					(Number.parseInt(ratelimitResetHeader) * 1000 - Date.now()) / 1000 ||
+					60) * 1000;
+
+			console.log(
+				`Rate limit hit, retrying in ${retryAfter / 1000 / 60} minutes...`,
+			);
+
+			if (retryAfter) {
+				await sleep(retryAfter);
+				console.log("Retrying...");
+
+				return await ratelimitFetch(url, config);
+			}
+		} else {
+			throw e;
+		}
+	}
+
+	return {} as AxiosResponse;
+}
+
 async function fetchRepos(
 	next?: string,
 	skipLoop = false,
@@ -39,7 +85,7 @@ async function fetchRepos(
 	let repos: APIRepo[] = [];
 
 	try {
-		const res = await axios.get(url);
+		const res = await ratelimitFetch(url);
 
 		const data = res.data as APIRepo[];
 
@@ -119,7 +165,7 @@ export async function getRankedRepos(): Promise<Array<ScoredFormattedRepo>> {
 
 	for (const repo of top5Repos) {
 		if (repo.license?.key) {
-			const res = await axios.get(
+			const res = await ratelimitFetch(
 				`https://api.github.com/licenses/${repo.license.key}`,
 			);
 
