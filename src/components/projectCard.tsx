@@ -10,21 +10,21 @@ export default function Project({ project }: Props) {
 			<div className="card-body">
 				<p className="card-title">{project.git?.fullName || project.name}</p>
 				{project.git && (
-                    <div className="top-repo-info">
-                        <p className="me-1">
-                            <span className="-mb-1 icon-[tabler--star] size-5" />
+                    <div className="top-repo-info font-mono">
+                        <p className="me-2 text-warning">
+                            <span className="me-1 icon-[tabler--star] -mb-1 size-5" />
                             <a href="github.com/stef/project/stargazers">{project.git.stars}</a>
                         </p>
-                        <p className="me-1">
-                            <span className="-mb-1 icon-[tabler--git-fork] size-5" />
+                        <p className="me-2">
+                            <span className="me-1 icon-[tabler--git-fork] -mb-1 size-5" />
                             <a href="github.com/stef/project/forks">{project.git.forks}</a>
                         </p>
-                        <p className="me-1">
-                            <span className="-mb-1 icon-[tabler--circle-dot] size-5" />
+                        <p className="me-2 text-accent">
+                            <span className="me-1 icon-[tabler--circle-dot] -mb-1 size-5" />
                             <a href="github.com/stef/project/issues">{project.git.openIssues}</a>
                         </p>
-                        <p className="me-1">
-                            <span className="-mb-1 icon-[tabler--eye] size-5" />
+                        <p className="me-2 text-info">
+                            <span className="me-1 icon-[tabler--eye] -mb-1 size-5" />
                             <a href="github.com/stef/project/watchers">{project.git.watchers}</a>
                         </p>
                         <br />
@@ -41,7 +41,7 @@ export default function Project({ project }: Props) {
                         )}
                     </div>
                 )}
-				{project.git?.description || project.description}
+				<p>{project.git?.description || project.description}</p>
 				<div className="card-actions mt-4 -mb-4">
 					{(project.git?.homepage || project.url) && (
                         <a
@@ -49,6 +49,14 @@ export default function Project({ project }: Props) {
                             className="btn btn-soft btn-accent flex items-center"
                         >
                             <span className="icon-[tabler--link] size-5" />Project Link
+                        </a>
+                    )}
+                    {(project.git?.homepage || project.url) && (
+                        <a
+                            href={(project.git?.homepage || project.url) as string}
+                            className="btn btn-soft btn-accent flex items-center"
+                        >
+                            <span className="icon-[tabler--link] size-5" />Source Code
                         </a>
                     )}
 				</div>
