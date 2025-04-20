@@ -66,3 +66,5 @@ p { @apply inline; }
         transparent 6px
     );  z-index: 0;
 }
+
+.glass { background: linear-gradient(90deg,rgba(36, 39, 58, 1) 0%, rgba(24, 25, 38, 1) 50%, rgba(30, 32, 48, 1) 100%); }

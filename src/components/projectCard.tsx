@@ -6,26 +6,26 @@ interface Props {
 
 export default function Project({ project }: Props) {
 	return (
-		<div className="card card-lg bg-base-100 shadow shadow-base-100">
+		<div className="card card-lg bg-base-100 shadow shadow-base-100 glass">
 			<div className="card-body">
 				<p className="card-title">{project.git?.fullName || project.name}</p>
 				{project.git && (
                     <div className="top-repo-info font-mono">
                         <p className="me-2 text-warning">
                             <span className="me-1 icon-[tabler--star] -mb-1 size-5" />
-                            <a href="github.com/stef/project/stargazers">{project.git.stars}</a>
+                            <a href={`https://github.com/${project.git.fullName}/stargazers`}>{project.git.stars}</a>
                         </p>
                         <p className="me-2 text-success">
                             <span className="me-1 icon-[tabler--git-fork] -mb-1 size-5" />
-                            <a href="github.com/stef/project/forks">{project.git.forks}</a>
+                            <a href={`https://github.com/${project.git.fullName}/forks`}>{project.git.forks}</a>
+                        </p>
+                        <p className="me-2 text-error">
+                            <span className="me-1 icon-[tabler--circle-dot] -mb-1 size-5" />
+                            <a href={`https://github.com/${project.git.fullName}/issues`}>{project.git.openIssues}</a>
                         </p>
                         <p className="me-2 text-accent">
-                            <span className="me-1 icon-[tabler--circle-dot] -mb-1 size-5" />
-                            <a href="github.com/stef/project/issues">{project.git.openIssues}</a>
-                        </p>
-                        <p className="me-2 text-info">
                             <span className="me-1 icon-[tabler--eye] -mb-1 size-5" />
-                            <a href="github.com/stef/project/watchers">{project.git.watchers}</a>
+                            <a href={`https://github.com/${project.git.fullName}/watchers`}>{project.git.watchers}</a>
                         </p>
                         <br />
                         {project.git.license && (
