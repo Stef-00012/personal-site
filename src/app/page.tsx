@@ -98,8 +98,8 @@ export default function Home() {
 				? `${vscodeData.details} in ${vscodeData.state
 						.replace(/(Workspace: | \(Workspace\))/g, "")
 						.replace("Glitch:", "🎏")
-					.trim()}`
-				: spotifyDefaultMessage;
+						.trim()}`
+				: vscodeDefaultMessage;
 
 		setVscodeStatus(vscodeMessage);
 
@@ -113,22 +113,12 @@ export default function Home() {
 			) ?? [];
 
 		const playingMessage =
-			`Playing ${formatter.format(playingData.map((activity) => activity.name))}` ||
-			playingDefaultMessage;
+			playingData.length > 0
+				? `Playing ${formatter.format(playingData.map((activity) => activity.name))}`
+				: playingDefaultMessage;
 
 		setPlayingStatus(playingMessage);
 	}, [status, loading]);
-
-	useEffect(() => {
-		console.log({
-			spotifyStatus,
-			spotifyTrackId,
-			vscodeStatus,
-			playingStatus,
-			customStatus,
-			discordStatus,
-		})
-	}, [spotifyStatus, spotifyTrackId, vscodeStatus, playingStatus, customStatus, discordStatus]);
 
 	useEffect(() => {
 		if (!loading && status) setShowHideLoadingButton(true);
@@ -206,16 +196,47 @@ export default function Home() {
 						))}
 					</div>
 
-					<div className="mt-10 font-mono">
+					<div className="mt-10 font-mono flex flex-col gap-2">
 						{/* 
 							Variables:
+							discord status: customStatus
 							vscode: vscodeStatus
 							spotify: spotifyStatus
 							playing: playingStatus
 
 							Spotify Track URL: `https://open.spotify.com/track/${spotifyTrackId}`
 						*/}
-						{customStatus}
+						{customStatus && (
+							<p className="flex items-center gap-2">
+								<span className="icon-[tabler--bubble-text-filled] size-5" />{" "}
+								{customStatus}
+							</p>
+						)}
+
+						{spotifyTrackId ? (
+							<a
+								href={`https://open.spotify.com/track/${spotifyTrackId}`}
+								className="flex items-center gap-2"
+							>
+								<span className="icon-[fa6-brands--spotify] size-5" />{" "}
+								{spotifyStatus}
+							</a>
+						) : (
+							<p className="flex items-center gap-2">
+								<span className="icon-[fa6-brands--spotify] size-5" />{" "}
+								{spotifyStatus}
+							</p>
+						)}
+
+						<p className="flex items-center gap-2">
+							<span className="icon-[tabler--brand-vscode] size-5" />{" "}
+							{vscodeStatus}
+						</p>
+
+						<p className="flex items-center gap-2">
+							<span className="icon-[game-icons--gamepad] size-5" />{" "}
+							{playingStatus}
+						</p>
 					</div>
 				</div>
 			</div>
