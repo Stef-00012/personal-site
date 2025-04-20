@@ -12,7 +12,8 @@ import axios, {
 	type AxiosError,
 } from "axios";
 
-import { promisify } from "node:util";
+// biome-ignore lint/style/useNodejsImportProtocol: node: protocol can not be used in react
+import { promisify } from "util";
 
 const sleep = promisify(setTimeout);
 
