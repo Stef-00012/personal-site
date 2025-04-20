@@ -73,6 +73,13 @@ export default function Home() {
 			/>
 
 			<div className="min-h-screen flex flex-col justify-center items-center p-4">
+				<div className="flex gap-2 font-mono text-accent mb-6">
+					&gt;
+					<a className="link hover:text-secondary link-animated" href="./about">&#47;about</a>
+					<a className="link hover:text-secondary link-animated" href="./projects">&#47;projects</a>
+					<a className="link hover:text-secondary link-animated" href="./rabbit">&#47;rabbit</a>
+					&lt;
+				</div>
 				<div className="bgeffect" />
 				<div className="flex flex-col items-center">
 					<div className="relative">
