@@ -29,8 +29,8 @@ export default function Projects() {
 
     return (
         <div className="p-10">
-            <h1 className="font-mono ml-5 my-2 font-bold"> &#47;&#47; Top GitHub Repositories</h1>
-            <div className="min-h-screen sm:mx-4 flex justify-center items-center ">
+            <h1 className="font-mono my-4 font-bold sm:mx-4 flex justify-center items-center mb-10"> &#47;&#47; Top GitHub Repositories</h1>
+            <div className="sm:mx-4 flex justify-center items-center ">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {topRepos.map((repo) => (
                         <Project
@@ -41,8 +41,8 @@ export default function Projects() {
                 </div>
             </div>
             
-            <h1 className="font-mono ml-5 my-2 font-bold"> &#47;&#47; Other Projects</h1>
-            <div className="min-h-screen sm:mx-4 flex justify-center items-center ">
+            <h1 className="font-mono my-4 font-bold sm:mx-4 flex justify-center items-center mt-10"> &#47;&#47; Other Projects</h1>
+            <div className="sm:mx-4 flex justify-center items-center ">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {projectList.map((project) => (
                         <Project
