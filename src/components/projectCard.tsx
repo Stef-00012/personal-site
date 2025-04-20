@@ -6,7 +6,7 @@ interface Props {
 
 export default function Project({ project }: Props) {
 	return (
-		<div className="card card-lg bg-base-100 shadow shadow-base-100 glass">
+		<div className="card card-lg bg-base-100 shadow shadow-base-100 glass w-full sm:w-96 h-full">
 			<div className="card-body">
 				<p className="card-title">{project.git?.fullName || project.name}</p>
 				{project.git && (
