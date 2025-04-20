@@ -1,6 +1,6 @@
 export default function Projects() {
     return (
-        <div className="min-h-screen flex justify-center items-center max-w-7xl">
+        <div className="min-h-screen mx-4 sm:mx-[20vh] flex justify-center items-center">
             <div className="flex gap-4 flex-wrap justify-center">
 
                 {/* Individual Project Card Template */}

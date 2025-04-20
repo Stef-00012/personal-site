@@ -1,7 +1,5 @@
 "use client";
 
-import PallinoCarousel from "../components/pallino";
-import ProjectsList from "../components/projects";
 import GitHubStats from "../components/github";
 
 import { set, useLanyard } from "react-use-lanyard";
