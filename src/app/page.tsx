@@ -40,10 +40,21 @@ export default function Home() {
 		const discordActivites = status?.activities;
 		const discordUser = status?.discord_user;
 		const discordStatus = status?.discord_status || "offline";
+		const spotifyData = status?.spotify;
+		
+		const artist = spotifyData?.artist
+		const album = spotifyData?.album
+		const song = spotifyData?.song
+		const trackId = spotifyData?.track_id
+		
 
 		const customStatusData = discordActivites?.find(
 			(activity) => activity.id === "custom",
 		);
+		
+		const vscodeData = discordActivites?.find(
+		    (activity) => activity.id === "e74616218c699b64"
+		)
 
 		const avatar = `https://cdn.discordapp.com/avatars/${discordUser?.id}/${discordUser?.avatar}.${discordUser?.avatar.startsWith("a_") ? "gif" : "png"}`;
 		const avatarDecoration = discordUser?.avatar_decoration_data
