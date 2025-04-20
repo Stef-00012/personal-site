@@ -1,14 +1,18 @@
 "use client";
 
-import GitHubStats from "../components/github";
-
-import { set, useLanyard } from "react-use-lanyard";
+import { useLanyard } from "react-use-lanyard";
 import { useEffect, useState } from "react";
 
-import type TypeItInstance from "typeit";
 import Loading from "@/components/loading";
 import Image from "next/image";
 import { socials } from "@/data/socials";
+import { activityTypes } from "@/data/discordActivityTypes";
+
+const spotifyDefaultMessage = "Not listening to anything";
+const vscodeDefaultMessage = "Not coding anything";
+const playingDefaultMessage = "Not playing anything";
+
+const formatter = new Intl.ListFormat();
 
 export default function Home() {
 	const { loading, status } = useLanyard({
@@ -21,11 +25,25 @@ export default function Home() {
 		useState<boolean>(false);
 
 	const [customStatus, setCustomStatus] = useState<string | null>("");
+
 	const [avatar, setAvatar] = useState<string | null>(null);
 	const [avatarDecoration, setAvatarDecoration] = useState<string | null>(null);
+
 	const [discordStatus, setDiscordStatus] = useState<
 		"online" | "idle" | "dnd" | "offline"
 	>("offline");
+
+	const [spotifyStatus, setSpotifyStatus] = useState<string>(
+		spotifyDefaultMessage,
+	);
+	const [spotifyTrackId, setSpotifyTrackId] = useState<string | null>(null);
+
+	const [vscodeStatus, setVscodeStatus] =
+		useState<string>(vscodeDefaultMessage);
+
+	const [playingStatus, setPlayingStatus] = useState<string>(
+		playingDefaultMessage,
+	);
 
 	const statuses = {
 		online: "status-success",
@@ -41,31 +59,76 @@ export default function Home() {
 		const discordUser = status?.discord_user;
 		const discordStatus = status?.discord_status || "offline";
 		const spotifyData = status?.spotify;
-		
-		const artist = spotifyData?.artist
-		const album = spotifyData?.album
-		const song = spotifyData?.song
-		const trackId = spotifyData?.track_id
-		
 
-		const customStatusData = discordActivites?.find(
-			(activity) => activity.id === "custom",
-		);
-		
-		const vscodeData = discordActivites?.find(
-		    (activity) => activity.id === "e74616218c699b64"
-		)
+		setDiscordStatus(discordStatus);
 
 		const avatar = `https://cdn.discordapp.com/avatars/${discordUser?.id}/${discordUser?.avatar}.${discordUser?.avatar.startsWith("a_") ? "gif" : "png"}`;
 		const avatarDecoration = discordUser?.avatar_decoration_data
 			? `https://cdn.discordapp.com/avatar-decoration-presets/${discordUser.avatar_decoration_data.asset}.png`
 			: null;
 
-		setCustomStatus(customStatusData?.state || null);
 		setAvatarDecoration(avatarDecoration);
-		setDiscordStatus(discordStatus);
 		setAvatar(avatar);
+
+		const artist = spotifyData?.artist;
+		const album = spotifyData?.album;
+		const song = spotifyData?.song;
+		const trackId = spotifyData?.track_id;
+
+		const spotifyMessage =
+			artist && album && song
+				? `Listening to ${song} by ${formatter.format(artist.split(";"))}`
+				: spotifyDefaultMessage;
+
+		setSpotifyStatus(spotifyMessage);
+		setSpotifyTrackId(trackId || null);
+
+		const customStatusData = discordActivites?.find(
+			(activity) => activity.id === "custom",
+		);
+
+		setCustomStatus(customStatusData?.state || null);
+
+		const vscodeData = discordActivites?.find(
+			(activity) => activity.name === "Visual Studio Code",
+		);
+
+		const vscodeMessage =
+			vscodeData?.details && vscodeData.state
+				? `${vscodeData.details} in ${vscodeData.state
+						.replace(/(Workspace: | \(Workspace\))/g, "")
+						.replace("Glitch:", "🎏")
+					.trim()}`
+				: spotifyDefaultMessage;
+
+		setVscodeStatus(vscodeMessage);
+
+		const playingData =
+			discordActivites?.filter(
+				(activity) =>
+					activity.type === activityTypes.playing &&
+					!["Visual Studio Code", "IntelliJ IDEA Ultimate"].includes(
+						activity.name,
+					),
+			) ?? [];
+
+		const playingMessage =
+			`Playing ${formatter.format(playingData.map((activity) => activity.name))}` ||
+			playingDefaultMessage;
+
+		setPlayingStatus(playingMessage);
 	}, [status, loading]);
+
+	useEffect(() => {
+		console.log({
+			spotifyStatus,
+			spotifyTrackId,
+			vscodeStatus,
+			playingStatus,
+			customStatus,
+			discordStatus,
+		})
+	}, [spotifyStatus, spotifyTrackId, vscodeStatus, playingStatus, customStatus, discordStatus]);
 
 	useEffect(() => {
 		if (!loading && status) setShowHideLoadingButton(true);
@@ -85,9 +148,15 @@ export default function Home() {
 
 			<div className="min-h-screen flex flex-col justify-center items-center p-4">
 				<div className="flex gap-2 font-mono text-accent mb-6">
-					<a className="btn btn-soft btn-accent" href="./about">&#47;about</a>
-					<a className="btn btn-soft btn-accent" href="./projects">&#47;projects</a>
-					<a className="btn btn-soft btn-accent" href="./rabbit">&#47;rabbit</a>
+					<a className="btn btn-soft btn-accent" href="./about">
+						&#47;about
+					</a>
+					<a className="btn btn-soft btn-accent" href="./projects">
+						&#47;projects
+					</a>
+					<a className="btn btn-soft btn-accent" href="./rabbit">
+						&#47;rabbit
+					</a>
 				</div>
 				<div className="bgeffect" />
 				<div className="flex flex-col items-center">
@@ -114,6 +183,7 @@ export default function Home() {
 							/>
 						)}
 					</div>
+
 					<div className="flex items-center">
 						<h1 className="text-5xl text-primary mb-4 me-2">Stef</h1>
 						<span className={`${statuses[discordStatus]} status size-4 mb-3`} />
@@ -129,13 +199,22 @@ export default function Home() {
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<span className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`} />
+								<span
+									className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`}
+								/>
 							</a>
 						))}
 					</div>
 
 					<div className="mt-10 font-mono">
-						{/* insert discord status and activity */}
+						{/* 
+							Variables:
+							vscode: vscodeStatus
+							spotify: spotifyStatus
+							playing: playingStatus
+
+							Spotify Track URL: `https://open.spotify.com/track/${spotifyTrackId}`
+						*/}
 						{customStatus}
 					</div>
 				</div>
