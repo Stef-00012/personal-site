@@ -27,18 +27,16 @@ export default function Projects() {
     }, [])
 
     return (
-        <div className="min-h-screen mx-4 sm:mx-[20vh] flex justify-center items-center">
-            <div className="flex gap-4 flex-wrap justify-center">
-
-                {/* Individual Project Card Template */}
+        <div className="min-h-screen mx-4 flex justify-center items-center p-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {projectList.map((project, index) => (
                     <Project
                         key={project.name}
                         project={project}
                     />
                 ))}
-
             </div>
         </div>
     )
+    
 }
