@@ -73,6 +73,11 @@ export default function Home() {
 			/>
 
 			<div className="min-h-screen flex flex-col justify-center items-center p-4">
+				<div className="flex gap-2 font-mono text-accent mb-6">
+					<a className="btn btn-soft btn-accent" href="./about">&#47;about</a>
+					<a className="btn btn-soft btn-accent" href="./projects">&#47;projects</a>
+					<a className="btn btn-soft btn-accent" href="./rabbit">&#47;rabbit</a>
+				</div>
 				<div className="bgeffect" />
 				<div className="flex flex-col items-center">
 					<div className="relative">
