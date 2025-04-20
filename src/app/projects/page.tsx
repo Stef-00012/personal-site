@@ -27,14 +27,29 @@ export default function Projects() {
     }, [])
 
     return (
-        <div className="min-h-screen mx-4 flex justify-center items-center p-10">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {projectList.map((project, index) => (
-                    <Project
-                        key={project.name}
-                        project={project}
-                    />
-                ))}
+        <div className="p-10">
+            <h1 className="font-mono ml-5 my-2 font-bold"> // Top GitHub Repositories</h1>
+            <div className="min-h-screen sm:mx-4 flex justify-center items-center ">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projectList.map((project, index) => (
+                        <Project
+                            key={project.name}
+                            project={project}
+                        />
+                    ))}
+                </div>
+            </div>
+            
+            <h1 className="font-mono ml-5 my-2 font-bold"> // Other Projects</h1>
+            <div className="min-h-screen sm:mx-4 flex justify-center items-center ">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {projectList.map((project, index) => (
+                        <Project
+                            key={project.name}
+                            project={project}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     )

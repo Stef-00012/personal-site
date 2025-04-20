@@ -12,20 +12,24 @@ export default function Project({ project }: Props) {
 				{project.git && (
                     <div className="top-repo-info font-mono">
                         <p className="me-2 text-warning">
+                        <a href={`https://github.com/${project.git.fullName}/stargazers`}>
                             <span className="me-1 icon-[tabler--star] -mb-1 size-5" />
-                            <a href={`https://github.com/${project.git.fullName}/stargazers`}>{project.git.stars}</a>
+                            {project.git.stars}</a>
                         </p>
                         <p className="me-2 text-success">
+                            <a href={`https://github.com/${project.git.fullName}/forks`}>
                             <span className="me-1 icon-[tabler--git-fork] -mb-1 size-5" />
-                            <a href={`https://github.com/${project.git.fullName}/forks`}>{project.git.forks}</a>
+                            {project.git.forks}</a>
                         </p>
                         <p className="me-2 text-error">
+                            <a href={`https://github.com/${project.git.fullName}/issues`}>
                             <span className="me-1 icon-[tabler--circle-dot] -mb-1 size-5" />
-                            <a href={`https://github.com/${project.git.fullName}/issues`}>{project.git.openIssues}</a>
+                            {project.git.openIssues}</a>
                         </p>
                         <p className="me-2 text-accent">
+                            <a href={`https://github.com/${project.git.fullName}/watchers`}>
                             <span className="me-1 icon-[tabler--eye] -mb-1 size-5" />
-                            <a href={`https://github.com/${project.git.fullName}/watchers`}>{project.git.watchers}</a>
+                            {project.git.watchers}</a>
                         </p>
                         <br />
                         {project.git.license && (
