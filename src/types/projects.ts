@@ -5,5 +5,6 @@ export interface Project {
     url?: string | null;
     source?: string | null;
     description?: string | null;
-    git?: FormattedRepo
+    git?: FormattedRepo;
+    slug: string;
 }

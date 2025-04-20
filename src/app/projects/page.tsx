@@ -19,7 +19,8 @@ export default function Projects() {
                 source:  `https://github.com/${repo.fullName}`,
                 description: repo.description,
                 url: repo.homepage,
-                git: repo
+                git: repo,
+                slug: "repo"
             }))
 
             setTopRepos(projectRepos)
