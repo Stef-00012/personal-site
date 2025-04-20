@@ -15,7 +15,7 @@ export default function Project({ project }: Props) {
                             <span className="me-1 icon-[tabler--star] -mb-1 size-5" />
                             <a href="github.com/stef/project/stargazers">{project.git.stars}</a>
                         </p>
-                        <p className="me-2">
+                        <p className="me-2 text-success">
                             <span className="me-1 icon-[tabler--git-fork] -mb-1 size-5" />
                             <a href="github.com/stef/project/forks">{project.git.forks}</a>
                         </p>
