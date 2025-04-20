@@ -9,7 +9,7 @@ export default function Project({ project }: Props) {
         <div className="card card-lg bg-base-100 shadow shadow-base-100 glass w-full sm:w-96 h-full">
             <div className="card-body flex flex-col justify-between">
                 <div className="flex flex-col gap-2">
-                    <p className="card-title">{project.git?.fullName || project.name}</p>
+                    <p className="card-title">{project.name}</p>
 
                     {project.git ? (
                         <div className="top-repo-info font-mono">
@@ -37,38 +37,40 @@ export default function Project({ project }: Props) {
                                     {project.git.watchers}
                                 </a>
                             </p>
-                            <br />
                             {project.git.license && (
-                                project.git.license.url ? (
-                                    <a href={project.git.license.url as string} className="-mt-2 text-base-content/70 italic">
-                                        {project.git.license.name}
-                                    </a>
-                                ) : (
-                                    <p className="-mt-2 text-base-content/70 italic">
-                                        {project.git.license.name}
-                                    </p>
-                                )
+                                <>
+                                    <br />
+                                    {project.git.license.url ? (
+                                        <a href={project.git.license.url as string} className="-mt-2 text-base-content/70 italic">
+                                            {project.git.license.name}
+                                        </a>
+                                    ) : (
+                                        <p className="-mt-2 text-base-content/70 italic">
+                                            {project.git.license.name}
+                                        </p>
+                                    )}
+                                </>
                             )}
                         </div>
                     ) : (
                         <div className="h-0" />
                     )}
 
-                    <p>{project.git?.description || project.description}</p>
+                    <p>{project.description}</p>
                 </div>
 
                 <div className="card-actions mt-4 -mb-4">
-                    {(project.git?.homepage || project.url) && (
+                    {project.url && (
                         <a
-                            href={(project.git?.homepage || project.url) as string}
+                            href={project.url}
                             className="btn btn-soft btn-accent flex items-center"
                         >
                             <span className="icon-[tabler--link] size-5" />Project Link
                         </a>
                     )}
-                    {(project.git?.homepage || project.url) && (
+                    {project.source && (
                         <a
-                            href={(project.git?.homepage || project.url) as string}
+                            href={(project.source) as string}
                             className="btn btn-soft btn-accent flex items-center"
                         >
                             <span className="icon-[tabler--link] size-5" />Source Code
