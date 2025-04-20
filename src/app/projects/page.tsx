@@ -42,7 +42,7 @@ export default function Projects() {
                     </div>
                 </div>
             ) : (
-                <h1 className="text-center text-2xl my-20"><span className="loading loading-spinner text-accent"></span> Loading top GitHub repositories...</h1>
+                <h1 className="text-center text-2xl my-10"><span className="loading loading-spinner text-accent"></span> Loading top GitHub repositories...</h1>
             )}
             
             <h1 className="font-mono my-4 font-bold sm:mx-4 flex justify-center items-center mt-10"> &#47;&#47; Other Projects</h1>
