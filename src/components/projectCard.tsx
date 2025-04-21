@@ -1,6 +1,6 @@
 import type { Project as ProjectType } from "@/types/projects";
 
-import Link from 'next/link'
+import Link from 'next/link';
 
 interface Props {
     project: ProjectType

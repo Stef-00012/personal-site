@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import Loading from "@/components/loading";
 import Image from "next/image";
-import Link from 'next/link'
+import Link from 'next/link';
 import { socials } from "@/data/socials";
 import { activityTypes } from "@/data/discordActivityTypes";
 
