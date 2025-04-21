@@ -217,7 +217,7 @@ export default function Home() {
 						{spotifyTrackId ? (
 							<a
 								href={`https://open.spotify.com/track/${spotifyTrackId}`}
-								className="flex items-center gap-2"
+								className="flex items-center gap-2 link link-accent link-animated"
 							>
 								<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
 								{spotifyStatus}
