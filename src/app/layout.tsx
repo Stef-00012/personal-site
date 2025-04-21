@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 		type: "website",
 		url: "https://stefdp.com",
 		description: "Most if not all of my socials are listed here :)",
-		images: "/images/pfp.webp",
+// 		images: "/images/pfp.webp",
 	},
 	verification: {
 		me: "https://mastodon.social/@Stef_DP",
