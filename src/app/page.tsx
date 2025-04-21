@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import Loading from "@/components/loading";
 import Image from "next/image";
+import Link from 'next/link'
 import { socials } from "@/data/socials";
 import { activityTypes } from "@/data/discordActivityTypes";
 
@@ -170,7 +171,7 @@ export default function Home() {
 
 					<div className="flex flex-wrap my-4 gap-2 justify-center">
 						{socials.map((social) => (
-							<a
+							<Link
 								href={
 									social.type === "mail" ? social.url : `/socials/${social.id}`
 								}
@@ -181,20 +182,20 @@ export default function Home() {
 								<span
 									className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`}
 								/>
-							</a>
+							</Link>
 						))}
 					</div>
 
 					<div className="flex gap-2 font-mono text-accent mb-6">
-						<a className="btn btn-soft btn-accent" href="./about">
+						<Link className="btn btn-soft btn-accent" href="./about">
 							&#47;about
-						</a>
-						<a className="btn btn-soft btn-accent" href="./projects">
+						</Link>
+						<Link className="btn btn-soft btn-accent" href="./projects">
 							&#47;projects
-						</a>
-						<a className="btn btn-soft btn-accent" href="./rabbit">
+						</Link>
+						<Link className="btn btn-soft btn-accent" href="./rabbit">
 							&#47;rabbit
-						</a>
+						</Link>
 					</div>
 
 					<div className="mt-10 flex flex-col gap-2">
@@ -215,13 +216,13 @@ export default function Home() {
 						)}
 
 						{spotifyTrackId ? (
-							<a
+							<Link
 								href={`https://open.spotify.com/track/${spotifyTrackId}`}
 								className="flex items-center gap-2 link link-accent link-animated"
 							>
 								<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
 								{spotifyStatus}
-							</a>
+							</Link>
 						) : (
 							<p className="flex items-center gap-2">
 								<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}

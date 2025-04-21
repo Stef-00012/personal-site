@@ -8,7 +8,6 @@ import Project from "@/components/projectCard"
 
 export default function Projects() {
     const [topRepos, setTopRepos] = useState<ProjectType[]>([])
-    const [projectList, setProjectList] = useState<ProjectType[]>(projects)
 
     useEffect(() => {
         async function fetchTopRepos() {
@@ -50,7 +49,7 @@ export default function Projects() {
             <h1 className="font-mono my-4 font-bold sm:mx-4 flex justify-center items-center mt-10"> &#47;&#47; Other Projects</h1>
             <div className="sm:mx-4 flex justify-center items-center ">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {projectList.map((project) => (
+                    {projects.map((project) => (
                         <Project
                             key={project.name}
                             project={project}
