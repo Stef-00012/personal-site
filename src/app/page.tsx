@@ -96,9 +96,9 @@ export default function Home() {
 		const vscodeMessage =
 			vscodeData?.details && vscodeData.state
 				? `${vscodeData.details} in ${vscodeData.state
-						.replace(/(Workspace: | \(Workspace\))/g, "")
-						.replace("Glitch:", "🎏")
-						.trim()}`
+					.replace(/(Workspace: | \(Workspace\))/g, "")
+					.replace("Glitch:", "🎏")
+					.trim()}`
 				: vscodeDefaultMessage;
 
 		setVscodeStatus(vscodeMessage);
@@ -137,17 +137,6 @@ export default function Home() {
 			/>
 
 			<div className="min-h-screen flex flex-col justify-center items-center p-4">
-				<div className="flex gap-2 font-mono text-accent mb-6">
-					<a className="btn btn-soft btn-accent" href="./about">
-						&#47;about
-					</a>
-					<a className="btn btn-soft btn-accent" href="./projects">
-						&#47;projects
-					</a>
-					<a className="btn btn-soft btn-accent" href="./rabbit">
-						&#47;rabbit
-					</a>
-				</div>
 				<div className="bgeffect" />
 				<div className="flex flex-col items-center">
 					<div className="relative">
@@ -196,7 +185,19 @@ export default function Home() {
 						))}
 					</div>
 
-					<div className="mt-10 font-mono flex flex-col gap-2">
+					<div className="flex gap-2 font-mono text-accent mb-6">
+						<a className="btn btn-soft btn-accent" href="./about">
+							&#47;about
+						</a>
+						<a className="btn btn-soft btn-accent" href="./projects">
+							&#47;projects
+						</a>
+						<a className="btn btn-soft btn-accent" href="./rabbit">
+							&#47;rabbit
+						</a>
+					</div>
+
+					<div className="mt-10 flex flex-col gap-2">
 						{/* 
 							Variables:
 							discord status: customStatus
@@ -218,23 +219,23 @@ export default function Home() {
 								href={`https://open.spotify.com/track/${spotifyTrackId}`}
 								className="flex items-center gap-2"
 							>
-								<span className="icon-[fa6-brands--spotify] size-5" />{" "}
+								<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
 								{spotifyStatus}
 							</a>
 						) : (
 							<p className="flex items-center gap-2">
-								<span className="icon-[fa6-brands--spotify] size-5" />{" "}
+								<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
 								{spotifyStatus}
 							</p>
 						)}
 
 						<p className="flex items-center gap-2">
-							<span className="icon-[tabler--brand-vscode] size-5" />{" "}
+							<span className="icon-[tabler--brand-vscode] size-5 -mb-1" />{" "}
 							{vscodeStatus}
 						</p>
 
 						<p className="flex items-center gap-2">
-							<span className="icon-[game-icons--gamepad] size-5" />{" "}
+							<span className="icon-[game-icons--gamepad] size-5 -mb-1" />{" "}
 							{playingStatus}
 						</p>
 					</div>
