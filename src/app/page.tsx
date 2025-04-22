@@ -12,6 +12,8 @@ import About from "@/views/about";
 import Rabbit from "@/views/rabbit";
 import { getRankedRepos } from "@/functions/githubRepos";
 import type { Project } from "@/types/projects";
+import Script from "next/script";
+// import { onekoVariants } from "@/data/constants";
 
 type Page = "rabbit" | "home" | "projects" | "about";
 
@@ -99,6 +101,8 @@ export default function Main() {
 			{page === "about" && <About />}
 
 			{page === "rabbit" && <Rabbit />}
+
+			<Script src="/js/oneko.js" />
 		</>
 	);
 }
