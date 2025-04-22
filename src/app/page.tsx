@@ -31,7 +31,11 @@ export default function Main() {
 
 	useEffect(() => {
 		setPage((prevPage) =>
-			pages.includes(hash as Page) ? (hash as Page) || prevPage : prevPage,
+			pages.includes(hash as Page)
+				? (hash as Page) || prevPage
+				: hash === ""
+					? "home"
+					: prevPage,
 		);
 	}, [hash]);
 

@@ -4,7 +4,7 @@ import type { LanyardData } from "react-use-lanyard";
 import { useEffect, useState } from "react";
 
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 import { socials } from "@/data/socials";
 import { activityTypes } from "@/data/discordActivityTypes";
 
@@ -15,14 +15,11 @@ const playingDefaultMessage = "Not playing anything";
 const formatter = new Intl.ListFormat();
 
 interface Props {
-    loading: boolean;
-    status: LanyardData | undefined
+	loading: boolean;
+	status: LanyardData | undefined;
 }
 
-export default function Home({
-    loading,
-    status
-}: Props) {
+export default function Home({ loading, status }: Props) {
 	const [customStatus, setCustomStatus] = useState<string | null>("");
 
 	const [avatar, setAvatar] = useState<string | null>(null);
@@ -95,9 +92,9 @@ export default function Home({
 		const vscodeMessage =
 			vscodeData?.details && vscodeData.state
 				? `${vscodeData.details} in ${vscodeData.state
-					.replace(/(Workspace: | \(Workspace\))/g, "")
-					.replace("Glitch:", "🎏")
-					.trim()}`
+						.replace(/(Workspace: | \(Workspace\))/g, "")
+						.replace("Glitch:", "🎏")
+						.trim()}`
 				: vscodeDefaultMessage;
 
 		setVscodeStatus(vscodeMessage);
@@ -121,68 +118,86 @@ export default function Home({
 
 	return (
 		<div className="min-h-screen flex flex-col justify-center items-center p-4">
-            <div className="bgeffect" />
-            <div className="flex flex-col items-center">
-                <div className="relative">
-                    {avatar && (
-                        <Image
-                            priority
-                            src={avatar}
-                            alt="my profile picture"
-                            className="rounded-full mb-4 object-cover"
-                            width={96}
-                            height={96}
-                        />
-                    )}
-                    {avatarDecoration && (
-                        <Image
-                            priority
-                            unoptimized
-                            src={avatarDecoration}
-                            alt="my profile picture decoration"
-                            className="absolute inset-0 scale-120 object-cover"
-                            width={96}
-                            height={96}
-                        />
-                    )}
-                </div>
+			<div className="bgeffect" />
+			<div className="flex flex-col items-center">
+				<div className="relative">
+					{avatar && (
+						<Image
+							priority
+							src={avatar}
+							alt="my profile picture"
+							className="rounded-full mb-4 object-cover"
+							width={96}
+							height={96}
+						/>
+					)}
+					{avatarDecoration && (
+						<Image
+							priority
+							unoptimized
+							src={avatarDecoration}
+							alt="my profile picture decoration"
+							className="absolute inset-0 scale-120 object-cover"
+							width={96}
+							height={96}
+						/>
+					)}
+				</div>
 
-                <div className="flex items-center">
-                    <h1 className="text-5xl text-primary mb-4 me-2">Stef</h1>
-                    <span className={`${statuses[discordStatus]} status size-4 mb-3`} />
-                </div>
+				<div className="flex items-center">
+					<h1 className="text-5xl text-primary mb-4 me-2">Stef</h1>
+					<span className={`${statuses[discordStatus]} status size-4 mb-3`} />
+				</div>
 
-                <div className="flex flex-wrap my-4 gap-2 justify-center">
-                    {socials.map((social) => (
-                        <Link
-                            href={
-                                social.type === "mail" ? social.url : `/socials/${social.id}`
-                            }
-                            key={social.id}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <span
-                                className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`}
-                            />
-                        </Link>
-                    ))}
-                </div>
+				<div className="flex flex-wrap my-4 gap-2 justify-center">
+					{socials.map((social) => (
+						<Link
+							href={
+								social.type === "mail" ? social.url : `/socials/${social.id}`
+							}
+							key={social.id}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							<span
+								className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`}
+							/>
+						</Link>
+					))}
+				</div>
 
-                <div className="flex gap-2 font-mono text-accent mb-6">
-                    <Link className="btn btn-soft btn-accent" href="/#about">
-                        &#47;about
-                    </Link>
-                    <Link className="btn btn-soft btn-accent" href="/#projects">
-                        &#47;projects
-                    </Link>
-                    <Link className="btn btn-soft btn-accent" href="/#rabbit">
-                        &#47;rabbit
-                    </Link>
-                </div>
+				<div className="flex gap-2 font-mono text-accent mb-6">
+					<Link
+						className="btn btn-soft btn-accent"
+						href="#about"
+						onClick={(event) => {
+							window.location.hash = event.currentTarget.hash;
+						}}
+					>
+						&#47;about
+					</Link>
+					<Link
+						className="btn btn-soft btn-accent"
+						href="#projects"
+						onClick={(event) => {
+							window.location.hash = event.currentTarget.hash;
+						}}
+					>
+						&#47;projects
+					</Link>
+					<Link
+						className="btn btn-soft btn-accent"
+						href="#rabbit"
+						onClick={(event) => {
+							window.location.hash = event.currentTarget.hash;
+						}}
+					>
+						&#47;rabbit
+					</Link>
+				</div>
 
-                <div className="mt-10 flex flex-col gap-2">
-                    {/* 
+				<div className="mt-10 flex flex-col gap-2">
+					{/* 
                         Variables:
                         discord status: customStatus
                         vscode: vscodeStatus
@@ -191,39 +206,39 @@ export default function Home({
 
                         Spotify Track URL: `https://open.spotify.com/track/${spotifyTrackId}`
                     */}
-                    {customStatus && (
-                        <p className="flex items-center gap-2">
-                            <span className="icon-[tabler--bubble-text-filled] size-5" />{" "}
-                            {customStatus}
-                        </p>
-                    )}
+					{customStatus && (
+						<p className="flex items-center gap-2">
+							<span className="icon-[tabler--bubble-text-filled] size-5" />{" "}
+							{customStatus}
+						</p>
+					)}
 
-                    {spotifyTrackId ? (
-                        <Link
-                            href={`https://open.spotify.com/track/${spotifyTrackId}`}
-                            className="flex items-center gap-2 link link-accent link-animated"
-                        >
-                            <span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
-                            {spotifyStatus}
-                        </Link>
-                    ) : (
-                        <p className="flex items-center gap-2">
-                            <span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
-                            {spotifyStatus}
-                        </p>
-                    )}
+					{spotifyTrackId ? (
+						<Link
+							href={`https://open.spotify.com/track/${spotifyTrackId}`}
+							className="flex items-center gap-2 link link-accent link-animated"
+						>
+							<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
+							{spotifyStatus}
+						</Link>
+					) : (
+						<p className="flex items-center gap-2">
+							<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
+							{spotifyStatus}
+						</p>
+					)}
 
-                    <p className="flex items-center gap-2">
-                        <span className="icon-[tabler--brand-vscode] size-5 -mb-1" />{" "}
-                        {vscodeStatus}
-                    </p>
+					<p className="flex items-center gap-2">
+						<span className="icon-[tabler--brand-vscode] size-5 -mb-1" />{" "}
+						{vscodeStatus}
+					</p>
 
-                    <p className="flex items-center gap-2">
-                        <span className="icon-[game-icons--gamepad] size-5 -mb-1" />{" "}
-                        {playingStatus}
-                    </p>
-                </div>
-            </div>
-        </div>
+					<p className="flex items-center gap-2">
+						<span className="icon-[game-icons--gamepad] size-5 -mb-1" />{" "}
+						{playingStatus}
+					</p>
+				</div>
+			</div>
+		</div>
 	);
 }
