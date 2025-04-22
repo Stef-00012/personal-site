@@ -60,6 +60,11 @@ export default function handleTyping(
 		.break({ instant: true })
 		.type("[sudo] password for stef: ", { instant: true, delay: 800 })
 		.break({ instant: true })
+		.type("^C", { instant: true, delay: 200 })
+		.type("^C", { instant: true })
+		.pause(1500)
+		.type("sudo: a password is required", { instant: true })
+		.break({ instant: true, delay: 300 })
 		.type(
 			'<span class="text-success">stef@Life</span>: <span class="text-secondary">/</span> $ ^C',
 			{ instant: true, delay: 300 },
