@@ -26,7 +26,8 @@ export default function Loading({ showSkipButton, hideLoading, hide }: Props) {
 		return () => {
 			document.removeEventListener("keydown", handleKeyPress);
 		};
-	}, [showSkipButton]);
+	}, [showSkipButton]); //eslint-disable-line react-hooks/exhaustive-deps
+	// passing handleKeyPress as a dependency would cause the effect to re-run on every update
 
 	return (
 		<>

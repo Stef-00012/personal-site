@@ -1,8 +1,4 @@
-"use client";
-
-import { getRankedRepos } from "@/functions/githubRepos"
 import type { Project as ProjectType } from "@/types/projects"
-import { useEffect, useState } from "react"
 import { projects } from "@/data/projects"
 import Project from "@/components/projectCard"
 
