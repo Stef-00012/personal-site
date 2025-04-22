@@ -6,28 +6,11 @@ import { useEffect, useState } from "react"
 import { projects } from "@/data/projects"
 import Project from "@/components/projectCard"
 
-export default function Projects() {
-    const [topRepos, setTopRepos] = useState<ProjectType[]>([])
+interface Props {
+    topRepos: ProjectType[]
+}
 
-    useEffect(() => {
-        async function fetchTopRepos() {
-            const repos = await getRankedRepos()
-            
-            const projectRepos: ProjectType[] = repos.map(repo => ({
-                name: repo.fullName,
-                source:  `https://github.com/${repo.fullName}`,
-                description: repo.description,
-                url: repo.homepage,
-                git: repo,
-                slug: "repo"
-            }))
-
-            setTopRepos(projectRepos)
-        }
-
-        fetchTopRepos()
-    }, [])
-
+export default function Projects({ topRepos }: Props) {
     return (
         <div className="p-10">
             <h1 className="font-mono my-4 font-bold sm:mx-4 flex justify-center items-center mb-10"> &#47;&#47; Top GitHub Repositories</h1>
