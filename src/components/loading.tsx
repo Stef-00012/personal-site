@@ -32,7 +32,7 @@ export default function Loading({ showSkipButton, hideLoading, hide }: Props) {
 	return (
 		<>
 			<div
-				className={`${hide ? "hidden overflow-hidden" : ""} flex bg-base-300 w-screen h-screen fixed break-all left-0 top-0 z-10`}
+				className={`${hide ? "hidden overflow-hidden" : "overflow-y-scroll"} flex bg-base-300 w-screen h-screen fixed break-all left-0 top-0 z-10`}
 			>
 				<TypeIt
 					className="font-mono text-base-content text-base whitespace-pre-wrap mt-[5px] pl-[5px]"
