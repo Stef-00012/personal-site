@@ -170,13 +170,13 @@ export default function Home({
                 </div>
 
                 <div className="flex gap-2 font-mono text-accent mb-6">
-                    <Link className="btn btn-soft btn-accent" href="./about">
+                    <Link className="btn btn-soft btn-accent" href="/#about">
                         &#47;about
                     </Link>
-                    <Link className="btn btn-soft btn-accent" href="./projects">
+                    <Link className="btn btn-soft btn-accent" href="/#projects">
                         &#47;projects
                     </Link>
-                    <Link className="btn btn-soft btn-accent" href="./rabbit">
+                    <Link className="btn btn-soft btn-accent" href="/#rabbit">
                         &#47;rabbit
                     </Link>
                 </div>
