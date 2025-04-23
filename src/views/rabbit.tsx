@@ -31,8 +31,8 @@ export default function Rabbit() {
                 <img
                     key={i}
                     // biome-ignore lint/a11y/noRedundantAlt: <explanation>
-                    alt={`Pallino picture number ${i}`}
-                    src={`/images/rabbit/pallino-${i}.webp`}
+                    alt={`Pallino picture number ${i + 1}`}
+                    src={`/images/rabbit/pallino-${i + 1}.webp`}
                 />
             ))}
         </div>
