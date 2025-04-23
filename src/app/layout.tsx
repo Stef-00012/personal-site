@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "My own bio :) - Stefano Del Prete | Home Page",
 		type: "website",
-		url: "https://stefdp.com",
+		url: baseUrl,
 		description: "Most if not all of my socials are listed here :)",
 		// images: "/images/pfp.webp",
 	},
