@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { baseUrl } from "@/data/constants";
 import "./globals.css";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
 	metadataBase: new URL(baseUrl),
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 		type: "website",
 		url: "https://stefdp.com",
 		description: "Most if not all of my socials are listed here :)",
-// 		images: "/images/pfp.webp",
+		// images: "/images/pfp.webp",
 	},
 	verification: {
 		me: "https://mastodon.social/@Stef_DP",
@@ -48,7 +49,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" data-theme="catppuccin-macchiato" className="bg-base-300">
-			<body className="antialiased">{children}</body>
+			<body className="antialiased">
+				<Suspense>{children}</Suspense>
+			</body>
 		</html>
 	);
 }
