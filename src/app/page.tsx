@@ -13,20 +13,21 @@ import Rabbit from "@/views/rabbit";
 import { getRankedRepos } from "@/functions/githubRepos";
 import type { Project } from "@/types/projects";
 import Script from "next/script";
-import Select from "react-select";
-import SelectOption from "@/components/select/option";
 import { onekoVariants } from "@/data/constants";
 import { useSearchParams, useRouter } from "next/navigation";
+import Select, { type SelectOption } from "@/components/select";
 
 type Page = "rabbit" | "home" | "projects" | "about";
 
 const pages: Page[] = ["rabbit", "home", "projects", "about"];
 
-const onekoOptions = onekoVariants.map((variant) => ({
+const onekoOptions: SelectOption[] = onekoVariants.map((variant) => ({
 	value: variant,
 	label: variant.charAt(0).toUpperCase() + variant.slice(1),
 	icon: `/images/oneko/heads/${variant}.png`,
-}))
+	default: variant === "maia",
+	lazy: true,
+}));
 
 export default function Main() {
 	const router = useRouter();
@@ -104,26 +105,20 @@ export default function Main() {
 
 	return (
 		<>
+			<Select
+				options={onekoOptions}
+				query="neko"
+				className="top-2 left-2 sticky"
+				placeholder="Cat Variant"
+				onChange={(selectedOption) => {
+					router.replace(`?neko=${selectedOption.value}#${hash || "home"}`);
+				}}
+			/>
+
 			<Loading
 				showSkipButton={showHideLoadingButton}
 				hideLoading={handleHideLoading}
 				hide={hideLoading}
-			/>
-
-			<Select
-				isSearchable={false}
-				options={onekoOptions}
-				defaultValue={onekoOptions.find(option => option.value === "maia")}
-				components={{
-					Option: SelectOption
-				}}
-				isMulti={false}
-				onChange={(newValue) => {
-					router.replace(`?neko=${newValue?.value}#${hash || "home"}`)
-				}}
-				classNames={{
-					option: () => "test" // this is passed to the option component in "src/components/select/option.tsx" too
-				}}
 			/>
 
 			{page === "home" && <Home loading={loading} status={status} />}
