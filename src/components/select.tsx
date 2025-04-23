@@ -1,6 +1,5 @@
 "use client";
 
-import SelectIcon from "@/components/images/selectIcon";
 import Image from "next/image";
 
 import React, { useEffect, useRef, useState } from "react";
@@ -102,13 +101,7 @@ export default function Select({
 						{getDisplay()}
 					</div>
 					<div>
-						<div>
-							<SelectIcon
-								color="#ffffffb3"
-								isOpen={showMenu}
-								alt="Select Icon"
-							/>
-						</div>
+						<span className={`${showMenu ? "icon-[tabler--chevron-right]" : "icon-[tabler--chevron-down]"} size-5 -mb-1 text-[#ffffffb3]`} />
 					</div>
 				</div>
 
