@@ -17,7 +17,6 @@ import Select from "react-select";
 import SelectOption from "@/components/select/option";
 import { onekoVariants } from "@/data/constants";
 import { useSearchParams, useRouter } from "next/navigation";
-// import { onekoVariants } from "@/data/constants";
 
 type Page = "rabbit" | "home" | "projects" | "about";
 
@@ -119,11 +118,11 @@ export default function Main() {
 					Option: SelectOption
 				}}
 				isMulti={false}
-				onChange={(newValue, actionMeta) => {
+				onChange={(newValue) => {
 					router.replace(`?neko=${newValue?.value}#${hash || "home"}`)
 				}}
 				classNames={{
-					option: () => "test"
+					option: () => "test" // this is passed to the option component in "src/components/select/option.tsx" too
 				}}
 			/>
 
