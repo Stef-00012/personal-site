@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanyard } from "react-use-lanyard";
-import { useEffect, useState } from "react";
+import { ComponentType, useEffect, useState } from "react";
 
 import Loading from "@/components/loading";
 import useHash from "@/hooks/useHash";
@@ -13,11 +13,20 @@ import Rabbit from "@/views/rabbit";
 import { getRankedRepos } from "@/functions/githubRepos";
 import type { Project } from "@/types/projects";
 import Script from "next/script";
+import Select from "react-select";
+import SelectOption from "@/components/select/option";
+import { onekoVariants } from "@/data/constants";
 // import { onekoVariants } from "@/data/constants";
 
 type Page = "rabbit" | "home" | "projects" | "about";
 
 const pages: Page[] = ["rabbit", "home", "projects", "about"];
+
+const onekoOptions = onekoVariants.map((variant) => ({
+	value: variant,
+	label: variant.charAt(0).toUpperCase() + variant.slice(1),
+	icon: `/images/oneko/heads/${variant}.png`,
+}))
 
 export default function Main() {
 	const { loading, status } = useLanyard({
@@ -92,6 +101,21 @@ export default function Main() {
 				showSkipButton={showHideLoadingButton}
 				hideLoading={handleHideLoading}
 				hide={hideLoading}
+			/>
+
+			<Select
+				isSearchable={false}
+				options={onekoOptions}
+				defaultValue={onekoOptions.find(option => option.value === "maia")}
+				components={{
+					Option: SelectOption
+				}}
+				onChange={(newValue) => {
+					console.info("selected", newValue);
+				}}
+				classNames={{
+					option: () => "test"
+				}}
 			/>
 
 			{page === "home" && <Home loading={loading} status={status} />}
