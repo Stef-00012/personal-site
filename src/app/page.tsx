@@ -1,7 +1,7 @@
 "use client";
 
 import { useLanyard } from "react-use-lanyard";
-import { ComponentType, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Loading from "@/components/loading";
 import useHash from "@/hooks/useHash";
