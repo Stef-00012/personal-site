@@ -3,38 +3,23 @@ import Link from 'next/link';
 
 export default function Rabbit() {
     return (
-        // <div className="min-h-screen flex justify-center items-center max-w-7xl carousel w-full">
-        //     <div className="carousel w-full">
-        //         <div id="slide1" className="carousel-item relative w-full">
-        //             <img
-        //                 src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-        //                 className="w-full" />
-        //             <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-        //                 <Link href="#slide4" className="btn btn-circle">❮</Link>
-        //                 <Link href="#slide2" className="btn btn-circle">❯</Link>
-        //             </div>
-        //         </div>
-        //         <div id="slide2" className="carousel-item relative w-full">
-        //             <img
-        //                 src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-        //                 className="w-full" />
-        //             <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-        //                 <Link href="#slide1" className="btn btn-circle">❮</Link>
-        //                 <Link href="#slide3" className="btn btn-circle">❯</Link>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
 
-        <div>
-            {[...new Array(rabbitImagesCount).keys()].map((i) => (
-                <img
-                    key={i}
-                    // biome-ignore lint/a11y/noRedundantAlt: <explanation>
-                    alt={`Pallino picture number ${i + 1}`}
-                    src={`/images/rabbit/pallino-${i + 1}.webp`}
-                />
-            ))}
+        <div className="p-10">
+            <h1 className="my-4 font-bold sm:mx-4 flex justify-center text-4xl items-center mb-10">Pallino the Rabbit</h1>
+            <div className="sm:mx-4 flex justify-center items-center ">
+                <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+                    {[...new Array(rabbitImagesCount).keys()].map((i) => (
+                        <img
+                            key={i}
+                            // biome-ignore lint/a11y/noRedundantAlt: <explanation>
+                            alt={`Pallino picture number ${i + 1}`}
+                            src={`/images/rabbit/pallino-${i + 1}.webp`}
+                            className="mb-4 w-full break-inside-avoid rounded-2xl shadow-lg"
+                        />
+                    ))}
+                </div>
+
+            </div>
         </div>
     )
 }
