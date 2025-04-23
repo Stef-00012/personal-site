@@ -208,7 +208,7 @@ export default function Home({ loading, status }: Props) {
                     */}
 					{customStatus && (
 						<p className="flex items-center gap-2">
-							<span className="icon-[tabler--bubble-text-filled] size-5" />{" "}
+							<span className="icon-[tabler--bubble-text-filled] size-5 -mb-1" />{" "}
 							{customStatus}
 						</p>
 					)}
