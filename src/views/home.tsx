@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { socials } from "@/data/socials";
-import { activityTypes } from "@/data/discordActivityTypes";
+import { discordActivityTypes } from "@/data/constants";
 
 const spotifyDefaultMessage = "Not listening to anything";
 const vscodeDefaultMessage = "Not coding anything";
@@ -102,7 +102,7 @@ export default function Home({ loading, status }: Props) {
 		const playingData =
 			discordActivites?.filter(
 				(activity) =>
-					activity.type === activityTypes.playing &&
+					activity.type === discordActivityTypes.playing &&
 					!["Visual Studio Code", "IntelliJ IDEA Ultimate"].includes(
 						activity.name,
 					),
