@@ -16,6 +16,7 @@ import Script from "next/script";
 import Select from "react-select";
 import SelectOption from "@/components/select/option";
 import { onekoVariants } from "@/data/constants";
+import { useSearchParams, useRouter } from "next/navigation";
 // import { onekoVariants } from "@/data/constants";
 
 type Page = "rabbit" | "home" | "projects" | "about";
@@ -29,6 +30,13 @@ const onekoOptions = onekoVariants.map((variant) => ({
 }))
 
 export default function Main() {
+	const router = useRouter();
+	const searchParams = useSearchParams();
+
+	let currentVariant = searchParams.get("neko") || "maia";
+
+	if (!onekoVariants.includes(currentVariant)) currentVariant = "maia";
+
 	const { loading, status } = useLanyard({
 		userId: "694986201739952229",
 		socket: true,
@@ -110,8 +118,9 @@ export default function Main() {
 				components={{
 					Option: SelectOption
 				}}
-				onChange={(newValue) => {
-					console.info("selected", newValue);
+				isMulti={false}
+				onChange={(newValue, actionMeta) => {
+					router.replace(`?neko=${newValue?.value}#${hash || "home"}`)
 				}}
 				classNames={{
 					option: () => "test"

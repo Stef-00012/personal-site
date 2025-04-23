@@ -1,10 +1,12 @@
 import type { OptionProps } from "react-select"
 
-export default function SelectOption(props: OptionProps<{
+export interface OnekoOption {
     label: string;
     value: string;
     icon: string;
-}>) {
+}
+
+export default function SelectOption(props: OptionProps<OnekoOption>) {
     const data = props.data;
     const isDisabled = props.isDisabled;
     const isSelected = props.isSelected;
