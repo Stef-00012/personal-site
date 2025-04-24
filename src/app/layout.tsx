@@ -52,6 +52,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" data-theme="catppuccin-macchiato" className="bg-base-300">
+			<head>
+				<link
+					rel="stylesheet"
+					href="https://unpkg.com/highlightjs@9.16.2/styles/atom-one-dark.css"
+				/>
+			</head>
 			<body className="antialiased">
 				<Suspense>{children}</Suspense>
 			</body>

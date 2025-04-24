@@ -217,7 +217,7 @@ export default function Home({ loading, status }: Props) {
 					<p className="flex items-center gap-2">
 						<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
 						{spotifyArtist && spotifySong ? (
-							<p>
+							<>
 								Listening to{" "}
 								{spotifyTrackId ? (
 									<Link
@@ -227,13 +227,13 @@ export default function Home({ loading, status }: Props) {
 										"{spotifySong}" by {spotifyArtist}
 									</Link>
 								) : (
-									<p>
+									<>
 										"{spotifySong}" by {spotifyArtist}
-									</p>
+									</>
 								)}
-							</p>
+							</>
 						) : (
-							<p>{spotifyDefaultMessage}</p>
+							<>{spotifyDefaultMessage}</>
 						)}
 					</p>
 
