@@ -1,12 +1,12 @@
 "use client";
 
+import { discordActivityTypes } from "@/data/constants";
 import type { LanyardData } from "react-use-lanyard";
 import { useEffect, useState } from "react";
+import { socials } from "@/data/socials";
 
 import Image from "next/image";
 import Link from "next/link";
-import { socials } from "@/data/socials";
-import { discordActivityTypes } from "@/data/constants";
 
 const spotifyDefaultMessage = "Not listening to anything";
 const vscodeDefaultMessage = "Not coding anything";

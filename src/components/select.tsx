@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
-
 import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+
+import Image from "next/image";
 
 export interface SelectOption {
 	default: boolean;
@@ -104,7 +104,7 @@ export default function Select({
 						} transition-transform duration-200 icon-[tabler--chevron-right] size-5 text-base-content`}
 					/>
 				</div>
-	
+
 				{showMenu && (
 					<ul className="absolute mt-1 z-50 max-h-80 overflow-y-auto w-full bg-base-200 border border-base-content/10 rounded-box shadow-md">
 						{options.map((option) => (
@@ -135,5 +135,4 @@ export default function Select({
 			</div>
 		</div>
 	);
-	
 }

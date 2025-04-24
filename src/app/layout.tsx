@@ -1,7 +1,10 @@
-import type { Metadata, Viewport } from "next";
 import { baseUrl } from "@/data/constants";
-import "./globals.css";
+
+import type { Metadata, Viewport } from "next";
+
 import { Suspense } from "react";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
 	metadataBase: new URL(baseUrl),

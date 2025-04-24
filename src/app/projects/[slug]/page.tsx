@@ -1,9 +1,8 @@
-import { notFound } from "next/navigation";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { projects } from "@/data/projects";
+import { use } from "react";
 
 import type { Metadata } from "next";
-import { use } from "react";
 
 interface Data {
 	params: Promise<{
@@ -18,7 +17,9 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	const projectName = (await params).slug;
 
-	const selectedProject = projects.find((project) => project.slug === projectName);
+	const selectedProject = projects.find(
+		(project) => project.slug === projectName,
+	);
 
 	if (!selectedProject) return {};
 
@@ -39,9 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function Projects({ params }: Data) {
 	const { slug: projectName } = use(params);
 
-	const selectedProject = projects.find((project) => project.slug === projectName);
+	const selectedProject = projects.find(
+		(project) => project.slug === projectName,
+	);
 
-	if (!selectedProject || (!selectedProject.source && !selectedProject.url)) return notFound();
+	if (!selectedProject || (!selectedProject.source && !selectedProject.url))
+		return notFound();
 
 	redirect((selectedProject.url || selectedProject.source) as string);
 }

@@ -1,5 +1,7 @@
-import type { Project as ProjectType } from "@/types/projects";
 import { projects } from "@/data/projects";
+
+import type { Project as ProjectType } from "@/types/projects";
+
 import Project from "@/components/projectCard";
 
 interface Props {

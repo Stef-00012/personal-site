@@ -1,5 +1,6 @@
 import handleTyping from "@/functions/loading";
 import { useEffect } from "react";
+
 import TypeIt from "typeit-react";
 
 interface Props {

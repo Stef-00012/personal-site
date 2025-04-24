@@ -2,20 +2,22 @@
 
 import { useLanyard } from "react-use-lanyard";
 import { useEffect, useState } from "react";
-
-import Loading from "@/components/loading";
 import useHash from "@/hooks/useHash";
 
-import Home from "@/views/home";
-import Projects from "@/views/projects";
-import About from "@/views/about";
-import Rabbit from "@/views/rabbit";
-import { getRankedRepos } from "@/functions/githubRepos";
-import type { Project } from "@/types/projects";
-import Script from "next/script";
-import { onekoVariants } from "@/data/constants";
 import { useSearchParams, useRouter } from "next/navigation";
+import { getRankedRepos } from "@/functions/githubRepos";
+import { onekoVariants } from "@/data/constants";
+
+import Projects from "@/views/projects";
+import Rabbit from "@/views/rabbit";
+import About from "@/views/about";
+import Home from "@/views/home";
+
 import Select, { type SelectOption } from "@/components/select";
+import Loading from "@/components/loading";
+import Script from "next/script";
+
+import type { Project } from "@/types/projects";
 
 type Page = "rabbit" | "home" | "projects" | "about";
 
