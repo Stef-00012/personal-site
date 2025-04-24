@@ -105,10 +105,12 @@ export default function Main() {
 
 	return (
 		<>
+			{page === "home" && <div className="bgeffect" />}
+
 			<Select
 				options={onekoOptions}
 				query="neko"
-				className="inline-block"
+				className="inline-block absolute"
 				placeholder="Cat Variant"
 				onChange={(selectedOption) => {
 					router.replace(`?neko=${selectedOption.value}#${hash || "home"}`);
