@@ -118,7 +118,7 @@ export default function Home({ loading, status }: Props) {
 
 	return (
 		<div className="min-h-screen flex flex-col justify-center items-center p-4">
-			<div className="bgeffect" />
+			{/* <div className="bgeffect" /> */}
 			<div className="flex flex-col items-center">
 				<div className="relative">
 					{avatar && (

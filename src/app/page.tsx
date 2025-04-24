@@ -108,7 +108,7 @@ export default function Main() {
 			<Select
 				options={onekoOptions}
 				query="neko"
-				className="top-2 left-2 sticky"
+				className="inline-block"
 				placeholder="Cat Variant"
 				onChange={(selectedOption) => {
 					router.replace(`?neko=${selectedOption.value}#${hash || "home"}`);

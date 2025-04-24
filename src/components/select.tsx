@@ -76,65 +76,62 @@ export default function Select({
 
 	return (
 		<div className={className}>
-			<div className="text-left relative cursor-pointer w-[-webkit-max-content] rounded-md border-solid border-[#818181] border-2 bg-black/50">
+			<div className="relative w-max mt-4 ml-4 -mb-20">
 				<div
 					ref={inputRef}
+					tabIndex={0}
 					onClick={handleInputClick}
 					onKeyDown={(e) => {
-						if (e.key === "Enter") {
-							handleInputClick();
-						}
+						if (e.key === "Enter") handleInputClick();
 					}}
-					className="[display:-webkit-box] [-webkit-box-align:center] [-ms-flex-align:center] items-center [-webkit-box-pack:justify] [-ms-flex-pack:justify] justify-between [-webkit-user-select:none] [-moz-user-select:none] [-ms-user-select:none] select-none gap-[7px] px-[11px] py-[7px]"
+					className="btn btn-soft flex items-center gap-2 w-full justify-between"
 				>
 					{selectedValue?.icon && (
 						<Image
 							width={20}
 							height={20}
-							alt="Cat Icon"
+							alt="Icon"
 							src={selectedValue.icon}
-							className="align-middle"
+							className="inline-block"
 							loading={selectedValue?.lazy ? "lazy" : undefined}
 						/>
 					)}
-					<div className={!selectedValue ? "text-[#82868b]" : ""}>
-						{getDisplay()}
-					</div>
-					<div>
-						<span className={`${showMenu ? "icon-[tabler--chevron-right]" : "icon-[tabler--chevron-down]"} size-5 -mb-1 text-[#ffffffb3]`} />
-					</div>
+					<span className="truncate">{getDisplay()}</span>
+					<span
+						className={`${
+							showMenu ? "rotate-90" : ""
+						} transition-transform duration-200 icon-[tabler--chevron-right] size-5 text-base-content`}
+					/>
 				</div>
-
+	
 				{showMenu && (
-					<div
-						className={`w-max absolute [-webkit-transform:translateY(6px)] [-ms-transform:translateY(6px)] translate-y-1.5 border-2 overflow-auto bg-black/50 z-[99] max-h-[312px] min-h-[50px] p-[5px] rounded-md border-solid border-[#818181] align-[${align || null}]`}
-					>
+					<ul className="absolute mt-1 z-50 max-h-80 overflow-y-auto w-full bg-base-200 border border-base-content/10 rounded-box shadow-md">
 						{options.map((option) => (
-							<div
+							<li
 								key={option.value}
+								tabIndex={0}
 								onClick={() => onItemClick(option)}
 								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										onItemClick(option);
-									}
+									if (e.key === "Enter") onItemClick(option);
 								}}
-								className="[-ms-flex-align:center] items-center [-webkit-box-pack:justify] [-ms-flex-pack:justify] [-webkit-user-select:none] [-moz-user-select:none] [-ms-user-select:none] select-none gap-[7px] flex justify-center cursor-pointer [-webkit-transition:background-color_0.35s_ease] transition-[background-color] duration-[0.35s] ease-[ease] font-medium px-2.5 py-[7px] rounded-md hover:bg-white/10 hover:text-slate-400"
+								className="flex items-center gap-2 px-3 rounded-2xl py-1.5 cursor-pointer hover:bg-base-300 transition-colors"
 							>
-								{option?.icon && (
+								{option.icon && (
 									<Image
 										width={20}
 										height={20}
-										alt="Cat Icon"
+										alt="Icon"
 										src={option.icon}
-										className="align-middle float-left"
+										className="inline-block shrink-0"
 									/>
 								)}
-								{option.label}
-							</div>
+								<span className="truncate">{option.label}</span>
+							</li>
 						))}
-					</div>
+					</ul>
 				)}
 			</div>
 		</div>
 	);
+	
 }
