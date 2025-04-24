@@ -17,7 +17,7 @@ export const socials: Array<Social> = [
 		color: "hover:text-[#bf211e]",
 		url: `mailto:${mail}`,
 		tooltipBorder: "3px solid #8a1614",
-		username: "me",
+		username: mail,
 	},
 	{
 		name: "Discord",

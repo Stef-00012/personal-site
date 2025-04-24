@@ -154,7 +154,7 @@ export default function Home({ loading, status }: Props) {
 					{socials.map((social) => (
 						<div key={social.id} className="tooltip tooltip-accent">
 							<div className="tooltip-content">
-								<div className=" text-lg">{social.type === "mail" ? `${social.name}` : `${social.name}: ${social.username}`}</div>
+								<div className=" text-lg">{social.name}: {social.username}</div>
 							</div>
 							<Link
 								href={
