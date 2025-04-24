@@ -11,7 +11,7 @@ interface Props {
 export default function Projects({ topRepos }: Props) {
 	return (
 		<div className="p-10">
-			<h1 className="my-4 font-bold sm:mx-4 flex justify-between text-4xl items-center mb-10">
+			<h1 className="my-4 mt-10 font-bold sm:mx-4 flex justify-between text-4xl items-center mb-10">
 				<span>Projects</span>
 				<a href="#home" className="btn btn-soft btn-accent">
 					<span className="icon-[tabler--arrow-back] size-5" /> Back
