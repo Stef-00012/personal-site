@@ -152,15 +152,14 @@ export default function Home({ loading, status }: Props) {
 
 				<div className="flex flex-wrap my-4 gap-2 justify-center">
 					{socials.map((social) => (
-						<div className="tooltip tooltip-accent">
+						<div key={social.id} className="tooltip tooltip-accent">
 							<div className="tooltip-content">
-								<div className=" text-lg">{social.id}: stef</div>
+								<div className=" text-lg">{social.type === "mail" ? `${social.name}` : `${social.name}: ${social.username}`}</div>
 							</div>
 							<Link
 								href={
 									social.type === "mail" ? social.url : `/socials/${social.id}`
 								}
-								key={social.id}
 								target="_blank"
 								rel="noopener noreferrer"
 							>
