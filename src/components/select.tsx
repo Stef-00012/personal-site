@@ -18,7 +18,6 @@ interface Data {
 	options: Array<SelectOption>;
 	placeholder: string;
 	className?: string;
-	align?: string;
 	type?: "link" | "button";
 	query?: string;
 }
@@ -28,7 +27,6 @@ export default function Select({
 	onChange = () => {},
 	className,
 	options,
-	align,
 	type = "button",
 	query,
 }: Data) {

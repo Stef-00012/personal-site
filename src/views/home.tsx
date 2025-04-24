@@ -66,7 +66,7 @@ export default function Home({ loading, status }: Props) {
 		setAvatar(avatar);
 
 		const artist = spotifyData?.artist;
-		const album = spotifyData?.album;
+		// const album = spotifyData?.album;
 		const song = spotifyData?.song;
 		const trackId = spotifyData?.track_id;
 
@@ -224,11 +224,11 @@ export default function Home({ loading, status }: Props) {
 										href={`https://open.spotify.com/track/${spotifyTrackId}`}
 										className="link link-accent link-animated"
 									>
-										"{spotifySong}" by {spotifyArtist}
+										&quot;{spotifySong}&quot; by {spotifyArtist}
 									</Link>
 								) : (
 									<>
-										"{spotifySong}" by {spotifyArtist}
+										&quot;{spotifySong}&quot; by {spotifyArtist}
 									</>
 								)}
 							</>
