@@ -76,7 +76,7 @@ export default function Select({
 
 	return (
 		<div className={className}>
-			<div className="relative w-max mt-4 ml-4 -mb-20">
+			<div className="relative w-full px-2 mt-4 ml-4 -mb-20">
 				<div
 					ref={inputRef}
 					tabIndex={0}
@@ -114,7 +114,7 @@ export default function Select({
 								onKeyDown={(e) => {
 									if (e.key === "Enter") onItemClick(option);
 								}}
-								className="flex items-center gap-2 px-3 rounded-2xl py-1.5 cursor-pointer hover:bg-base-300 transition-colors"
+								className="flex items-center gap-2 pl-3 rounded-2xl py-1.5 cursor-pointer hover:bg-base-300 transition-colors"
 							>
 								{option.icon && (
 									<Image
