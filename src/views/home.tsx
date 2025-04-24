@@ -29,9 +29,8 @@ export default function Home({ loading, status }: Props) {
 		"online" | "idle" | "dnd" | "offline"
 	>("offline");
 
-	const [spotifyStatus, setSpotifyStatus] = useState<string>(
-		spotifyDefaultMessage,
-	);
+	const [spotifyArtist, setSpotifyArtist] = useState<string | null>(null);
+	const [spotifySong, setSpotifySong] = useState<string | null>(null);
 	const [spotifyTrackId, setSpotifyTrackId] = useState<string | null>(null);
 
 	const [vscodeStatus, setVscodeStatus] =
@@ -71,13 +70,16 @@ export default function Home({ loading, status }: Props) {
 		const song = spotifyData?.song;
 		const trackId = spotifyData?.track_id;
 
-		const spotifyMessage =
-			artist && album && song
-				? `Listening to ${song} by ${formatter.format(artist.split(";"))}`
-				: spotifyDefaultMessage;
+		// const spotifyMessage =
+		// 	artist && album && song
+		// 		? `Listening to ${song} by ${formatter.format(artist.split(";"))}`
+		// 		: spotifyDefaultMessage;
 
-		setSpotifyStatus(spotifyMessage);
-		setSpotifyTrackId(trackId || null);
+		if (artist && song) {
+			setSpotifySong(song);
+			setSpotifyArtist(formatter.format(artist.split(";")));
+			setSpotifyTrackId(trackId || null);
+		}
 
 		const customStatusData = discordActivites?.find(
 			(activity) => activity.id === "custom",
@@ -212,20 +214,28 @@ export default function Home({ loading, status }: Props) {
 						</p>
 					)}
 
-					{spotifyTrackId ? (
-						<Link
-							href={`https://open.spotify.com/track/${spotifyTrackId}`}
-							className="flex items-center gap-2 link link-accent link-animated"
-						>
-							<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
-							{spotifyStatus}
-						</Link>
-					) : (
-						<p className="flex items-center gap-2">
-							<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
-							{spotifyStatus}
-						</p>
-					)}
+					<p className="flex items-center gap-2">
+						<span className="icon-[fa6-brands--spotify] size-5 -mb-1" />{" "}
+						{spotifyArtist && spotifySong ? (
+							<p>
+								Listening to{" "}
+								{spotifyTrackId ? (
+									<Link
+										href={`https://open.spotify.com/track/${spotifyTrackId}`}
+										className="link link-accent link-animated"
+									>
+										"{spotifySong}" by {spotifyArtist}
+									</Link>
+								) : (
+									<p>
+										"{spotifySong}" by {spotifyArtist}
+									</p>
+								)}
+							</p>
+						) : (
+							<p>{spotifyDefaultMessage}</p>
+						)}
+					</p>
 
 					<p className="flex items-center gap-2">
 						<span className="icon-[tabler--brand-vscode] size-5 -mb-1" />{" "}
