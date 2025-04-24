@@ -23,7 +23,7 @@ export default function About() {
                         getBeforeInit={(instance) => {
                             instance
                                 .options({
-                                    speed: 3.5,
+                                    speed: 2,
                                     afterComplete: () => instance.destroy(),
                                 })
                                 .type(codeBlockData)
