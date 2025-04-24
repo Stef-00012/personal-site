@@ -12,9 +12,7 @@ export const aboutMeText = `import type {
     Socials
 } from "@/types/aboutMe";
 
-/*
-    My personal informations
-*/
+/* My personal informations */
 
 const personalInfo: PersonalInfo = {
     firstName: "Stefano",
@@ -34,9 +32,7 @@ const personalInfo: PersonalInfo = {
     }]
 };
 
-/*
-    Spoken Languages
-*/
+/* Spoken Languages */
 
 const knownLanguages: Array<KnownLanguage> = [
     {
@@ -53,9 +49,7 @@ const knownLanguages: Array<KnownLanguage> = [
     }
 ];
 
-/*
-    Programming Languages, Markup Languages and Terminal
-*/
+/* Programming Languages, Markup Languages and Terminal */
 
 const knownProgramming: Array<KnownProgrammingLanguage> = [
     {
@@ -80,9 +74,7 @@ const knownProgramming: Array<KnownProgrammingLanguage> = [
     }
 ];
 
-/*
-    My Apps
-*/
+/* My Apps */
 
 const myApps: Array<MyApp> = [
     {
@@ -133,9 +125,7 @@ const myApps: Array<MyApp> = [
     }
 ];
 
-/*
-    Some info about my socials
-*/
+/* Some info about my socials */
 
 const discord: DiscordSocialInfo = {
     botDeveloper: true,
@@ -170,9 +160,7 @@ const twitter: TwitterSocialInfo = {
     followers: 13 // Last updated March 4 2024, 21:44 (09:44 PM)
 };
 
-/*
-    Exports
-*/
+/* Exports */
 
 const socials: Socials = {
     instagram,
