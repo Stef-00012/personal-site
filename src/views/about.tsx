@@ -11,7 +11,7 @@ export default function About() {
 
     return (
         <div className="flex justify-center items-center min-h-screen px-4">
-            <div className="bg-base-100 shadow-xl rounded-box p-6 max-w-2xl w-full">
+            <div className="bg-base-100 shadow-xl rounded-box p-6 max-w-6xl w-full">
                 <h1 className="my-4 font-bold sm:mx-4 flex justify-between text-2xl items-center mb-10">
                     <span>About</span>
                     <a href="#home" className="btn btn-soft btn-accent">
