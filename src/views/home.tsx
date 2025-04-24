@@ -94,9 +94,9 @@ export default function Home({ loading, status }: Props) {
 		const vscodeMessage =
 			vscodeData?.details && vscodeData.state
 				? `${vscodeData.details} in ${vscodeData.state
-						.replace(/(Workspace: | \(Workspace\))/g, "")
-						.replace("Glitch:", "🎏")
-						.trim()}`
+					.replace(/(Workspace: | \(Workspace\))/g, "")
+					.replace("Glitch:", "🎏")
+					.trim()}`
 				: vscodeDefaultMessage;
 
 		setVscodeStatus(vscodeMessage);
@@ -152,18 +152,23 @@ export default function Home({ loading, status }: Props) {
 
 				<div className="flex flex-wrap my-4 gap-2 justify-center">
 					{socials.map((social) => (
-						<Link
-							href={
-								social.type === "mail" ? social.url : `/socials/${social.id}`
-							}
-							key={social.id}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<span
-								className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`}
-							/>
-						</Link>
+						<div className="tooltip tooltip-accent">
+							<div className="tooltip-content">
+								<div className=" text-lg">{social.id}: stef</div>
+							</div>
+							<Link
+								href={
+									social.type === "mail" ? social.url : `/socials/${social.id}`
+								}
+								key={social.id}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<span
+									className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`}
+								/>
+							</Link>
+						</div>
 					))}
 				</div>
 
