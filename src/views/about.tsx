@@ -23,7 +23,7 @@ export default function About() {
                         getBeforeInit={(instance) => {
                             instance
                                 .options({
-                                    speed: 2,
+                                    speed: 1,
                                     afterComplete: () => instance.destroy(),
                                 })
                                 .type(codeBlockData)
@@ -32,6 +32,12 @@ export default function About() {
                             return instance;
                         }}
                     />
+                </div>
+
+                <div className="flex flex-wrap my-4">
+                    <img src="images/rabbit/pallino-1.webp" className="max-w-1/3 p-1 rounded-2xl" />
+                    <img src="images/rabbit/pallino-2.webp" className="max-w-1/3 p-1 rounded-2xl" />
+                    <img src="images/rabbit/pallino-3.webp" className="max-w-1/3 p-1 rounded-2xl" />
                 </div>
 
             </div>
