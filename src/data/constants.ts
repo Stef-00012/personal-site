@@ -21,3 +21,10 @@ export const onekoVariants = [
     "tora",
     "vaporwave"
 ]
+
+export const toplanguagesExcludedRepos = [
+	"github-readme-stats",
+	"github-readme-streak-stats",
+	"spotify-lyrics-api",
+	"yolks"
+]
