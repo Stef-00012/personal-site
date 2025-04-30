@@ -35,7 +35,7 @@ export default function About() {
 					/>
 				</div>
 				
-				<h2 className="my-6 text-center text-2xl">My GitHub Statistics:</h2>
+				<h2 className="my-6 ml-2 text-2xl">My GitHub Statistics:</h2>
 
 				<div className="flex flex-wrap my-4 justify-center">
 					<img
