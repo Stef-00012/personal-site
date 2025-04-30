@@ -23,14 +23,6 @@ type Page = "rabbit" | "home" | "projects" | "about";
 
 const pages: Page[] = ["rabbit", "home", "projects", "about"];
 
-const onekoOptions: SelectOption[] = onekoVariants.map((variant) => ({
-	value: variant,
-	label: variant.charAt(0).toUpperCase() + variant.slice(1),
-	icon: `/images/oneko/heads/${variant}.png`,
-	default: variant === "maia",
-	lazy: true,
-}));
-
 export default function Main() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -38,6 +30,14 @@ export default function Main() {
 	let currentVariant = searchParams.get("neko") || "maia";
 
 	if (!onekoVariants.includes(currentVariant)) currentVariant = "maia";
+
+	const onekoOptions: SelectOption[] = onekoVariants.map((variant) => ({
+		value: variant,
+		label: variant.charAt(0).toUpperCase() + variant.slice(1),
+		icon: `/images/oneko/heads/${variant}.png`,
+		default: variant === (currentVariant || "maia"),
+		lazy: true,
+	}));
 
 	const { loading, status } = useLanyard({
 		userId: "694986201739952229",
@@ -105,8 +105,20 @@ export default function Main() {
 		setHideLoading(true);
 	}
 
+	// ----- TEMPORARY TO TEST error.tsx FILE -----
+
+	const [error, setError] = useState(false);
+
+	if (error) throw Error("Simulated Common Error");
+
+	// ----- TEMPORARY TO TEST error.tsx FILE -----
+
 	return (
 		<>
+			{/* ------------------------------------------ TEMPORARY TO TEST error.tsx FILE ------------------------------------------ */}
+			<button className="btn btn-error text-black" type="button" onClick={() => setError(true)}>Throw a Common Error (error.tsx)</button>
+			{/* ------------------------------------------ TEMPORARY TO TEST error.tsx FILE ------------------------------------------ */}
+
 			{page === "home" && <div className="bgeffect" />}
 
 			<Select

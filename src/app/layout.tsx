@@ -4,6 +4,10 @@ import type { Metadata, Viewport } from "next";
 
 import { Suspense } from "react";
 
+// ----- TEMPORARY TO TEST global-error.tsx FILE -----
+import TestError from "@/components/temp__testError";
+// ----- TEMPORARY TO TEST global-error.tsx FILE -----
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -61,7 +65,11 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className="antialiased">
-				<Suspense>{children}</Suspense>
+				<Suspense>
+					<TestError> {/* TEMPORARY TO TEST global-error.tsx FILE */}
+						{children}
+					</TestError> {/* TEMPORARY TO TEST global-error.tsx FILE */}
+				</Suspense>
 			</body>
 		</html>
 	);

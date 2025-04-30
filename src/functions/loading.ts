@@ -163,7 +163,7 @@ export default function handleTyping(
 		})
 		.delete(24, { instant: true, delay: 100 })
 		.type(
-			"Get:1 https://stefdp.com/download googletagmanager font-inter stef-website highlightjs highlightjs-atom-one-theme jbox jquery analytics typeit [548 kB]",
+			"Get:1 https://stefdp.com/download googletagmanager stef-website next react react-dom tailwindcss highlightjs highlightjs-atom-one-theme iconify axios daisyui analytics typeit-react react-use-lanyard [548 kB]",
 			{ instant: true },
 		)
 		.break({ instant: true, delay: 560 })
