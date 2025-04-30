@@ -8,7 +8,7 @@ interface Props {
 
 export default function Project({ project }: Props) {
 	return (
-		<div className="card card-lg bg-base-100 shadow shadow-base-100 glass w-full sm:w-96 h-full">
+		<div className="card card-lg bg-base-100 shadow shadow-base-100 glass w-full max-w-sm h-full">
 			<div className="card-body flex flex-col justify-between">
 				<div className="flex flex-col gap-2">
 					<p className="card-title">{project.name}</p>
