@@ -1,25 +1,23 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function useProgressiveImage(
-	lowQualitySrc: string,
-	highQualitySrc: string,
-) {
-	const [src, setSrc] = useState(lowQualitySrc);
+export default function useProgressiveImages(imagePairs: Array<{lowQualitySrc: string, highQualitySrc: string}>) {
+    const [images, setImages] = useState(
+        imagePairs.map(({ lowQualitySrc }) => ({ src: lowQualitySrc, blur: true }))
+    );
 
-	useEffect(() => {
-		setSrc(lowQualitySrc);
+    useEffect(() => {
+        imagePairs.forEach((pair, index) => {
+            const highResImage = new Image();
+            highResImage.src = pair.highQualitySrc;
+            highResImage.onload = () => {
+                setImages(prevImages => {
+                    const newImages = [...prevImages];
+                    newImages[index] = { src: pair.highQualitySrc, blur: false };
+                    return newImages;
+                });
+            };
+        });
+    }, [imagePairs]);
 
-		const img = new Image();
-
-		img.src = highQualitySrc;
-
-		img.onload = () => {
-			setSrc(highQualitySrc);
-		};
-	}, [lowQualitySrc, highQualitySrc]);
-
-	return {
-		src,
-		blur: src === lowQualitySrc,
-	};
+    return images;
 }
