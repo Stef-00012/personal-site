@@ -17,6 +17,7 @@ export default function NextError({
 		<div>
 			<h2>Something went wrong! (error.tsx)</h2>
 			<h2>This occurs when an error is thrown in any page, that&apos;s the main error boundary (aka handles any error thrown by components in the page.tsx of any other file)</h2>
+			<h2>{error.name}: {error.message}</h2>
 			<button type="button" className="btn btn-success" onClick={() => reset()}>
 				Try again
 			</button>
