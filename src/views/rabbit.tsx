@@ -1,18 +1,15 @@
 import { rabbitImagesCount } from "@/data/constants";
 import useProgressiveImages from "@/hooks/useProgressiveImage";
-import { useMemo } from "react";
+
+const imageData = [...Array(rabbitImagesCount)].map((_, i) => {
+	const index = i + 1;
+	return {
+		lowQualitySrc: `/images/rabbit/pallino-${index}-low.webp`,
+		highQualitySrc: `/images/rabbit/pallino-${index}.webp`,
+	};
+})
 
 export default function Rabbit() {
-	const imageData = useMemo(() => {
-		return [...Array(rabbitImagesCount)].map((_, i) => {
-			const index = i + 1;
-			return {
-				lowQualitySrc: `/images/rabbit/pallino-${index}-low.webp`,
-				highQualitySrc: `/images/rabbit/pallino-${index}.webp`,
-			};
-		});
-	}, []);
-
 	const progressiveImages = useProgressiveImages(imageData);
 
 	return (
