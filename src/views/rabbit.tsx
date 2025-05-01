@@ -22,7 +22,7 @@ export default function Rabbit() {
 								// biome-ignore lint/a11y/noRedundantAlt: <explanation>
 								alt={`Pallino picture number ${i + 1}`}
 								src={src}
-								className={`mb-4 w-full break-inside-avoid rounded-2xl shadow-lg ${blur ? "blur-md" : ""}`}
+								className={`mb-4 w-full break-inside-avoid rounded-2xl shadow-lg transition-[filter] ease-out duration-300 ${blur ? "blur-md" : ""}`}
 							/>
 						)
 					})}
