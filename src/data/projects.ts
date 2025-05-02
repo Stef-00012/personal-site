@@ -16,6 +16,10 @@ export const projects: Array<Project> = [
 			"Zipline Uploads allow you to upload your right clicked files or shorten your right clicked URLs to your selfhosted instance of Zipline without having to download the file to your PC and upload it manually.",
 		source: "https://github.com/Stef-00012/Zipline-Upload-Extension",
 		slug: "zipline-webstore-extension",
+		license: {
+			name: "GNU General Public License v3.0",
+			url: "https://choosealicense.com/licenses/gpl-3.0/"
+		}
 	},
 	{
 		name: "Zipline Android App",
@@ -24,6 +28,10 @@ export const projects: Array<Project> = [
 			"An Android app to manage your self-hosted zipline V4 instance.",
 		source: "https://github.com/Stef-00012/Zipline-Android-App",
 		slug: "zipline-android-app",
+		license: {
+			name: "GNU General Public License v3.0",
+			url: "https://choosealicense.com/licenses/gpl-3.0/"
+		}
 	},
 	{
 		name: "My Discord Bot - UserApps",
@@ -32,6 +40,10 @@ export const projects: Array<Project> = [
 			"userApps is a multi-purpose Discord bot iinstalled on your user account so that it can be used everywhere.",
 		source: "https://github.com/Stef-00012/userApps",
 		slug: "userapps",
+		license: {
+			name: "MIT License",
+			url: "https://choosealicense.com/licenses/mit/"
+		}
 	},
 	{
 		name: "Homepage Dashboard",

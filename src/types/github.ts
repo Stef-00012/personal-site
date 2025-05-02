@@ -140,9 +140,9 @@ export interface FormattedRepo {
 }
 
 export interface RepoLicense {
-	name: string | null;
-	key: string | null;
-	url: string | null;
+	name?: string | null;
+	key?: string | null;
+	url?: string | null;
 }
 
 export interface ScoredFormattedRepo extends FormattedRepo {

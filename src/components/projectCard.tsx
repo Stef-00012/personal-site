@@ -13,18 +13,24 @@ export default function Project({ project }: Props) {
 				<div className="flex flex-col gap-2">
 					<p className="card-title">{project.name}</p>
 
-					{project.git ? (
+					{project.git && (
 						<div className="top-repo-info font-mono">
 							<p className="me-2 text-warning">
 								<Link
 									href={`https://github.com/${project.git.fullName}/stargazers`}
+									rel="noopener noreferrer"
+									target="_blank"
 								>
 									<span className="me-1 icon-[tabler--star] -mb-1 size-5" />
 									{project.git.stars}
 								</Link>
 							</p>
 							<p className="me-2 text-success">
-								<Link href={`https://github.com/${project.git.fullName}/forks`}>
+								<Link
+									href={`https://github.com/${project.git.fullName}/forks`}
+									rel="noopener noreferrer"
+									target="_blank"
+								>
 									<span className="me-1 icon-[tabler--git-fork] -mb-1 size-5" />
 									{project.git.forks}
 								</Link>
@@ -32,6 +38,8 @@ export default function Project({ project }: Props) {
 							<p className="me-2 text-error">
 								<Link
 									href={`https://github.com/${project.git.fullName}/issues`}
+									rel="noopener noreferrer"
+									target="_blank"
 								>
 									<span className="me-1 icon-[tabler--circle-dot] -mb-1 size-5" />
 									{project.git.openIssues}
@@ -40,32 +48,31 @@ export default function Project({ project }: Props) {
 							<p className="me-2 text-accent">
 								<Link
 									href={`https://github.com/${project.git.fullName}/watchers`}
+									rel="noopener noreferrer"
+									target="_blank"
 								>
 									<span className="me-1 icon-[tabler--eye] -mb-1 size-5" />
 									{project.git.watchers}
 								</Link>
 							</p>
-							{project.git.license && (
-								<>
-									<br />
-									{project.git.license.url ? (
-										<Link
-											href={project.git.license.url as string}
-											className="-mt-2 text-base-content/70 italic"
-										>
-											{project.git.license.name}
-										</Link>
-									) : (
-										<p className="-mt-2 text-base-content/70 italic">
-											{project.git.license.name}
-										</p>
-									)}
-								</>
-							)}
 						</div>
-					) : (
-						<div className="h-0" />
 					)}
+
+					{project.license &&
+						(project.license.url ? (
+							<Link
+								href={project.license.url as string}
+								className="-mt-2 text-base-content/70 italic"
+								rel="noopener noreferrer"
+								target="_blank"
+							>
+								{project.license.name}
+							</Link>
+						) : (
+							<p className="-mt-2 text-base-content/70 italic">
+								{project.license.name}
+							</p>
+						))}
 
 					<p>{project.description}</p>
 				</div>
@@ -75,6 +82,8 @@ export default function Project({ project }: Props) {
 						<Link
 							href={project.url}
 							className="btn btn-soft btn-accent flex items-center"
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<span className="icon-[tabler--link] size-5" />
 							Project Link
@@ -84,6 +93,8 @@ export default function Project({ project }: Props) {
 						<Link
 							href={project.source as string}
 							className="btn btn-soft btn-accent flex items-center"
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<span className="icon-[tabler--link] size-5" />
 							Source Code

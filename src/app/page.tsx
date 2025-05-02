@@ -77,6 +77,7 @@ export default function Main() {
 				url: repo.homepage,
 				git: repo,
 				slug: "repo",
+				license: repo.license,
 			}));
 
 			setTopRepos(projectRepos);

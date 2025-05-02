@@ -1,4 +1,4 @@
-import type { FormattedRepo } from "./github";
+import type { FormattedRepo, RepoLicense } from "./github";
 
 export interface Project {
     name: string;
@@ -7,4 +7,5 @@ export interface Project {
     description?: string | null;
     git?: FormattedRepo;
     slug: string;
+    license?: RepoLicense | null;
 }
