@@ -13,23 +13,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		},
 	];
 
-    for (const social of socials) {
-        sitemap.push({
-            url: `${baseUrl}/socials/${social.id}`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.5,
-        })
-    }
+	for (const social of socials) {
+		sitemap.push({
+			url: `${baseUrl}/socials/${social.id}`,
+			lastModified: new Date(),
+			changeFrequency: "yearly",
+			priority: 0.5,
+		});
+	}
 
-    for (const project of projects) {
-        sitemap.push({
-            url: `${baseUrl}/projects/${project.slug}`,
-            lastModified: new Date(),
-            changeFrequency: "yearly",
-            priority: 0.4,
-        })
-    }
+	for (const project of projects) {
+		sitemap.push({
+			url: `${baseUrl}/projects/${project.slug}`,
+			lastModified: new Date(),
+			changeFrequency: "yearly",
+			priority: 0.4,
+		});
+	}
 
 	return sitemap;
 }
