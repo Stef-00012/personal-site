@@ -9,6 +9,7 @@ import TestError from "@/components/temp__testError";
 // ----- TEMPORARY TO TEST global-error.tsx FILE -----
 
 import "./globals.css";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
 	metadataBase: new URL(baseUrl),
@@ -63,6 +64,8 @@ export default function RootLayout({
 					rel="stylesheet"
 					href="https://unpkg.com/highlightjs@9.16.2/styles/atom-one-dark.css"
 				/>
+
+				<GoogleTagManager gtmId="G-002L9WP8JT" />
 			</head>
 			<body className="antialiased">
 				<Suspense>
