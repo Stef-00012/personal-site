@@ -3,13 +3,13 @@ import { baseUrl } from "@/data/constants";
 import type { Metadata, Viewport } from "next";
 
 import { Suspense } from "react";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 // ----- TEMPORARY TO TEST global-error.tsx FILE -----
 import TestError from "@/components/temp__testError";
 // ----- TEMPORARY TO TEST global-error.tsx FILE -----
 
 import "./globals.css";
-import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
 	metadataBase: new URL(baseUrl),
