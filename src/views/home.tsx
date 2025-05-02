@@ -94,9 +94,9 @@ export default function Home({ loading, status }: Props) {
 		const vscodeMessage =
 			vscodeData?.details && vscodeData.state
 				? `${vscodeData.details} in ${vscodeData.state
-					.replace(/(Workspace: | \(Workspace\))/g, "")
-					.replace("Glitch:", "🎏")
-					.trim()}`
+						.replace(/(Workspace: | \(Workspace\))/g, "")
+						.replace("Glitch:", "🎏")
+						.trim()}`
 				: vscodeDefaultMessage;
 
 		setVscodeStatus(vscodeMessage);
@@ -154,7 +154,9 @@ export default function Home({ loading, status }: Props) {
 					{socials.map((social) => (
 						<div key={social.id} className="tooltip tooltip-accent">
 							<div className="tooltip-content">
-								<div className=" text-lg">{social.name}: {social.username}</div>
+								<div className=" text-lg">
+									{social.name}: {social.username}
+								</div>
 							</div>
 							<Link
 								href={
@@ -162,6 +164,7 @@ export default function Home({ loading, status }: Props) {
 								}
 								target="_blank"
 								rel="noopener noreferrer"
+								aria-label={`My ${social.name} profile`}
 							>
 								<span
 									className={`${social.icon} size-8 transition-transform duration-300 ease-in-out hover:scale-125 ${social.color}`}

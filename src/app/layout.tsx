@@ -30,7 +30,6 @@ export const metadata: Metadata = {
 		type: "website",
 		url: baseUrl,
 		description: "Most if not all of my socials are listed here :)",
-		// images: "/images/pfp.webp",
 	},
 	verification: {
 		me: "https://mastodon.social/@Stef_DP",
@@ -65,11 +64,13 @@ export default function RootLayout({
 					href="https://unpkg.com/highlightjs@9.16.2/styles/atom-one-dark.css"
 				/>
 
-				<script
+				<link rel="preconnect" href="https://api.github.com" />
+
+				{/* <script
 					defer
 					src="https://umami.stefdp.com/data.js"
 					data-website-id="b6b98e07-7281-4a22-b639-926024968a05"
-				/>
+				/> */}
 
 				<GoogleTagManager gtmId="G-002L9WP8JT" />
 			</head>
