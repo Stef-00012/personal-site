@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     for (const project of projects) {
         sitemap.push({
-            url: `${baseUrl}/socials/${project.slug}`,
+            url: `${baseUrl}/projects/${project.slug}`,
             lastModified: new Date(),
             changeFrequency: "yearly",
             priority: 0.4,
