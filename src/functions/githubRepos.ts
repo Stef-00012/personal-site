@@ -16,6 +16,8 @@ import axios, {
 import { promisify } from "util";
 
 const sleep = promisify(setTimeout);
+const githubRepoCount =
+	Number.parseInt(process.env.GITHUB_REPO_COUNT as string) || 10;
 
 function parseLinkHeader(linkHeader: string): FormattedLinkHeader {
 	const links: FormattedLinkHeader = {};
@@ -145,7 +147,9 @@ function calculateScore(repo: FormattedRepo): number {
 	return stars * 2 + forks * 1.5 + watchers * 1 - openIssues * 0.5;
 }
 
-export async function getRankedRepos(count = 10): Promise<Array<ScoredFormattedRepo>> {
+export async function getRankedRepos(
+	count = githubRepoCount,
+): Promise<Array<ScoredFormattedRepo>> {
 	const data = await fetchRepos();
 
 	const repos: Array<FormattedRepo> = data.repos
@@ -169,7 +173,7 @@ export async function getRankedRepos(count = 10): Promise<Array<ScoredFormattedR
 			};
 		});
 
-	const topRepos = rankRepositories(repos).splice(0, count);
+	const topRepos = rankRepositories(repos).slice(0, count);
 
 	for (const repo of topRepos) {
 		if (repo.license?.key) {
