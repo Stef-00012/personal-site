@@ -6,7 +6,6 @@ import useHash from "@/hooks/useHash";
 import axios from "axios";
 
 import { useSearchParams, useRouter } from "next/navigation";
-// import { getRankedRepos } from "@/functions/githubRepos";
 import { onekoVariants } from "@/data/constants";
 
 import Projects from "@/views/projects";
