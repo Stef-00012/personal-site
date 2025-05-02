@@ -86,7 +86,14 @@ async function fetchRepos(
 	let repos: APIRepo[] = [];
 
 	try {
-		const res = await ratelimitFetch(url);
+		const res = await ratelimitFetch(url, {
+			headers: process.env.GITHUB_API_PAT
+				? {
+						Authorization: `Bearer ${process.env.GITHUB_API_PAT}`,
+						"X-GitHub-Api-Version": "2022-11-28",
+					}
+				: undefined,
+		});
 
 		const data = res.data as APIRepo[];
 
@@ -138,7 +145,7 @@ function calculateScore(repo: FormattedRepo): number {
 	return stars * 2 + forks * 1.5 + watchers * 1 - openIssues * 0.5;
 }
 
-export async function getRankedRepos(): Promise<Array<ScoredFormattedRepo>> {
+export async function getRankedRepos(count = 10): Promise<Array<ScoredFormattedRepo>> {
 	const data = await fetchRepos();
 
 	const repos: Array<FormattedRepo> = data.repos
@@ -162,12 +169,20 @@ export async function getRankedRepos(): Promise<Array<ScoredFormattedRepo>> {
 			};
 		});
 
-	const top5Repos = rankRepositories(repos).splice(0, 5);
+	const topRepos = rankRepositories(repos).splice(0, count);
 
-	for (const repo of top5Repos) {
+	for (const repo of topRepos) {
 		if (repo.license?.key) {
 			const res = await ratelimitFetch(
 				`https://api.github.com/licenses/${repo.license.key}`,
+				{
+					headers: process.env.GITHUB_API_PAT
+						? {
+								Authorization: `Bearer ${process.env.GITHUB_API_PAT}`,
+								"X-GitHub-Api-Version": "2022-11-28",
+							}
+						: undefined,
+				},
 			);
 
 			const data = res.data as APILicense;
@@ -176,5 +191,5 @@ export async function getRankedRepos(): Promise<Array<ScoredFormattedRepo>> {
 		}
 	}
 
-	return top5Repos;
+	return topRepos;
 }

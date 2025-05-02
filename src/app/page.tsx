@@ -3,9 +3,10 @@
 import { useLanyard } from "react-use-lanyard";
 import { useEffect, useState } from "react";
 import useHash from "@/hooks/useHash";
+import axios from "axios";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { getRankedRepos } from "@/functions/githubRepos";
+// import { getRankedRepos } from "@/functions/githubRepos";
 import { onekoVariants } from "@/data/constants";
 
 import Projects from "@/views/projects";
@@ -17,6 +18,7 @@ import Select, { type SelectOption } from "@/components/select";
 import Loading from "@/components/loading";
 import Script from "next/script";
 
+import type { ScoredFormattedRepo } from "@/types/github";
 import type { Project } from "@/types/projects";
 
 type Page = "rabbit" | "home" | "projects" | "about";
@@ -66,9 +68,10 @@ export default function Main() {
 
 	useEffect(() => {
 		async function fetchTopRepos() {
-			const repos = await getRankedRepos();
+			const res = await axios.get("/api/topRepos");
+			const data = res.data as Array<ScoredFormattedRepo>;
 
-			const projectRepos: Project[] = repos.map((repo) => ({
+			const projectRepos: Project[] = data.map((repo) => ({
 				name: repo.fullName,
 				source: `https://github.com/${repo.fullName}`,
 				description: repo.description,
