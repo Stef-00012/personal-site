@@ -50,7 +50,7 @@ export const viewport: Viewport = {
 	initialScale: 1,
 };
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export default function RootLayout({
 	children,
@@ -65,13 +65,22 @@ export default function RootLayout({
 					href="https://unpkg.com/highlightjs@9.16.2/styles/atom-one-dark.css"
 				/>
 
+				<script
+					defer
+					src="https://umami.stefdp.com/data.js"
+					data-website-id="b6b98e07-7281-4a22-b639-926024968a05"
+				/>
+
 				<GoogleTagManager gtmId="G-002L9WP8JT" />
 			</head>
 			<body className="antialiased">
 				<Suspense>
-					<TestError> {/* TEMPORARY TO TEST global-error.tsx FILE */}
+					<TestError>
+						{" "}
+						{/* TEMPORARY TO TEST global-error.tsx FILE */}
 						{children}
-					</TestError> {/* TEMPORARY TO TEST global-error.tsx FILE */}
+					</TestError>{" "}
+					{/* TEMPORARY TO TEST global-error.tsx FILE */}
 				</Suspense>
 			</body>
 		</html>
