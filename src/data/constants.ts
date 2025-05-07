@@ -14,14 +14,6 @@ export const discordActivityTypes = {
 	competing: 5,
 };
 
-export const onekoVariants = [
-    "classic",
-    "dog",
-    "maia",
-    "tora",
-    "vaporwave"
-]
-
 export const toplanguagesExcludedRepos = [
 	"github-readme-stats",
 	"github-readme-streak-stats",

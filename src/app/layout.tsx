@@ -76,11 +76,10 @@ export default function RootLayout({
 			</head>
 			<body className="antialiased">
 				<Suspense>
+					{/* TEMPORARY TO TEST global-error.tsx FILE */}
 					<TestError>
-						{" "}
-						{/* TEMPORARY TO TEST global-error.tsx FILE */}
 						{children}
-					</TestError>{" "}
+					</TestError>
 					{/* TEMPORARY TO TEST global-error.tsx FILE */}
 				</Suspense>
 			</body>

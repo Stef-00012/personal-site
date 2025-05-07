@@ -1,7 +1,11 @@
+// oneko.js: https://github.com/adryd325/oneko.js
+// code by: https://github.com/kyrie25
+// https://github.com/kyrie25/portfolio/blob/main/public/oneko.js
+
 (async function oneko() {
 	const nekoEl = document.createElement("div");
-	let nekoPosX;
-	let nekoPosY;
+	let nekoPosX = 32;
+	let nekoPosY = 32;
 	let mousePosX = 0;
 	let mousePosY = 0;
 	let frameCount = 0;
@@ -12,35 +16,18 @@
 	let grabbing = false;
 	let grabStop = true;
 	let nudge = false;
-	let kuroNeko = true;
-	let variant = "maia";
-
-	function parseLocalStorage(key, fallback) {
-		try {
-			const value = JSON.parse(localStorage.getItem(`oneko:${key}`));
-
-			return typeof value === typeof fallback ? value : fallback;
-		} catch (e) {
-			console.error(e);
-			return fallback;
-		}
-	}
-
-	function getRandomPosition() {
-		const x = Math.floor(Math.random() * (window.innerWidth - 32)) + 16;
-		const y = Math.floor(Math.random() * (window.innerHeight - 32)) + 16;
-		return { x, y };
-	}
+	let lastTapTimestamp = 0;
+    let variant = "maia";
 
 	const nekoSpeed = 10;
-	const variants = [
+    const variants = [
         "classic",
         "dog",
         "maia",
         "tora",
         "vaporwave"
     ];
-
+    
 	const spriteSets = {
 		idle: [[-3, -3]],
 		alert: [[-7, -3]],
@@ -104,142 +91,83 @@
 		],
 	};
 
-	function create() {
-		variant = new URLSearchParams(window.location.search).get("neko") || "maia";
-		kuroNeko = parseLocalStorage("kuroneko", false);
-
-		if (!variants.includes(variant)) {
-			variant = "maia";
+	function sleep() {
+		forceSleep = !forceSleep;
+		nudge = false;
+		if (!forceSleep) {
+			resetIdleAnimation();
+			return;
 		}
 
-		const initialPosition = getRandomPosition();
-		nekoPosX = initialPosition.x;
-		nekoPosY = initialPosition.y;
+		const widget = document.querySelector(".time-widget");
+
+		if (widget) {
+			mousePosX = widget.getBoundingClientRect().right - 32;
+			mousePosY = widget.getBoundingClientRect().top - 12;
+			return;
+		}
+	}
+
+	function create() {
+        variant = new URLSearchParams(window.location.search).get("neko") || "maia";
 
 		nekoEl.id = "oneko";
 		nekoEl.style.width = "32px";
 		nekoEl.style.height = "32px";
 		nekoEl.style.position = "fixed";
+		// nekoEl.style.pointerEvents = "none";
+		nekoEl.style.cursor = "grab";
 		nekoEl.style.backgroundImage = `url('/images/oneko/${variant}.gif')`;
 		nekoEl.style.imageRendering = "pixelated";
 		nekoEl.style.left = `${nekoPosX - 16}px`;
 		nekoEl.style.top = `${nekoPosY - 16}px`;
-		nekoEl.style.filter = kuroNeko ? "invert(100%)" : "none";
 		nekoEl.style.zIndex = "99";
 
 		document.body.appendChild(nekoEl);
 
-		window.addEventListener("mousemove", (e) => {
-			if (forceSleep) return;
+        window.addEventListener("onekoVariantChanged", (event) => {
+            const newVariant = event.detail.variant;
 
-			mousePosX = e.clientX;
-			mousePosY = e.clientY;
-		});
+            setVariant(newVariant);
+        })
+
+		window.addEventListener("mousemove", handleMove);
+		window.addEventListener("touchmove", handleMove);
 
 		window.addEventListener("resize", () => {
-			if (!forceSleep) return;
-
-			if (
-				nekoPosX - window.innerWidth > 32 ||
-				nekoPosY - window.innerHeight > 32 ||
-				mousePosX - window.innerWidth > 32 ||
-				mousePosY - window.innerHeight > 32
-			) {
+			if (forceSleep) {
 				forceSleep = false;
-				resetIdleAnimation();
+				sleep();
 			}
 		});
 
+		// Handle dragging of the cat
 		nekoEl.addEventListener("mousedown", (e) => {
+			e.preventDefault();
 			if (e.button !== 0) return;
-
-			grabbing = true;
-			let startX = e.clientX;
-			let startY = e.clientY;
-			let startNekoX = nekoPosX;
-			let startNekoY = nekoPosY;
-			let grabInterval;
-
-			const mousemove = (e) => {
-				const deltaX = e.clientX - startX;
-				const deltaY = e.clientY - startY;
-				const absDeltaX = Math.abs(deltaX);
-				const absDeltaY = Math.abs(deltaY);
-
-				if (absDeltaX > absDeltaY && absDeltaX > 10) {
-					setSprite(deltaX > 0 ? "scratchWallW" : "scratchWallE", frameCount);
-				} else if (absDeltaY > absDeltaX && absDeltaY > 10) {
-					setSprite(deltaY > 0 ? "scratchWallN" : "scratchWallS", frameCount);
-				}
-
-				if (
-					grabStop ||
-					absDeltaX > 10 ||
-					absDeltaY > 10 ||
-					Math.sqrt(deltaX ** 2 + deltaY ** 2) > 10
-				) {
-					grabStop = false;
-					clearTimeout(grabInterval);
-
-					grabInterval = setTimeout(() => {
-						grabStop = true;
-						nudge = false;
-						startX = e.clientX;
-						startY = e.clientY;
-						startNekoX = nekoPosX;
-						startNekoY = nekoPosY;
-					}, 150);
-				}
-
-				nekoPosX = startNekoX + e.clientX - startX;
-				nekoPosY = startNekoY + e.clientY - startY;
-				nekoEl.style.left = `${nekoPosX - 16}px`;
-				nekoEl.style.top = `${nekoPosY - 16}px`;
-			};
-
-			const mouseup = () => {
-				grabbing = false;
-				nudge = true;
-
-				resetIdleAnimation();
-
-				window.removeEventListener("mousemove", mousemove);
-				window.removeEventListener("mouseup", mouseup);
-			};
-
-			window.addEventListener("mousemove", mousemove);
-			window.addEventListener("mouseup", mouseup);
+			handleOnekoClick(e);
 		});
+
+		nekoEl.addEventListener("touchstart", (e) => {
+			e.preventDefault();
+
+			const now = new Date().getTime();
+			const timesince = now - lastTapTimestamp;
+			if (timesince < 600) {
+				sleep();
+			}
+			lastTapTimestamp = new Date().getTime();
+
+			handleOnekoClick(e.touches[0]);
+		});
+
+		nekoEl.addEventListener("dblclick", sleep);
 
 		nekoEl.addEventListener("contextmenu", (e) => {
 			e.preventDefault();
-
-			kuroNeko = !kuroNeko;
-			localStorage.setItem("oneko:kuroneko", kuroNeko);
-			nekoEl.style.filter = kuroNeko ? "invert(100%)" : "none";
 		});
 
-		nekoEl.addEventListener("dblclick", () => {
-			forceSleep = !forceSleep;
-			nudge = false;
-
-			if (!forceSleep) {
-				resetIdleAnimation();
-				return;
-			}
-		});
-
-		window.onekoInterval = setInterval(() => {
-			const newVariant = new URLSearchParams(window.location.search).get("neko") || "maia";;
-
-			if (variant !== newVariant) {
-				setVariant(newVariant)
-
-				variant = newVariant;
-			}
-
-            frame();
-		}, 100);
+		window.onekoInterval = setInterval(frame, 100);
 	}
 
 	function getSprite(name, frame) {
@@ -259,6 +187,7 @@
 	function idle() {
 		idleTime += 1;
 
+		// every ~ 20 seconds
 		if (
 			idleTime > 10 &&
 			Math.floor(Math.random() * 200) === 0 &&
@@ -294,7 +223,7 @@
 		}
 
 		switch (idleAnimation) {
-			case "sleeping": {
+			case "sleeping":
 				if (idleAnimationFrame < 8 && nudge && forceSleep) {
 					setSprite("idle", 0);
 					break;
@@ -309,34 +238,28 @@
 					setSprite("tired", 0);
 					break;
 				}
-				setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
 
+				setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
 				if (idleAnimationFrame > 192 && !forceSleep) {
 					resetIdleAnimation();
 				}
-
 				break;
-			}
+
 			case "scratchWallN":
 			case "scratchWallS":
 			case "scratchWallE":
 			case "scratchWallW":
-			case "scratchSelf": {
+			case "scratchSelf":
 				setSprite(idleAnimation, idleAnimationFrame);
-
 				if (idleAnimationFrame > 9) {
 					resetIdleAnimation();
 				}
-
 				break;
-			}
-			default: {
+
+			default:
 				setSprite("idle", 0);
-
 				return;
-			}
 		}
-
 		idleAnimationFrame += 1;
 	}
 
@@ -345,16 +268,32 @@
 
 		if (grabbing) {
 			grabStop && setSprite("alert", 0);
-			return;
+			
+            return;
 		}
 
 		const diffX = nekoPosX - mousePosX;
 		const diffY = nekoPosY - mousePosY;
 		const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
 
+		// Cat has to sleep on top of the progress bar
+		if (
+			forceSleep &&
+			Math.abs(diffY) < nekoSpeed &&
+			Math.abs(diffX) < nekoSpeed
+		) {
+			// Make the cat sleep exactly on the top of the progress bar
+			nekoPosX = mousePosX;
+			nekoPosY = mousePosY;
+			nekoEl.style.left = `${nekoPosX - 16}px`;
+			nekoEl.style.top = `${nekoPosY - 16}px`;
+
+			idle();
+			return;
+		}
+
 		if ((distance < nekoSpeed || distance < 48) && !forceSleep) {
 			idle();
-
 			return;
 		}
 
@@ -363,11 +302,9 @@
 
 		if (idleTime > 1) {
 			setSprite("alert", 0);
-
 			// count down after being alerted before moving
 			idleTime = Math.min(idleTime, 7);
 			idleTime -= 1;
-
 			return;
 		}
 
@@ -375,8 +312,8 @@
 		direction += diffY / distance < -0.5 ? "S" : "";
 		direction += diffX / distance > 0.5 ? "W" : "";
 		direction += diffX / distance < -0.5 ? "E" : "";
-
-		setSprite(direction, frameCount);
+		
+        setSprite(direction, frameCount);
 
 		nekoPosX -= (diffX / distance) * nekoSpeed;
 		nekoPosY -= (diffY / distance) * nekoSpeed;
@@ -388,9 +325,83 @@
 		nekoEl.style.top = `${nekoPosY - 16}px`;
 	}
 
-	create();
+	function handleMove(e) {
+		if (forceSleep) return;
 
-	function setVariant(newVariant) {
+		mousePosX = e.clientX ?? e.touches[0].clientX;
+		mousePosY = e.clientY ?? e.touches[0].clientY;
+	}
+
+	function handleOnekoClick(e) {
+		grabbing = true;
+		nekoEl.style.cursor = "grabbing";
+
+		let startX = e.clientX ?? e.touches[0].clientX;
+		let startY = e.clientY ?? e.touches[0].clientY;
+		let startNekoX = nekoPosX;
+		let startNekoY = nekoPosY;
+		let grabInterval;
+
+		const mousemove = (e) => {
+			const clientX = e.clientX ?? e.touches[0].clientX;
+			const clientY = e.clientY ?? e.touches[0].clientY;
+			// console.log(clientX, clientY);
+
+			const deltaX = clientX - startX;
+			const deltaY = clientY - startY;
+			const absDeltaX = Math.abs(deltaX);
+			const absDeltaY = Math.abs(deltaY);
+
+			// Scratch in the opposite direction of the drag
+			if (absDeltaX > absDeltaY && absDeltaX > 10) {
+				setSprite(deltaX > 0 ? "scratchWallW" : "scratchWallE", frameCount);
+			} else if (absDeltaY > absDeltaX && absDeltaY > 10) {
+				setSprite(deltaY > 0 ? "scratchWallN" : "scratchWallS", frameCount);
+			}
+
+			if (
+				grabStop ||
+				absDeltaX > 10 ||
+				absDeltaY > 10 ||
+				Math.sqrt(deltaX ** 2 + deltaY ** 2) > 10
+			) {
+				grabStop = false;
+				clearTimeout(grabInterval);
+				grabInterval = setTimeout(() => {
+					grabStop = true;
+					nudge = false;
+					startX = clientX;
+					startY = clientY;
+					startNekoX = nekoPosX;
+					startNekoY = nekoPosY;
+				}, 150);
+			}
+
+			nekoPosX = startNekoX + clientX - startX;
+			nekoPosY = startNekoY + clientY - startY;
+			nekoEl.style.left = `${nekoPosX - 16}px`;
+			nekoEl.style.top = `${nekoPosY - 16}px`;
+		};
+
+		const mouseup = () => {
+			grabbing = false;
+			nudge = true;
+			nekoEl.style.cursor = "grab";
+
+			resetIdleAnimation();
+			window.removeEventListener("mousemove", mousemove);
+			window.removeEventListener("mouseup", mouseup);
+			window.removeEventListener("touchmove", mousemove);
+			window.removeEventListener("touchend", mouseup);
+		};
+
+		window.addEventListener("mousemove", mousemove);
+		window.addEventListener("mouseup", mouseup);
+		window.addEventListener("touchmove", mousemove);
+		window.addEventListener("touchend", mouseup);
+	}
+
+    function setVariant(newVariant) {
 		let variantToSet = newVariant
 		
 		if (!variants.includes(variantToSet)) {
@@ -399,7 +410,8 @@
 
 		console.log(`Sucessfully loaded Oneko Variant: "${variantToSet}"`);
 
-		// localStorage.setItem("oneko:variant", `"${variantToSet}"`);
 		nekoEl.style.backgroundImage = `url('/images/oneko/${variantToSet}.gif')`;
 	}
+
+	create();
 })();

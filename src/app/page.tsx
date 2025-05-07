@@ -6,7 +6,7 @@ import useHash from "@/hooks/useHash";
 import axios from "axios";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { onekoVariants } from "@/data/constants";
+import { onekoVariants } from "@/data/oneko";
 
 import Projects from "@/views/projects";
 import Rabbit from "@/views/rabbit";
@@ -30,13 +30,14 @@ export default function Main() {
 
 	let currentVariant = searchParams.get("neko") || "maia";
 
-	if (!onekoVariants.includes(currentVariant)) currentVariant = "maia";
+	if (!onekoVariants.map(oneko => oneko.name).includes(currentVariant)) currentVariant = "maia";
 
 	const onekoOptions: SelectOption[] = onekoVariants.map((variant) => ({
-		value: variant,
-		label: variant.charAt(0).toUpperCase() + variant.slice(1),
-		icon: `/images/oneko/heads/${variant}.png`,
-		default: variant === (currentVariant || "maia"),
+		value: variant.name,
+		label: variant.name.charAt(0).toUpperCase() + variant.name.slice(1),
+		icon: `/images/oneko/heads/${variant.name}.png`,
+		default: variant.name === (currentVariant || "maia"),
+		tooltip: variant.credits,
 		lazy: true,
 	}));
 
@@ -131,6 +132,12 @@ export default function Main() {
 				placeholder="Cat Variant"
 				onChange={(selectedOption) => {
 					router.replace(`?neko=${selectedOption.value}#${hash || "home"}`);
+
+					const event = new CustomEvent('onekoVariantChanged', {
+						detail: { variant: selectedOption.value }
+					});
+
+					window.dispatchEvent(event);
 				}}
 			/>
 

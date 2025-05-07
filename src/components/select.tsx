@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { type ReactNode, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Image from "next/image";
@@ -11,6 +11,7 @@ export interface SelectOption {
 	label: string;
 	value: string;
 	icon?: string;
+	tooltip?: ReactNode;
 }
 
 interface Data {

@@ -94,34 +94,9 @@ const myApps: Array<MyApp> = [
         source: "[[aStart_userAppsSource]]https://github.com/Stef-00012/Discord-User-Installed-Apps[[aEnd]]"
     },
     {
-        name: "GattinhosBot",
-        serverCount: 23, // Last updated March 4 2024, 21:39 (9:39 PM)
-        inviteURL: "[[aStart_inviteUrl]]https://gattinhosbot.is-a.dev/invite[[aEnd]]",
-        supportServer: "[[aStart_supportUrl]]https://gattinhosbot.is-a.dev/support[[aEnd]]",
-        topGgPage: "[[aStart_topGgUrl]]https://top.gg/bot/1122853658418237520[[aEnd]]",
-        website: "[[aStart_websiteUrl]]https://gattinhosbot.is-a.dev[[aEnd]]",
-        features: [
-            "Welcome System",
-            "Reaction Roles System",
-            "Leveling System",
-            "Logs System"
-        ]
-    },
-    {
         name: "Receiptify",
         description: "Converts your top tracks to a receipt (supports last.fm and spotify)",
         url: "[[aStart_receiptify]]https://receiptify.stefdp.com[[aEnd]]"
-    },
-    {
-        name: "API",
-        url: "[[aStart_api]]https://api.stefdp.com[[aEnd]]",
-        docs: "[[aStart_apiDocs]]https://docs.stefdp.com[[aEnd]]",
-        endpoints: [ // see docs for more info on each endpoint
-            "/gattinhosBot/guilds/:GUILD_ID/features/:FEATURE?/:ID?",
-            "/gattinhosBot/guilds/:GUILD_ID/users/:FEATURE?/:ID?",
-            "/receiptData/last.fm",
-            "/receiptData/spotify"
-        ]
     }
 ];
 
