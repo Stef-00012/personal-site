@@ -43,3 +43,8 @@ next-env.d.ts
 
 # vscode
 .vscode
+
+# hosting
+/__start.sh
+/.npm
+/.bun
