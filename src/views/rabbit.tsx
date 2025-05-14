@@ -13,7 +13,7 @@ export default function Rabbit() {
 	const progressiveImages = useProgressiveImages(imageData);
 
 	return (
-		<div className="p-10">
+		<div className="p-10 max-w-7xl mx-auto">
 			<h1 className="my-4 mt-10 font-bold sm:mx-4 flex justify-between text-4xl items-center mb-10">
 				<span>My Rabbit, Pallino</span>
 				<a href="#home" className="btn btn-soft btn-accent">
