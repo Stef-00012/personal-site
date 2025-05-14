@@ -109,20 +109,8 @@ export default function Main() {
 		setHideLoading(true);
 	}
 
-	// ----- TEMPORARY TO TEST error.tsx FILE -----
-
-	const [error, setError] = useState(false);
-
-	if (error) throw Error("Simulated Common Error");
-
-	// ----- TEMPORARY TO TEST error.tsx FILE -----
-
 	return (
 		<>
-			{/* ------------------------------------------ TEMPORARY TO TEST error.tsx FILE ------------------------------------------ */}
-			<button className="btn btn-error text-black" type="button" onClick={() => setError(true)}>Throw a Common Error (error.tsx)</button>
-			{/* ------------------------------------------ TEMPORARY TO TEST error.tsx FILE ------------------------------------------ */}
-
 			{page === "home" && <div className="bgeffect" />}
 
 			<Select

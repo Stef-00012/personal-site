@@ -5,10 +5,6 @@ import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { GoogleTagManager } from "@next/third-parties/google";
 
-// ----- TEMPORARY TO TEST global-error.tsx FILE -----
-import TestError from "@/components/temp__testError";
-// ----- TEMPORARY TO TEST global-error.tsx FILE -----
-
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -75,13 +71,7 @@ export default function RootLayout({
 				<GoogleTagManager gtmId="G-002L9WP8JT" />
 			</head>
 			<body className="antialiased">
-				<Suspense>
-					{/* TEMPORARY TO TEST global-error.tsx FILE */}
-					<TestError>
-						{children}
-					</TestError>
-					{/* TEMPORARY TO TEST global-error.tsx FILE */}
-				</Suspense>
+
 			</body>
 		</html>
 	);
