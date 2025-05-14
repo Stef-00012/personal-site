@@ -23,14 +23,14 @@ export default function Rabbit() {
 			<div className="sm:mx-4 flex justify-center items-center ">
 				<div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
 					{progressiveImages.map(({ src, blur }, i) => (
-						<img
-							// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-							key={i}
-							// biome-ignore lint/a11y/noRedundantAlt: <explanation>
-							alt={`Pallino picture number ${i + 1}`}
-							src={src}
-							className={`mb-4 w-full break-inside-avoid rounded-2xl shadow-lg transition-[filter] ease-out duration-300 ${blur ? "blur-md" : ""}`}
-						/>
+						<div key={i} className="mb-4 w-full break-inside-avoid rounded-2xl overflow-hidden shadow-lg aspect-[4/3]">
+							{/* biome-ignore lint/a11y/noRedundantAlt: <explanation> */}
+							<img
+								alt={`Pallino picture number ${i + 1}`}
+								src={src}
+								className={`h-full w-full object-cover transition-[filter] ease-out duration-300 ${blur ? "blur-md" : ""}`}
+							/>
+						</div>
 					))}
 				</div>
 			</div>

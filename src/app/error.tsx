@@ -14,13 +14,19 @@ export default function NextError({
 	}, [error]);
 
 	return (
-		<div>
-			<h2>Something went wrong! (error.tsx)</h2>
-			<h2>This occurs when an error is thrown in any page, that&apos;s the main error boundary (aka handles any error thrown by components in the page.tsx of any other file)</h2>
-			<h2>{error.name}: {error.message}</h2>
-			<button type="button" className="btn btn-success" onClick={() => reset()}>
-				Try again
-			</button>
+		<div className="min-h-screen flex items-center justify-center p-6">
+			<div className="max-w-xl text-center bg-base-100 p-8 rounded-2xl shadow-xl">
+				<h1 className="text-4xl font-bold text-error mb-4">Something went wrong!</h1>
+				<p className="mb-2 text-lg text-base-content/80">
+					This error was caught by the global error boundary (like an error in a page or layout).
+				</p> <br /> <br />
+				<p className="my-4 font-mono rounded-2xl text-error bg-base-200 p-2">
+					{error.name}: {error.message}
+				</p> <br />
+				<button className="btn btn-success mt-4" onClick={() => reset()}>
+					Try again
+				</button>
+			</div>
 		</div>
 	);
 }
