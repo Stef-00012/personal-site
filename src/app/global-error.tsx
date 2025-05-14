@@ -14,7 +14,7 @@ export default function NextError({
 	}, [error]);
 
 	return (
-		<div className="min-h-screen flex items-center justify-center bg-base-300 p-6">
+		<div className="min-h-screen flex items-center justify-center bg-base-300 p-6" data-theme="catppuccin-macchiato">
 			<div className="max-w-xl text-center bg-base-100 p-8 rounded-2xl shadow-2xl">
 				<h1 className="text-4xl font-bold text-error mb-4">Something went wrong!</h1>
 				<p className="my-4 font-mono rounded-2xl text-error bg-base-200 p-2">
