@@ -17,9 +17,6 @@ export default function NextError({
 		<div className="min-h-screen flex items-center justify-center p-6">
 			<div className="max-w-xl text-center bg-base-100 p-8 rounded-2xl shadow-xl">
 				<h1 className="text-4xl font-bold text-error mb-4">Something went wrong!</h1>
-				<p className="mb-2 text-lg text-base-content/80">
-					This error was caught by the global error boundary (like an error in a page or layout).
-				</p> <br /> <br />
 				<p className="my-4 font-mono rounded-2xl text-error bg-base-200 p-2">
 					{error.name}: {error.message}
 				</p> <br />
