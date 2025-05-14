@@ -62,16 +62,18 @@ export default function RootLayout({
 
 				<link rel="preconnect" href="https://api.github.com" />
 
-				{/* <script
+				<script
 					defer
 					src="https://umami.stefdp.com/data.js"
 					data-website-id="b6b98e07-7281-4a22-b639-926024968a05"
-				/> */}
+				/>
 
 				<GoogleTagManager gtmId="G-002L9WP8JT" />
 			</head>
 			<body className="antialiased">
-
+				<Suspense>
+					{children}
+				</Suspense>
 			</body>
 		</html>
 	);
