@@ -2,7 +2,7 @@ name: Restart Site Server [V2 Preview]
 
 on:
     push:
-        branches: [main]
+        branches: [v2]
         paths: 
             - "src/**"
             - "public/**"
