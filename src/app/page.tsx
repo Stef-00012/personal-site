@@ -139,20 +139,13 @@ export default function Main() {
 				hide={hideLoading}
 			/>
 
-			{page === "home" && <Home loading={loading} status={status} />}
+			{page === "home" && <Home onekoVariantCredits={onekoVariantCredits} loading={loading} status={status} />}
 
 			{page === "projects" && <Projects topRepos={topRepos} />}
 
 			{page === "about" && <About />}
 
 			{page === "rabbit" && <Rabbit />}
-
-			{onekoVariantCredits && (
-				<div className="fixed  bottom-5 right-5 text-end text-xs text-base-content/50 p-2">
-					<p>Current oneko animation by </p>
-					{onekoVariantCredits}
-				</div>
-			)}
 
 			<Script src="/js/oneko.js" />
 		</>

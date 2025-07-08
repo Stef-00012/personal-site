@@ -1,8 +1,8 @@
 "use client";
 
+import { type ReactNode, useEffect, useState } from "react";
 import { discordActivityTypes } from "@/data/constants";
 import type { LanyardData } from "react-use-lanyard";
-import { useEffect, useState } from "react";
 import { socials } from "@/data/socials";
 
 import { Tooltip } from 'react-tooltip'
@@ -18,9 +18,10 @@ const formatter = new Intl.ListFormat();
 interface Props {
 	loading: boolean;
 	status: LanyardData | undefined;
+	onekoVariantCredits: ReactNode;
 }
 
-export default function Home({ loading, status }: Props) {
+export default function Home({ loading, status, onekoVariantCredits }: Props) {
 	const [customStatus, setCustomStatus] = useState<string | null>("");
 
 	const [avatar, setAvatar] = useState<string | null>(null);
@@ -267,6 +268,13 @@ export default function Home({ loading, status }: Props) {
 					</p>
 				</div>
 			</div>
+
+			{onekoVariantCredits && (
+				<div className="fixed  bottom-5 right-5 text-end text-xs text-base-content/50 p-2">
+					<p>Current oneko animation by </p>
+					{onekoVariantCredits}
+				</div>
+			)}
 		</div>
 	);
 }
