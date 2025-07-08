@@ -1,8 +1,8 @@
-name: Restart Site Server [V2 Preview]
+name: Restart Site Server
 
 on:
     push:
-        branches: [v2]
+        branches: [main]
         paths: 
             - "src/**"
             - "public/**"
@@ -27,4 +27,4 @@ jobs:
               with:
                 PTERO_PANEL_URL: ${{ secrets.PTERO_PANEL_URL }}
                 PTERO_PANEL_TOKEN: ${{ secrets.PTERO_PANEL_TOKEN }}
-                PTERO_PANEL_SERVER_ID: ${{ secrets.PTERO_PANEL_SERVER_ID__TMP_V2 }}
+                PTERO_PANEL_SERVER_ID: ${{ secrets.PTERO_PANEL_SERVER_ID }}
