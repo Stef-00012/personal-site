@@ -13,10 +13,12 @@ export default function Projects({ topRepos }: Props) {
 		<div className="p-10">
 			<h1 className="my-4 mt-10 font-bold sm:mx-4 flex justify-between text-4xl items-center mb-10">
 				<span>Projects</span>
+
 				<a href="#home" className="btn btn-soft btn-accent">
 					<span className="icon-[tabler--arrow-back] size-5" /> Back
 				</a>
 			</h1>
+
 			{topRepos.length > 0 ? (
 				<div className="sm:mx-4 flex justify-center items-center ">
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
@@ -36,6 +38,7 @@ export default function Projects({ topRepos }: Props) {
 				{" "}
 				&#47;&#47; Other Projects
 			</h1>
+
 			<div className="sm:mx-4 flex justify-center items-center ">
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 items-start">
 					{projects.map((project) => (

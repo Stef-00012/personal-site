@@ -20,7 +20,7 @@ export default function Loading({ showSkipButton, hideLoading, hide }: Props) {
 		hideLoading();
 	}
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	// biome-ignore lint/correctness/useExhaustiveDependencies: functions shouldn't go in the dependencies
 	useEffect(() => {
 		if (showSkipButton) document.addEventListener("keydown", handleKeyPress);
 
@@ -48,7 +48,7 @@ export default function Loading({ showSkipButton, hideLoading, hide }: Props) {
 					<button
 						type="button"
 						onClick={handleHideLoading}
-						className="text-[large] absolute bottom-[50px] left-[50%] translate-x-[-50%] bg-transparent text-success border-none cursor-pointer font-mono"
+						className="text-[large] absolute bottom-[10%] left-[50%] translate-x-[-50%] bg-transparent text-success border-none cursor-pointer font-mono"
 					>
 						Skip Loading
 					</button>

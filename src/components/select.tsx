@@ -1,6 +1,7 @@
+/** biome-ignore-all lint/a11y/noStaticElementInteractions: for some reasons the enter handler doesn't work with buttons */
 "use client";
 
-import React, { type ReactNode, useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import Image from "next/image";
@@ -78,7 +79,7 @@ export default function Select({
 			<div className="relative w-full px-2 mt-4 ml-4 -mb-20">
 				<div
 					ref={inputRef}
-					// biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
+					// biome-ignore lint/a11y/noNoninteractiveTabindex: allow keyboard tab to focus it
 					tabIndex={0}
 					onClick={handleInputClick}
 					onKeyDown={(e) => {
@@ -109,7 +110,7 @@ export default function Select({
 						{options.map((option) => (
 							<li
 								key={option.value}
-								// biome-ignore lint/a11y/noNoninteractiveTabindex: <explanation>
+								// biome-ignore lint/a11y/noNoninteractiveTabindex: allow keyboard tab to focus it
 								tabIndex={0}
 								onClick={() => onItemClick(option)}
 								onKeyDown={(e) => {

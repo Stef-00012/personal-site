@@ -5,6 +5,7 @@ import type { LanyardData } from "react-use-lanyard";
 import { useEffect, useState } from "react";
 import { socials } from "@/data/socials";
 
+import { Tooltip } from 'react-tooltip'
 import Image from "next/image";
 import Link from "next/link";
 
@@ -87,16 +88,19 @@ export default function Home({ loading, status }: Props) {
 
 		setCustomStatus(customStatusData?.state || null);
 
-		const vscodeData = discordActivites?.find(
-			(activity) => activity.name === "Visual Studio Code",
+		const vscodeData = discordActivites?.find((activity) =>
+			["Visual Studio Code", "Code"].includes(activity.name),
 		);
 
+		const workspaceRegex = /In (?<workspace>.*) - \d+ problems found/gi;
+		const fileRegex = /Working on (?<file>.*):\d+:\d+/gi;
+
+		const workspace = workspaceRegex.exec(vscodeData?.details || "")?.groups?.workspace
+		const file = fileRegex.exec(vscodeData?.state || "")?.groups?.file
+
 		const vscodeMessage =
-			vscodeData?.details && vscodeData.state
-				? `${vscodeData.details} in ${vscodeData.state
-						.replace(/(Workspace: | \(Workspace\))/g, "")
-						.replace("Glitch:", "🎏")
-						.trim()}`
+			vscodeData && workspace && file
+				? `Editing ${file} in ${workspace}`
 				: vscodeDefaultMessage;
 
 		setVscodeStatus(vscodeMessage);
@@ -105,7 +109,7 @@ export default function Home({ loading, status }: Props) {
 			discordActivites?.filter(
 				(activity) =>
 					activity.type === discordActivityTypes.playing &&
-					!["Visual Studio Code", "IntelliJ IDEA Ultimate"].includes(
+					!["Visual Studio Code", "Code", "IntelliJ IDEA Ultimate"].includes(
 						activity.name,
 					),
 			) ?? [];
@@ -132,6 +136,7 @@ export default function Home({ loading, status }: Props) {
 							height={96}
 						/>
 					)}
+
 					{avatarDecoration && (
 						<Image
 							priority
@@ -152,16 +157,21 @@ export default function Home({ loading, status }: Props) {
 
 				<div className="flex flex-wrap my-4 gap-2 justify-center">
 					{socials.map((social) => (
-						<div key={social.id} className="tooltip tooltip-accent">
-							<div className="tooltip-content">
+						<div key={social.id}>
+							{/* <div className="tooltip-content">
 								<div className=" text-lg">
 									{social.name}: {social.username}
 								</div>
-							</div>
+							</div> */}
+							<Tooltip id={social.type === "mail" ? social.url : social.id} offset={28} className={`${social.tooltipColor} rounded-4xl! font-bold`} classNameArrow={social.tooltipColor}>
+								{social.name}: {social.username}
+							</Tooltip>
+
 							<Link
 								href={
 									social.type === "mail" ? social.url : `/socials/${social.id}`
 								}
+								data-tooltip-id={social.type === "mail" ? social.url : social.id}
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label={`My ${social.name} profile`}
@@ -184,6 +194,7 @@ export default function Home({ loading, status }: Props) {
 					>
 						&#47;about
 					</Link>
+
 					<Link
 						className="btn btn-soft btn-accent"
 						href="#projects"
@@ -193,6 +204,7 @@ export default function Home({ loading, status }: Props) {
 					>
 						&#47;projects
 					</Link>
+
 					<Link
 						className="btn btn-soft btn-accent"
 						href="#rabbit"

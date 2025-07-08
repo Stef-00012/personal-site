@@ -1,7 +1,7 @@
 "use client";
 
+import { type ReactNode, useEffect, useState } from "react";
 import { useLanyard } from "react-use-lanyard";
-import { useEffect, useState } from "react";
 import useHash from "@/hooks/useHash";
 import axios from "axios";
 
@@ -29,6 +29,7 @@ export default function Main() {
 	const searchParams = useSearchParams();
 
 	let currentVariant = searchParams.get("neko") || "maia";
+	const [onekoVariantCredits, setOnekoVariantCredits] = useState<ReactNode>(onekoVariants.find(variant => variant.name === currentVariant)?.credits);
 
 	if (!onekoVariants.map(oneko => oneko.name).includes(currentVariant)) currentVariant = "maia";
 
@@ -125,6 +126,9 @@ export default function Main() {
 						detail: { variant: selectedOption.value }
 					});
 
+					const variant = onekoVariants.find(variant => variant.name === selectedOption.value);
+					if (variant) setOnekoVariantCredits(variant.credits);
+
 					window.dispatchEvent(event);
 				}}
 			/>
@@ -142,6 +146,13 @@ export default function Main() {
 			{page === "about" && <About />}
 
 			{page === "rabbit" && <Rabbit />}
+
+			{onekoVariantCredits && (
+				<div className="fixed  bottom-5 right-5 text-end text-xs text-base-content/50 p-2">
+					<p>Current oneko animation by </p>
+					{onekoVariantCredits}
+				</div>
+			)}
 
 			<Script src="/js/oneko.js" />
 		</>
