@@ -159,11 +159,6 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 				<div className="flex flex-wrap my-4 gap-2 justify-center">
 					{socials.map((social) => (
 						<div key={social.id}>
-							{/* <div className="tooltip-content">
-								<div className=" text-lg">
-									{social.name}: {social.username}
-								</div>
-							</div> */}
 							<Tooltip id={social.type === "mail" ? social.url : social.id} offset={28} className={`${social.tooltipColor} rounded-4xl! font-bold`} classNameArrow={social.tooltipColor}>
 								{social.name}: {social.username}
 							</Tooltip>
@@ -218,15 +213,6 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 				</div>
 
 				<div className="mt-10 flex flex-col gap-2">
-					{/* 
-                        Variables:
-                        discord status: customStatus
-                        vscode: vscodeStatus
-                        spotify: spotifyStatus
-                        playing: playingStatus
-
-                        Spotify Track URL: `https://open.spotify.com/track/${spotifyTrackId}`
-                    */}
 					{customStatus && (
 						<p className="flex items-center gap-2">
 							<span className="icon-[tabler--bubble-text-filled] size-5 -mb-1" />{" "}
@@ -267,6 +253,21 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 						{playingStatus}
 					</p>
 				</div>
+			</div>
+
+			<div className="fixed bottom-5 left-1/2 -translate-x-1/2">
+				<Link href="https://nixwebr.ing/prev/stef" className="mx-1">
+					<span className="icon-[tabler--arrow-narrow-left] size-5" />
+				</Link>
+				<Link href="https://nixwebr.ing" className="mx-1 hover:underline">
+					<span className="align-text-bottom">nixwebring</span>
+				</Link>
+				<Link href="https://nixwebr.ing/rand" className="mx-1">
+					<span className="icon-[ion--dice] size-5" />
+				</Link>
+				<Link href="https://nixwebr.ing/next/stef" className="mx-1">
+					<span className="icon-[tabler--arrow-narrow-right] size-5" />
+				</Link>
 			</div>
 
 			{onekoVariantCredits && (
