@@ -16,7 +16,11 @@ export default function Rabbit() {
 	return (
 		<div className="p-10 max-w-7xl mx-auto">
 			<h1 className="my-4 mt-10 font-bold sm:mx-4 flex justify-between text-4xl items-center mb-10">
-				<span>My Rabbit, Pallino</span>
+				<span>
+					My Rabbit, Pallino
+					<br />
+					<span className="text-lg font-normal">R.I.P. Pallino, August 1, 2013 &mdash; July 14, 2025 :(</span>
+				</span>
 
 				<a href="#home" className="btn btn-soft btn-accent">
 					<span className="icon-[tabler--arrow-back] size-5" /> Back
