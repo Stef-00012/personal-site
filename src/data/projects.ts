@@ -23,7 +23,7 @@ export const projects: Array<Project> = [
 	},
 	{
 		name: "Zipline Android App",
-		url: "https://github.com/stef-00012/zipline-android-app/releases/latest",
+		url: "https://play.google.com/store/apps/details?id=com.stefdp.zipline",
 		description:
 			"An Android app to manage your self-hosted zipline V4 instance.",
 		source: "https://github.com/Stef-00012/Zipline-Android-App",
