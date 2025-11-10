@@ -10,10 +10,10 @@
 	"aStart_api": "<a class=\"code-block-url\" href=\"https://api.stefdp.com\">",
 	"aStart_apiDocs": "<a class=\"code-block-url\" href=\"https://docs.stefdp.com\">",
 	"aStart_zipline": "<a class=\"code-block-url\" href=\"https://zipline.diced.sh\">",
-	"aStart_ziplineUpload": "<a class=\"code-block-url\" href=\"https://github.com/Stef-00012/Zipline-Upload-Extension\">",
-	"aStart_ziplineApp": "<a class=\"code-block-url\" href=\"https://github.com/stef-00012/zipline-android-app\">",
+	"aStart_ziplineUpload": "<a class=\"code-block-url\" href=\"https://git.stefdp.com/Stef/Zipline-Upload-Extension\">",
+	"aStart_ziplineApp": "<a class=\"code-block-url\" href=\"https://git.stefdp.com/Stef/zipline-android-app\">",
 	"aStart_userApps": "<a class=\"code-block-url\" href=\"https://discord.com/oauth2/authorize?client_id=1223221223685886032\">",
-	"aStart_userAppsSource": "<a class=\"code-block-url\" href=\"https://github.com/Stef-00012/Discord-User-Installed-Apps\">",
+	"aStart_userAppsSource": "<a class=\"code-block-url\" href=\"https://git.stefdp.com/Stef/Discord-User-Installed-Apps\">",
 	"aEnd": "</a>",
 
 	"currentYear": "__execjs:new Date().getFullYear()",

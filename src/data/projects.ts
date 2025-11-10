@@ -6,7 +6,7 @@ export const projects: Array<Project> = [
 		url: "https://receiptify.stefdp.com",
 		description:
 			"Receiptify is a website that allows you to convert your top tracks (on last.fm or Spotify). It fetches your top tracks and renders them in a way to look like a receipt.",
-		source: "https://github.com/stef-00012/receiptify",
+		source: "https://git.stefdp.com/Stef/receiptify",
 		slug: "receiptify",
 	},
 	{
@@ -14,7 +14,7 @@ export const projects: Array<Project> = [
 		url: "https://chromewebstore.google.com/detail/zipline-upload/nckdinonilcnlmjipgggnejkpdldjmjn",
 		description:
 			"Zipline Uploads allow you to upload your right clicked files or shorten your right clicked URLs to your selfhosted instance of Zipline without having to download the file to your PC and upload it manually.",
-		source: "https://github.com/Stef-00012/Zipline-Upload-Extension",
+		source: "https://git.stefdp.com/Stef/Zipline-Upload-Extension",
 		slug: "zipline-webstore-extension",
 		license: {
 			name: "GNU General Public License v3.0",
@@ -26,7 +26,7 @@ export const projects: Array<Project> = [
 		url: "https://play.google.com/store/apps/details?id=com.stefdp.zipline",
 		description:
 			"An Android app to manage your self-hosted zipline V4 instance.",
-		source: "https://github.com/Stef-00012/Zipline-Android-App",
+		source: "https://git.stefdp.com/Stef/Zipline-Android-App",
 		slug: "zipline-android-app",
 		license: {
 			name: "GNU General Public License v3.0",
@@ -38,7 +38,7 @@ export const projects: Array<Project> = [
 		url: "https://discord.com/oauth2/authorize?client_id=1223221223685886032",
 		description:
 			"userApps is a multi-purpose Discord bot iinstalled on your user account so that it can be used everywhere.",
-		source: "https://github.com/Stef-00012/userApps",
+		source: "https://git.stefdp.com/Stef/userApps",
 		slug: "userapps",
 		license: {
 			name: "MIT License",
