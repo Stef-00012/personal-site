@@ -65,7 +65,7 @@ export default function RootLayout({
 				<script
 					defer
 					src="https://umami.stefdp.com/data.js"
-					data-website-id="b6b98e07-7281-4a22-b639-926024968a05"
+					data-website-id="e767eaa2-4527-47bd-ba10-72206edb53b7"
 				/>
 
 				<GoogleTagManager gtmId="G-002L9WP8JT" />
