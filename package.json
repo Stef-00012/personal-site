@@ -13,9 +13,9 @@
     "axios": "^1.8.4",
     "daisyui": "^5.0.23",
     "highlight.js": "^11.11.1",
-    "next": "^15.3.6",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "15.3.6",
+    "react": "19.0.1",
+    "react-dom": "19.0.1",
     "react-tooltip": "^5.29.1",
     "react-use-lanyard": "^0.3.2",
     "typeit-react": "^2.7.8"
