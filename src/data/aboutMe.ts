@@ -62,15 +62,19 @@ const knownProgramming: Array<KnownProgrammingLanguage> = [
     },
     {
         name: "HTML", // for the previous comment, also for "document.getElementById('life').remove()"
-        level: 35 // 0-100
+        level: 60 // 0-100
     },
     {
         name: "CSS", // also for "#life { display: none; }"
-        level: 45 // 0-100
+        level: 60 // 0-100
     },
     {
         name: "Bash/Shell", // for "sudo rm -rf --no-preserve-root /life.sh" too
         level: 45 // 0-100
+    },
+    {
+        name: "Kotlin",
+        level: 50
     }
 ];
 
