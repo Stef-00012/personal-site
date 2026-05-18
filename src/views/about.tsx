@@ -95,6 +95,7 @@ export default function About() {
 				  <div className="text-base-content p-4 max-h-[250px] 2xl:max-h-[300px] overflow-auto rounded-md">
 				    <span dangerouslySetInnerHTML={{ __html: aboutMeTextPlain }} />
 				  </div>
+				  <ul className="list-disc hidden"></ul>
 				)}
 
 				<h2 className="my-6 ml-2 text-2xl">My GitHub Stats:</h2>

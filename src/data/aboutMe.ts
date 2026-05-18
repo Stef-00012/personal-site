@@ -159,8 +159,8 @@ export default {
 };
 `;
 
-export const aboutMeTextPlain = `<h2>Personal Info</h2>
-<ul>
+export const aboutMeTextPlain = `<h1><b>Personal Info</b></h1>
+<ul class="list-disc">
   <li>
     <b>First Name</b>: Stefano
   </li>
@@ -181,7 +181,7 @@ export const aboutMeTextPlain = `<h2>Personal Info</h2>
   </li>
   <li>
     <b>Pets</b>: 
-    <ul>
+    <ul class="list-disc">
       <li>
         <b>Pallino</b> (11 years old rabbit)
       </li>
@@ -189,8 +189,8 @@ export const aboutMeTextPlain = `<h2>Personal Info</h2>
   </li>
 </ul>
 
-<h2>Known Languages</h2>
-<ul>
+<h1><b>Known Languages</b></h1>
+<ul class="list-disc">
   <li>
     <b>Italian</b>: 100% (kinda obv since it's my native lang)
   </li>
@@ -202,8 +202,8 @@ export const aboutMeTextPlain = `<h2>Personal Info</h2>
   </li>
 </ul>
 
-<h2>Known Programming Languages</h2>
-<ul>
+<h1><b>Known Programming Languages</b></h1>
+<ul class="list-disc">
   <li>
     <b>Javasvript</b>: 90%
   </li>
@@ -224,8 +224,8 @@ export const aboutMeTextPlain = `<h2>Personal Info</h2>
   </li>
 </ul>
 
-<h2>My Apps</h2>
-<ul>
+<h1><b>My Apps</b></h1>
+<ul class="list-disc">
   <li>
     <b><a href="https://git.stefdp.com/Stef/Zipline-Upload-Extension">Zipline</a></b>: A chrome extension that lets users upload right clicked files to their <a href="https://github.com/diced/zipline">Zipline</a> instance or shorten URLs with <a href="https://github.com/diced/zipline">Zipline</a>
   </li>
