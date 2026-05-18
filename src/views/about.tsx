@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/performance/noImgElement: img is required for this to work */
 import { toplanguagesExcludedRepos } from "@/data/constants";
 import { getCodeBlock } from "@/functions/aboutMeCodeblock";
+import { aboutMeTextPlain } from "@/data/aboutMe"
 import type TypeItInstance from "typeit";
 import { useState } from "react";
 
@@ -16,6 +17,8 @@ export default function About() {
 		null,
 	);
 	const [skippedAnimation, setSkippedAnimation] = useState(false);
+	
+	const [codeMode, setCodeMode] = useState(true);
 
 	return (
 		<div className="flex justify-center items-center min-h-screen px-4">
@@ -24,6 +27,16 @@ export default function About() {
 					<span>About</span>
 
 					<div>
+					  <button
+							type="button"
+							className="btn btn-soft btn-accent mr-3"
+							onClick={() => {
+								setCodeMode((prev) => !prev)
+							}}
+						>
+							Switch to {codeMode ? "text" : "code"} view
+						</button>
+					  
 						<button
 							type="button"
 							className="btn btn-soft btn-accent mr-3"
@@ -49,33 +62,40 @@ export default function About() {
 						</a>
 					</div>
 				</h1>
-				<div className="text-base-content mockup-code bg-base-200 p-4 max-h-[250px] 2xl:max-h-[300px] overflow-auto rounded-md">
-					{skippedAnimation ? (
-						// biome-ignore lint/security/noDangerouslySetInnerHtml: required as codeBlockData contains HTML elements rendered by highlightjs
-						<span dangerouslySetInnerHTML={{ __html: codeBlockData }} />
-					) : (
-						<TypeIt
-							getBeforeInit={(instance) => {
-								setTypeItInstance(instance);
-
-								instance
-									.options({
-										speed: 1,
-										afterComplete: () => {
-											instance.options({
-												cursor: false
-											}).freeze();
-											setSkippedAnimation(true);
-										},
-									})
-									.type(codeBlockData)
-									.go();
-
-								return instance;
-							}}
-						/>
-					)}
-				</div>
+				
+				{codeMode ? (
+				  <div className="text-base-content mockup-code bg-base-200 p-4 max-h-[250px] 2xl:max-h-[300px] overflow-auto rounded-md">
+  					{skippedAnimation ? (
+  						// biome-ignore lint/security/noDangerouslySetInnerHtml: required as codeBlockData contains HTML elements rendered by highlightjs
+  						<span dangerouslySetInnerHTML={{ __html: codeBlockData }} />
+  					) : (
+  						<TypeIt
+  							getBeforeInit={(instance) => {
+  								setTypeItInstance(instance);
+  
+  								instance
+  									.options({
+  										speed: 1,
+  										afterComplete: () => {
+  											instance.options({
+  												cursor: false
+  											}).freeze();
+  											setSkippedAnimation(true);
+  										},
+  									})
+  									.type(codeBlockData)
+  									.go();
+  
+  								return instance;
+  							}}
+  						/>
+  					)}
+  				</div>
+				) : (
+				  <div className="text-base-content p-4 max-h-[250px] 2xl:max-h-[300px] overflow-auto rounded-md">
+				    <span dangerouslySetInnerHTML={{ __html: aboutMeTextPlain }} />
+				  </div>
+				)}
 
 				<h2 className="my-6 ml-2 text-2xl">My GitHub Stats:</h2>
 

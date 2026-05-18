@@ -158,3 +158,84 @@ export default {
     myApps
 };
 `;
+
+export const aboutMeTextPlain = `<h2>Personal Info</h2>
+<ul>
+  <li>
+    <b>First Name</b>: Stefano
+  </li>
+  <li>
+    <b>Last Name</b>: Del Prete
+  </li>
+  <li>
+    <b>Age</b>: Not Public
+  </li>
+  <li>
+    <b>Gender</b>: male
+  </li>
+  <li>
+    <b>Birthday</b>: 15/03/200#
+  </li>
+  <li>
+    <b>Status</b>: <s>Single</s> <s>Alone... :(</s> Just Want to Die
+  </li>
+  <li>
+    <b>Pets</b>: 
+    <ul>
+      <li>
+        <b>Pallino</b> (11 years old rabbit)
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Known Languages</h2>
+<ul>
+  <li>
+    <b>Italian</b>: 100% (kinda obv since it's my native lang)
+  </li>
+  <li>
+    <b>English</b>: 95% (this is how I think I am, idk if others think so too)
+  </li>
+  <li>
+    <b>French</b>: 2% (I remember just the basic things)
+  </li>
+</ul>
+
+<h2>Known Programming Languages</h2>
+<ul>
+  <li>
+    <b>Javasvript</b>: 90%
+  </li>
+  <li>
+    <b>Typescript</b>: 90%
+  </li>
+  <li>
+    <b>HTML</b>: 60%
+  </li>
+  <li>
+    <b>CSS</b>: 60%
+  </li>
+  <li>
+    <b>Bash/Shell</b>: 45%
+  </li>
+  <li>
+    <b>Kotlin</b>: 50%
+  </li>
+</ul>
+
+<h2>My Apps</h2>
+<ul>
+  <li>
+    <b><a href="https://git.stefdp.com/Stef/Zipline-Upload-Extension">Zipline</a></b>: A chrome extension that lets users upload right clicked files to their <a href="https://github.com/diced/zipline">Zipline</a> instance or shorten URLs with <a href="https://github.com/diced/zipline">Zipline</a>
+  </li>
+  <li>
+    <b><a href="https://git.stefdp.com/Stef/zipline-android-app">Zipline Android App</a></b>: An android app that lets users manage their <a href="https://github.com/diced/zipline">Zipline</a> instance
+  </li>
+  <li>
+    <b><a href="https://discord.com/oauth2/authorize?client_id=1223221223685886032">User Apps</a></b>: A user-installed Discord bot for some utility commands such as tags (message presets), reminders, ai and more
+  </li>
+  <li>
+    <b><a href="https://receiptify.stefdp.com">Receiptify</a></b>: Converts your top tracks to a receipt (supports last.fm and spotify)
+  </li>
+</ul>`
