@@ -267,7 +267,7 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 						
 						const meURL = new URL(document.referrer || window.location.hostname).hostname.toLowerCase()
 						
-						let me = members.findIndex(member => member.url === meURL)
+						let me = members.findIndex(member => new URL(member.url).hostname.toLowerCase() === meURL)
 
 						if (me === -1) me = 0
 
@@ -297,7 +297,7 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 						
 						const meURL = new URL(document.referrer || window.location.hostname).hostname.toLowerCase()
 						
-						let me = members.findIndex(member => member.url === meURL.toLowerCase())
+						let me = members.findIndex(member => new URL(member.url).hostname.toLowerCase() === meURL)
 
 						if (me === -1) me = 0
 
