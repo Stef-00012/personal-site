@@ -18,7 +18,7 @@ export default function About() {
 	);
 	const [skippedAnimation, setSkippedAnimation] = useState(false);
 
-	const [plainText, setPlainText] = useState(false); 
+	const [plainText, setPlainText] = useState(false);
 
 	return (
 		<div className="flex justify-center items-center min-h-screen px-4">
