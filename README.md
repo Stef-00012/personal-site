@@ -15,7 +15,7 @@ The site is basically divided in 4 pages:
 
 ## Running
 
-The site is available at [stefdp.com](https://stefdp.com)
+The site is available at... well... my site... [stefdp.com](https://stefdp.com)
 
 ### Building Locally
 If you want to host it locally:
