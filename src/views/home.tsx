@@ -288,6 +288,32 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 				</Link>
 				<button
 					type="button"
+					className="mx-1 cursor-pointer pt-2"
+					onClick={async () => {
+						const members = await fetch("https://webring.hackclub.com/members.json").then(res => res.json()) as ({
+							member: string,
+							url: string
+						})[]
+
+						const meURL = new URL(document.referrer || window.location.hostname).hostname.toLowerCase()
+
+						let me = members.findIndex(member => new URL(member.url).hostname.toLowerCase() === meURL)
+
+						if (me === -1) me = 0
+						
+						let randomIndex = Math.floor(Math.random() * members.length)
+						
+						while (randomIndex === me) {
+							randomIndex = Math.floor(Math.random() * members.length)
+						}
+
+						window.location.href = members[randomIndex].url;
+					}}
+				>
+					<span className="icon-[ion--dice] size-8" />
+				</button>
+				<button
+					type="button"
 					className="mx-1 cursor-pointer"
 					onClick={async () => {
 						const members = await fetch("https://webring.hackclub.com/members.json").then(res => res.json()) as ({
