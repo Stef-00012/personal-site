@@ -255,28 +255,60 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 				</div>
 			</div>
 
-			{/* <div className="fixed bottom-5 left-1/2 -translate-x-1/2">
-				<Link href="https://nixwebr.ing/prev/stef" className="mx-1">
-					<span className="icon-[tabler--arrow-narrow-left] size-5" />
-				</Link>
-				<Link href="https://nixwebr.ing" className="mx-1 hover:underline">
-					<span className="align-text-bottom">nixwebring</span>
-				</Link>
-				<Link href="https://nixwebr.ing/rand" className="mx-1">
-					<span className="icon-[ion--dice] size-5" />
-				</Link>
-				<Link href="https://nixwebr.ing/next/stef" className="mx-1">
-					<span className="icon-[tabler--arrow-narrow-right] size-5" />
-				</Link>
-			</div> */}
+			<div className="fixed bottom-5 left-1/2 -translate-x-1/2 flex">
+				<button
+					type="button"
+					className="mx-1 cursor-pointer"
+					onClick={async () => {
+						const members = await fetch("https://webring.hackclub.com/members.json").then(res => res.json()) as ({
+							member: string,
+							url: string
+						})[]
+						
+						const meURL = document.referrer || window.location.hostname
+						
+						let me = members.findIndex(member => member.url === meURL.toLowerCase())
 
-			<iframe
-				title="Hack Club Webring"
-				className="fixed bottom-5 left-1/2 -translate-x-1/2"
-				src="https://webring.hackclub.com/embed.html"
-				width="150"
-				height="50"
-			/>
+						if (me === -1) me = 0
+
+						const previous = (me - 1 + members.length) % members.length
+
+						window.location.href = members[previous].url;
+					}}
+				>
+					<span className="icon-[tabler--arrow-narrow-left] size-10 align-middle" />
+				</button>
+				<Link href="https://webring.hackclub.com/" className="mx-1 hover:underline">
+					<Image
+						width={50}
+						height={50}
+						src="https://assets.hackclub.com/icon-rounded.svg"
+						alt="Hack Club Webring"
+					/>
+				</Link>
+				<button
+					type="button"
+					className="mx-1 cursor-pointer"
+					onClick={async () => {
+						const members = await fetch("https://webring.hackclub.com/members.json").then(res => res.json()) as ({
+							member: string,
+							url: string
+						})[]
+						
+						const meURL = document.referrer || window.location.hostname
+						
+						let me = members.findIndex(member => member.url === meURL.toLowerCase())
+
+						if (me === -1) me = 0
+
+						const next = (me + 1) % members.length
+
+						window.location.href = members[next].url;
+					}}
+				>
+					<span className="icon-[tabler--arrow-narrow-right] size-10 align-middle" />
+				</button>
+			</div>
 
 			{onekoVariantCredits && (
 				<div className="fixed  bottom-5 right-5 text-end text-xs text-base-content/50 p-2">
