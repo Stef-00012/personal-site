@@ -255,7 +255,7 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 				</div>
 			</div>
 
-			<div className="fixed bottom-5 left-1/2 -translate-x-1/2">
+			{/* <div className="fixed bottom-5 left-1/2 -translate-x-1/2">
 				<Link href="https://nixwebr.ing/prev/stef" className="mx-1">
 					<span className="icon-[tabler--arrow-narrow-left] size-5" />
 				</Link>
@@ -268,7 +268,15 @@ export default function Home({ loading, status, onekoVariantCredits }: Props) {
 				<Link href="https://nixwebr.ing/next/stef" className="mx-1">
 					<span className="icon-[tabler--arrow-narrow-right] size-5" />
 				</Link>
-			</div>
+			</div> */}
+
+			<iframe
+				title="Hack Club Webring"
+				className="fixed bottom-5 left-1/2 -translate-x-1/2"
+				src="https://webring.hackclub.com/embed.html"
+				width="150"
+				height="50"
+			/>
 
 			{onekoVariantCredits && (
 				<div className="fixed  bottom-5 right-5 text-end text-xs text-base-content/50 p-2">
