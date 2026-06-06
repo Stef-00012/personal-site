@@ -41,7 +41,7 @@ const knownLanguages: Array<KnownLanguage> = [
     },
     {
         name: "English",
-        level: 95 // 0-100 (this is how I think I am, idk if others think so too)
+        level: 90// 0-100 (this is how I think I am, idk if others think so too, but I got Cambridge B2 certification)
     },
     {
         name: "French",
@@ -70,7 +70,7 @@ const knownProgramming: Array<KnownProgrammingLanguage> = [
     },
     {
         name: "Bash/Shell", // for "sudo rm -rf --no-preserve-root /life.sh" too
-        level: 45 // 0-100
+        level: 30 // 0-100
     },
     {
         name: "Kotlin",
@@ -94,7 +94,7 @@ const myApps: Array<MyApp> = [
     {
         name: "User Apps",
         description: "A user-installed Discord bot for some utility commands such as tags (message presets), reminders, ai and more",
-        url: "[[aStart_userApps]]https://discord.com/oauth2/authorize?client_id=1223221223685886032[[aEnd]]"
+        url: "[[aStart_userApps]]https://discord.com/oauth2/authorize?client_id=1223221223685886032[[aEnd]]",
         source: "[[aStart_userAppsSource]]https://git.stefdp.com/Stef/Discord-User-Installed-Apps[[aEnd]]"
     },
     {
@@ -158,3 +158,92 @@ export default {
     myApps
 };
 `;
+
+export const aboutMePlainText = `<div>
+<h1 className="text-2xl font-bold">Personal Info:</h1>
+<ul className="list-disc list-inside">
+    <li>
+        <p className="font-bold">First Name</p>: Stefano
+    </li>
+    <li>
+        <p className="font-bold">Last Name</p>: Del Prete
+    </li>
+    <li>
+        <p className="font-bold">Full Name</p>: Stefano Del Prete
+    </li>
+    <li>
+        <p className="font-bold">Age</p>: Not public
+    </li>
+    <li>
+        <p className="font-bold">Birthday</p>: 15/03/200#
+    </li>
+    <li>
+        <p className="font-bold">Nationality</p>: Italian
+    </li>
+    <li>
+        <p className="font-bold">Status</p>: <s>Single</s> <s>Alone... :(</s> Just Want to Die
+    </li>
+    <li>
+        <p className="font-bold">Pets</p>:
+        <ul className="list-disc list-inside ml-6">
+            <li>
+                <p className="font-bold">Pallino</p> - Rabbit - 11yo (81 in rabbit years)
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h1 className="text-2xl font-bold mt-4">Spoken Languages:</h1>
+<ul className="list-disc list-inside">
+    <li>
+        <p className="font-bold">Italian</p> - 100% (My native language)
+    </li>
+    <li>
+        <p className="font-bold">English</p> - 90% (This is how I think I am, idk if others think so too, but I got Cambridge B2 certification)
+    </li>
+    <li>
+        <p className="font-bold">French</p> - 2% (I remember just the basic things)
+    </li>
+</ul>
+
+<h1 className="text-2xl font-bold mt-4">Programming/Markup Languages & Terminal:</h1>
+<ul className="list-disc list-inside">
+    <li>
+        <p className="font-bold">Javascript</p> - 90%
+    </li>
+    <li>
+        <p className="font-bold">Typescript</p> - 90%
+    </li>
+    <li>
+        <p className="font-bold">HTML</p> - 60%
+    </li>
+    <li>
+        <p className="font-bold">CSS</p> - 60%
+    </li>
+    <li>
+        <p className="font-bold">Bash/Shell</p> - 30%
+    </li>
+    <li>
+        <p className="font-bold">Kotlin</p> - 50%
+    </li>
+</ul>
+
+<h1 className="text-2xl font-bold mt-4">My Apps:</h1>
+<ul className="list-disc list-inside">
+    <li>
+        <p className="font-bold">
+            <a className="link text-primary" href="https://git.stefdp.com/Stef/Zipline-Upload-Extension">Zipline Upload</a>
+        </p> - A chrome extension that lets users upload right clicked files to their <a href="https://zipline.diced.sh">Zipline</a> instance or shorten URLs with <a href="https://zipline.diced.sh">Zipline</a>
+    </li>
+    <li>
+        <p className="font-bold">
+            <a className="link text-primary" href="https://git.stefdp.com/Stef/zipline-android-app">Zipline Android App</a>
+        </p> - An android app that lets users manage their <a href="https://zipline.diced.sh">Zipline</a> instance
+    </li>
+    <li>
+        <p className="font-bold">
+            <a className="link text-primary" href="https://git.stefdp.com/Stef/Discord-User-Installed-Apps">User Apps</a>
+        </p> - A user-installed Discord bot for some utility commands such as tags (message presets), reminders, ai and more
+    </li>
+</ul>
+</div>`
